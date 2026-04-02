@@ -1,27 +1,9 @@
+@import "./styles/theme.css";
 @import "tailwindcss";
-
-@theme {
-  --color-brand-canvas: #f5f4f2;
-  --color-brand-surface: #ece9e4;
-  --color-brand-neutral: #dad7d2;
-  --color-brand-border: #d2cec8;
-  --color-brand-ink: #232120;
-  --color-brand-muted: #5f5b57;
-  --color-brand-white: #ffffff;
-  --color-brand-green-deep: #2f8f78;
-  --color-brand-green: #2ba252;
-  --color-brand-green-soft: #31b05d;
-  --color-brand-green-muted: #64ac7d;
-
-  --font-sans: "Manrope", "Segoe UI", sans-serif;
-  --font-display: "Clash Display", "Manrope", "Segoe UI", sans-serif;
-}
 
 :root {
   color: var(--color-brand-ink);
-  background:
-    linear-gradient(180deg, rgba(255, 255, 255, 0.82), rgba(245, 244, 242, 0.94)),
-    var(--color-brand-canvas);
+  background: var(--gradient-site-background), var(--color-brand-canvas);
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -29,8 +11,15 @@
 }
 
 html {
+  font-size: 17px;
   scroll-behavior: smooth;
   overflow-x: hidden;
+}
+
+@media (max-width: 640px) {
+  html {
+    font-size: 16px;
+  }
 }
 
 body {
@@ -61,27 +50,20 @@ button {
 
 @keyframes heroBackgroundFade {
   0%,
-  45% {
+  16% {
     opacity: 1;
     transform: scale(1);
   }
-  50%,
-  95% {
+  20%,
+  100% {
     opacity: 0;
     transform: scale(1.04);
-  }
-  100% {
-    opacity: 1;
-    transform: scale(1);
   }
 }
 
 .hero-bg-slide {
-  animation: heroBackgroundFade 14s ease-in-out infinite;
-}
-
-.hero-bg-slide-delay {
-  animation-delay: 7s;
+  animation: heroBackgroundFade 30s ease-in-out infinite;
+  opacity: 0;
 }
 
 #root {

@@ -6,25 +6,16 @@ import {
 } from 'react-simple-maps/dist/index.es.js'
 import geoData from 'world-atlas/countries-110m.json'
 import { offices as officeLocations } from '../data/mock/offices'
+import BlueAccentHero from '../components/sections/BlueAccentHero'
 
 function ContactPage() {
   return (
     <div className="text-brand-ink">
-      <section className="relative left-1/2 w-screen -translate-x-1/2 -mt-8 overflow-hidden bg-[linear-gradient(125deg,#101b8f_0%,#2149d8_44%,#3d7cff_100%)] px-4 py-24 text-center text-white sm:px-6 lg:-mt-12 lg:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(255,255,255,0.16),transparent_24%),radial-gradient(circle_at_78%_22%,rgba(255,255,255,0.12),transparent_18%),linear-gradient(135deg,transparent_0%,transparent_58%,rgba(255,255,255,0.08)_58%,rgba(255,255,255,0.08)_64%,transparent_64%)]" />
-        <div className="absolute -bottom-16 left-[-6%] h-32 w-[58%] rotate-[-6deg] bg-white/10 blur-2xl" />
-        <div className="absolute -bottom-10 right-[-8%] h-28 w-[46%] rotate-[7deg] bg-[#6aa2ff]/22 blur-xl" />
-        <div className="relative">
-          <p className="mx-auto max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-            Speak with our team about projects, partnerships, regional support,
-            and worldwide delivery.
-          </p>
-          <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            Contact Us
-          </h1>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-10 bg-[linear-gradient(176deg,transparent_0%,transparent_34%,#f5f4f2_35%,#f5f4f2_100%)]" />
-      </section>
+      <BlueAccentHero
+        eyebrow="Contact Vortexus"
+        title="Contact Us"
+        description="Speak with our team about projects, partnerships, regional support, and worldwide delivery."
+      />
 
       <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
         <div className="text-center">
@@ -47,7 +38,7 @@ function ContactPage() {
               <input
                 type="text"
                 placeholder="First Name"
-                className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[#2f6df6]"
+                className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[var(--color-accent-blue-highlight)]"
               />
             </label>
             <label className="block">
@@ -57,30 +48,30 @@ function ContactPage() {
               <input
                 type="text"
                 placeholder="Last Name"
-                className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[#2f6df6]"
+                className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[var(--color-accent-blue-highlight)]"
               />
             </label>
           </div>
 
           <label className="block">
             <span className="mb-2 block text-sm font-medium text-brand-ink">
-              Email <span className="text-[#2f6df6]">*</span>
+              Email <span className="text-[var(--color-accent-blue-highlight)]">*</span>
             </span>
             <input
               type="email"
               placeholder="Email Address"
-              className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[#2f6df6]"
+              className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[var(--color-accent-blue-highlight)]"
             />
           </label>
 
           <label className="block">
             <span className="mb-2 block text-sm font-medium text-brand-ink">
-              Phone Number <span className="text-[#2f6df6]">*</span>
+              Phone Number <span className="text-[var(--color-accent-blue-highlight)]">*</span>
             </span>
             <input
               type="tel"
               placeholder="Enter Phone Number"
-              className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[#2f6df6]"
+              className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[var(--color-accent-blue-highlight)]"
             />
           </label>
 
@@ -92,7 +83,7 @@ function ContactPage() {
               <input
                 type="text"
                 placeholder="e.g Waffle Group"
-                className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[#2f6df6]"
+                className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[var(--color-accent-blue-highlight)]"
               />
             </label>
             <label className="block">
@@ -102,26 +93,26 @@ function ContactPage() {
               <input
                 type="text"
                 placeholder="e.g Customer Service"
-                className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[#2f6df6]"
+                className="h-12 w-full rounded-[10px] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[var(--color-accent-blue-highlight)]"
               />
             </label>
           </div>
 
           <label className="block">
             <span className="mb-2 block text-sm font-medium text-brand-ink">
-              Your Message <span className="text-[#2f6df6]">*</span>
+              Your Message <span className="text-[var(--color-accent-blue-highlight)]">*</span>
             </span>
             <textarea
               rows="6"
               placeholder="Your Message"
-              className="w-full rounded-[10px] border border-brand-border bg-white px-4 py-3 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[#2f6df6]"
+              className="w-full rounded-[10px] border border-brand-border bg-white px-4 py-3 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-[var(--color-accent-blue-highlight)]"
             />
           </label>
 
           <div className="flex justify-center">
             <button
               type="submit"
-              className="inline-flex items-center justify-center bg-[#2f6df6] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1a56d9]"
+              className="inline-flex items-center justify-center bg-[var(--color-accent-blue-highlight)] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[var(--color-accent-blue-hover)]"
             >
               Contact Us
             </button>
@@ -158,20 +149,20 @@ function ContactPage() {
                       geography={geo}
                       style={{
                         default: {
-                          fill: '#e8ebf0',
-                          stroke: '#ffffff',
+                          fill: 'var(--color-map-land)',
+                          stroke: 'var(--color-map-stroke)',
                           strokeWidth: 0.5,
                           outline: 'none',
                         },
                         hover: {
-                          fill: '#dfe4ec',
-                          stroke: '#ffffff',
+                          fill: 'var(--color-map-land-hover)',
+                          stroke: 'var(--color-map-stroke)',
                           strokeWidth: 0.5,
                           outline: 'none',
                         },
                         pressed: {
-                          fill: '#dfe4ec',
-                          stroke: '#ffffff',
+                          fill: 'var(--color-map-land-hover)',
+                          stroke: 'var(--color-map-stroke)',
                           strokeWidth: 0.5,
                           outline: 'none',
                         },
@@ -188,10 +179,10 @@ function ContactPage() {
                     <g>
                       <circle
                         r="13"
-                        fill="rgba(255,90,10,0.12)"
+                        fill="var(--color-marker-ring)"
                         className={index % 2 === 0 ? 'animate-pulse' : ''}
                       />
-                      <circle r="4.5" fill="#ff5a0a" />
+                      <circle r="4.5" fill="var(--color-marker-solid)" />
                     </g>
                   </Marker>
                 ))}
@@ -205,7 +196,7 @@ function ContactPage() {
         <div className="mt-16 grid gap-x-12 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
           {officeLocations.map((office) => (
             <div key={office.country} className="border-t border-brand-border pt-6">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[#2f6df6]">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-accent-blue-highlight)]">
                 {office.country}
               </p>
               <h3 className="mt-3 font-display text-2xl font-semibold text-brand-ink">

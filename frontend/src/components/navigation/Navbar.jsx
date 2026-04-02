@@ -25,17 +25,11 @@ function Navbar() {
           className="flex items-center gap-3 text-left"
           onClick={handleCloseMenu}
         >
-          <span className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-green text-lg font-semibold text-white shadow-[0_12px_32px_rgba(43,162,82,0.25)]">
-            VI
-          </span>
-          <span className="min-w-0">
-            <span className="block font-display text-lg font-semibold tracking-[0.16em] text-brand-ink">
-              {company.shortName.toUpperCase()}
-            </span>
-            <span className="hidden text-xs uppercase tracking-[0.28em] text-brand-muted sm:block">
-              {company.tagline}
-            </span>
-          </span>
+          <img
+            src={company.logo}
+            alt={`${company.name} logo`}
+            className="h-12 w-auto object-contain sm:h-14"
+          />
         </NavLink>
 
         <nav className="hidden items-center gap-1 xl:flex">

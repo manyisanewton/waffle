@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import FullBleedHero from '../components/sections/FullBleedHero'
 import { company } from '../data/site/company'
 import { solutionFamilies } from '../data/solutionsCatalog'
 
@@ -45,41 +46,31 @@ function SolutionsPage() {
 
   return (
     <div className="space-y-16 text-brand-ink lg:space-y-20">
-      <section className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-brand-ink text-white">
-        <button
-          type="button"
-          onClick={() =>
-            setLightboxImage({
-              src: '/images/assets/img/projects/project banner.webp',
-              alt: 'Water and energy project infrastructure',
-            })
-          }
-          className="absolute inset-0 block h-full w-full cursor-zoom-in overflow-hidden"
-          aria-label="Open larger view of water and energy project infrastructure"
-        >
-          <img
-            src="/images/assets/img/projects/project banner.webp"
-            alt="Water and energy project infrastructure"
-            className="h-full w-full object-cover transition duration-300 hover:scale-[1.02]"
-          />
-        </button>
-        <div className="absolute inset-0 bg-[linear-gradient(96deg,rgba(20,23,21,0.84)_0%,rgba(20,23,21,0.66)_42%,rgba(20,23,21,0.52)_100%)]" />
-        <div className="relative mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-          <div className="max-w-4xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green-muted">
-              Solution Platform
-            </p>
-            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-              Water, pumping, treatment, and energy systems organized for real-world delivery.
-            </h1>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-white/82 sm:text-lg">
-              {company.name} supports clients with integrated solution families,
-              from borehole performance and pump systems to domestic treatment,
-              industrial purification, chemicals, media, and solar-powered water infrastructure.
-            </p>
-          </div>
-        </div>
-      </section>
+      <FullBleedHero
+        eyebrow="Solution Platform"
+        title="Water, pumping, treatment, and energy systems organized for real-world delivery."
+        description={`${company.name} supports clients with integrated solution families, from borehole performance and pump systems to domestic treatment, industrial purification, chemicals, media, and solar-powered water infrastructure.`}
+        overlayClassName="theme-hero-dark"
+        media={
+          <button
+            type="button"
+            onClick={() =>
+              setLightboxImage({
+                src: '/images/assets/img/projects/project banner.webp',
+                alt: 'Water and energy project infrastructure',
+              })
+            }
+            className="absolute inset-0 block h-full w-full cursor-zoom-in overflow-hidden"
+            aria-label="Open larger view of water and energy project infrastructure"
+          >
+            <img
+              src="/images/assets/img/projects/project banner.webp"
+              alt="Water and energy project infrastructure"
+              className="h-full w-full object-cover transition duration-300 hover:scale-[1.02]"
+            />
+          </button>
+        }
+      />
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {[

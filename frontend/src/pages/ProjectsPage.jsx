@@ -1,5 +1,6 @@
 import { useMemo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import FullBleedHero from '../components/sections/FullBleedHero'
 import {
   projectFilters,
   projectMetrics,
@@ -19,29 +20,14 @@ function ProjectsPage() {
 
   return (
     <div className="space-y-16 text-brand-ink lg:space-y-24">
-      <section className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-brand-ink text-white">
-        <img
-          src="/images/assets/img/projects/project banner.webp"
-          alt="Water projects and delivery portfolio"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(98deg,rgba(20,23,21,0.84)_0%,rgba(20,23,21,0.68)_42%,rgba(20,23,21,0.54)_100%)]" />
-        <div className="relative mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-          <div className="max-w-4xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green-muted">
-              Project Portfolio
-            </p>
-            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-              Our impactful projects across treatment, pumping, solar, and community water delivery.
-            </h1>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-white/82 sm:text-lg">
-              This page gives clients proof, not just promises. It shows the type
-              of systems Vortexus has delivered, the environments we can operate
-              in, and the practical outcomes our projects are built to achieve.
-            </p>
-          </div>
-        </div>
-      </section>
+      <FullBleedHero
+        eyebrow="Project Portfolio"
+        title="Our impactful projects across treatment, pumping, solar, and community water delivery."
+        description="This page gives clients proof, not just promises. It shows the type of systems Vortexus has delivered, the environments we can operate in, and the practical outcomes our projects are built to achieve."
+        imageSrc="/images/assets/img/projects/project banner.webp"
+        imageAlt="Water projects and delivery portfolio"
+        overlayClassName="theme-hero-dark-project"
+      />
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
         {projectMetrics.map((metric) => (

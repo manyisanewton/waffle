@@ -1,4 +1,5 @@
 import { Navigate, NavLink, useParams } from 'react-router-dom'
+import FullBleedHero from '../components/sections/FullBleedHero'
 import { getProjectBySlug } from '../data/projectsCatalog'
 
 function ProjectDetailPage() {
@@ -11,28 +12,16 @@ function ProjectDetailPage() {
 
   return (
     <div className="space-y-14 text-brand-ink lg:space-y-20">
-      <section className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-brand-ink text-white">
-        <img
-          src={project.heroImage}
-          alt={project.title}
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(98deg,rgba(20,23,21,0.84)_0%,rgba(20,23,21,0.64)_40%,rgba(20,23,21,0.54)_100%)]" />
-        <div className="relative mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-          <div className="max-w-4xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green-muted">
-              Project Detail
-            </p>
-            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-              {project.title}
-            </h1>
-            <p className="mt-5 max-w-3xl text-base leading-8 text-white/82 sm:text-lg">
-              {project.subtitle}
-            </p>
-            <p className="mt-4 text-sm font-medium text-white/70">{project.location}</p>
-          </div>
-        </div>
-      </section>
+      <FullBleedHero
+        eyebrow="Project Detail"
+        title={project.title}
+        description={project.subtitle}
+        imageSrc={project.heroImage}
+        imageAlt={project.title}
+        overlayClassName="theme-hero-dark-project-detail"
+      >
+        <p className="text-sm font-medium text-white/70">{project.location}</p>
+      </FullBleedHero>
 
       <section className="grid gap-4 md:grid-cols-3">
         <div className="rounded-[1.75rem] border border-brand-border bg-white px-5 py-5 shadow-[0_18px_46px_rgba(35,33,32,0.05)]">

@@ -1,3 +1,5 @@
+import BlueAccentHero from '../components/sections/BlueAccentHero'
+
 const storyPoints = [
   'Provide dependable water treatment, pumping, and borehole solutions through resilient engineering.',
   'Create long-term value across the full lifecycle of water and energy infrastructure systems.',
@@ -28,20 +30,11 @@ const impactStats = [
 function AboutPage() {
   return (
     <div className="space-y-20 pb-8 lg:space-y-28">
-      <section className="relative left-1/2 -mt-8 w-screen -translate-x-1/2 overflow-hidden bg-[linear-gradient(125deg,#101b8f_0%,#2149d8_44%,#3d7cff_100%)] px-4 py-24 text-center text-white sm:px-6 lg:-mt-12 lg:px-8 lg:py-32">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_30%,rgba(255,255,255,0.16),transparent_24%),radial-gradient(circle_at_78%_22%,rgba(255,255,255,0.12),transparent_18%),linear-gradient(135deg,transparent_0%,transparent_58%,rgba(255,255,255,0.08)_58%,rgba(255,255,255,0.08)_64%,transparent_64%)]" />
-        <div className="absolute -bottom-16 left-[-6%] h-32 w-[58%] rotate-[-6deg] bg-white/10 blur-2xl" />
-        <div className="absolute -bottom-10 right-[-8%] h-28 w-[46%] rotate-[7deg] bg-[#6aa2ff]/22 blur-xl" />
-        <div className="relative">
-          <p className="mx-auto max-w-3xl text-base leading-8 text-white/80 sm:text-lg">
-            Learn more about the people, thinking, and engineering approach behind Vortexus Industrial Solutions.
-          </p>
-          <h1 className="mt-6 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-            About Us
-          </h1>
-        </div>
-        <div className="absolute inset-x-0 bottom-0 h-10 bg-[linear-gradient(176deg,transparent_0%,transparent_34%,#f5f4f2_35%,#f5f4f2_100%)]" />
-      </section>
+      <BlueAccentHero
+        eyebrow="About Vortexus"
+        title="About Us"
+        description="Learn more about the people, thinking, and engineering approach behind Vortexus Industrial Solutions."
+      />
 
       <section className="grid gap-10 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
         <div>

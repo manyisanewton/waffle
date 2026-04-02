@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import FullBleedHero from '../components/sections/FullBleedHero'
 import { company } from '../data/site/company'
 
 const serviceGroups = [
@@ -110,44 +111,29 @@ const serviceStrengths = [
 function ServicesPage() {
   return (
     <div className="space-y-16 text-brand-ink lg:space-y-24">
-      <section className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-brand-ink text-white">
-        <img
-          src="/images/assets/img/norwa/waterinfrastructure.webp"
-          alt="Water infrastructure and engineering systems"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(95deg,rgba(20,23,21,0.84)_0%,rgba(20,23,21,0.66)_40%,rgba(20,23,21,0.54)_100%)]" />
-        <div className="relative mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-          <div className="max-w-4xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green-muted">
-              Service Capability
-            </p>
-            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-              Services that help clients understand exactly what Vortexus can deliver.
-            </h1>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-white/82 sm:text-lg">
-              {company.name} supports clients with treatment systems, pump
-              machinery, borehole-related delivery, solar pumping integration,
-              and technical equipment that solve real water and pressure
-              problems. This page is designed to make that service strength clear.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <NavLink
-                to="/contact-us"
-                className="inline-flex items-center justify-center rounded-full bg-brand-green px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-green-soft"
-              >
-                Talk to Our Team
-              </NavLink>
-              <NavLink
-                to="/solutions"
-                className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/8 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/12"
-              >
-                View Detailed Solutions
-              </NavLink>
-            </div>
-          </div>
+      <FullBleedHero
+        eyebrow="Service Capability"
+        title="Services that help clients understand exactly what Vortexus can deliver."
+        description={`${company.name} supports clients with treatment systems, pump machinery, borehole-related delivery, solar pumping integration, and technical equipment that solve real water and pressure problems. This page is designed to make that service strength clear.`}
+        imageSrc="/images/assets/img/norwa/waterinfrastructure.webp"
+        imageAlt="Water infrastructure and engineering systems"
+        overlayClassName="theme-hero-dark"
+      >
+        <div className="flex flex-col gap-3 sm:flex-row">
+          <NavLink
+            to="/contact-us"
+            className="inline-flex items-center justify-center rounded-full bg-brand-green px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-green-soft"
+          >
+            Talk to Our Team
+          </NavLink>
+          <NavLink
+            to="/solutions"
+            className="inline-flex items-center justify-center rounded-full border border-white/20 bg-white/8 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/12"
+          >
+            View Detailed Solutions
+          </NavLink>
         </div>
-      </section>
+      </FullBleedHero>
 
       <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
         {[

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import FullBleedHero from '../sections/FullBleedHero'
 import { resolveSolutionImage } from '../../data/solutionsCatalog'
 
 function ClickableImage({ src, alt, className, onOpen }) {
@@ -359,28 +360,20 @@ function SolutionDetailPageContent({ solution }) {
 
   return (
     <div className="text-brand-ink">
-      <section className="relative left-1/2 w-screen -translate-x-1/2 overflow-hidden bg-brand-ink text-white">
-        <ClickableImage
-          src={resolveSolutionImage(solution.heroImage)}
-          alt={solution.title}
-          className="absolute inset-0 h-full w-full object-cover"
-          onOpen={setLightboxImage}
-        />
-        <div className="absolute inset-0 bg-[linear-gradient(98deg,rgba(20,23,21,0.82)_0%,rgba(20,23,21,0.62)_40%,rgba(20,23,21,0.48)_100%)]" />
-        <div className="relative mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
-          <div className="max-w-4xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green-muted">
-              {solution.eyebrow}
-            </p>
-            <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
-              {solution.title}
-            </h1>
-            <p className="mt-6 max-w-3xl text-base leading-8 text-white/82 sm:text-lg">
-              {solution.description}
-            </p>
-          </div>
-        </div>
-      </section>
+      <FullBleedHero
+        eyebrow={solution.eyebrow}
+        title={solution.title}
+        description={solution.description}
+        overlayClassName="theme-hero-dark-solution"
+        media={
+          <ClickableImage
+            src={resolveSolutionImage(solution.heroImage)}
+            alt={solution.title}
+            className="absolute inset-0 h-full w-full object-cover"
+            onOpen={setLightboxImage}
+          />
+        }
+      />
 
       <section className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">

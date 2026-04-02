@@ -13,7 +13,13 @@ import {
   FaWhatsapp,
 } from 'react-icons/fa'
 import { MdEmail } from 'react-icons/md'
-import { contactItems, footerGroups, socialLinks } from '../../data/footer'
+import {
+  contactItems,
+  footerGroups,
+  footerHighlights,
+  footerMetaLinks,
+  socialLinks,
+} from '../../data/footer'
 import { company } from '../../data/site/company'
 
 const socialIcons = {
@@ -26,12 +32,12 @@ const socialIcons = {
 }
 
 const socialIconColors = {
-  facebook: '#1877F2',
-  twitter: '#1DA1F2',
-  google: '#DB4437',
-  instagram: '#E4405F',
-  linkedin: '#0A66C2',
-  whatsapp: '#25D366',
+  facebook: 'var(--color-social-facebook)',
+  twitter: 'var(--color-social-twitter)',
+  google: 'var(--color-social-google)',
+  instagram: 'var(--color-social-instagram)',
+  linkedin: 'var(--color-social-linkedin)',
+  whatsapp: 'var(--color-social-whatsapp)',
 }
 
 const contactIcons = {
@@ -66,7 +72,7 @@ function Footer() {
   }
 
   return (
-    <footer className="mt-12 bg-[#ececec] text-brand-ink">
+    <footer className="mt-12 bg-brand-ink text-white">
       <div className="fixed right-4 bottom-4 z-40 flex flex-col items-end gap-3 sm:right-6 sm:bottom-6">
         <div
           className={[
@@ -108,7 +114,11 @@ function Footer() {
         <button
           type="button"
           aria-label={isSocialPanelOpen ? 'Close social links' : 'Open social links'}
-          className="flex h-14 w-14 items-center justify-center rounded-full bg-[#ff5a0a] text-white shadow-[0_16px_36px_rgba(255,90,10,0.32)] transition hover:-translate-y-0.5 sm:h-16 sm:w-16"
+          className="flex h-14 w-14 items-center justify-center rounded-full text-white transition hover:-translate-y-0.5 sm:h-16 sm:w-16"
+          style={{
+            backgroundColor: 'var(--color-accent-orange)',
+            boxShadow: '0 16px 36px rgba(255, 90, 10, 0.32)',
+          }}
           onClick={() => setIsSocialPanelOpen((open) => !open)}
         >
           <span className="material-symbols-outlined text-[1.8rem] text-white sm:text-[2rem]">
@@ -128,22 +138,67 @@ function Footer() {
         )}
       </div>
 
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 xl:grid-cols-4 lg:px-8">
+      <div className="border-b border-white/10">
+        <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-14">
+          <div>
+            <img
+              src={company.logoOnDark || company.logo}
+              alt={`${company.name} logo`}
+              className="h-14 w-auto object-contain sm:h-16"
+            />
+            <p className="mt-5 max-w-2xl text-sm leading-8 text-white/72">
+              Vortexus Industrial Solutions supports water treatment systems,
+              borehole infrastructure, pumps, solar water delivery, and related
+              engineering support for clients who need clear, dependable execution.
+            </p>
+            <div className="mt-8 flex flex-wrap gap-3">
+              <NavLink
+                to="/contact-us"
+                className="rounded-full bg-brand-green px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-green-soft"
+              >
+                Start a Project
+              </NavLink>
+              <NavLink
+                to="/services"
+                className="rounded-full border border-white/14 bg-white/6 px-5 py-3 text-sm font-semibold text-white transition hover:bg-white/10"
+              >
+                View Services
+              </NavLink>
+            </div>
+          </div>
+
+          <div className="grid gap-5 md:grid-cols-3">
+            {footerHighlights.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-[1.5rem] border border-white/10 bg-white/5 px-5 py-5 backdrop-blur"
+              >
+                <h3 className="font-display text-xl font-semibold text-white">
+                  {item.title}
+                </h3>
+                <p className="mt-3 text-sm leading-7 text-white/68">{item.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 xl:grid-cols-[1.05fr_0.72fr_0.72fr_0.9fr] lg:px-8">
         <div>
-          <h2 className="text-lg font-bold uppercase tracking-wide text-brand-ink">
-            {company.name}
-          </h2>
+          <h3 className="text-lg font-bold uppercase tracking-[0.18em] text-white">
+            Company Overview
+          </h3>
           <div className="mt-3 h-0.5 w-12 bg-brand-green" />
-          <p className="mt-6 max-w-sm text-sm leading-8 text-brand-muted">
-            Water treatment, borehole systems, pump technology, solar-powered
-            water solutions, and IoT-enabled pump monitoring for modern water
-            infrastructure.
+          <p className="mt-6 max-w-sm text-sm leading-8 text-white/68">
+            We build and support systems across treatment, pumping, boreholes,
+            solar water delivery, and connected infrastructure for homes,
+            institutions, commercial sites, and industrial operations.
           </p>
         </div>
 
         {footerGroups.map((group) => (
           <div key={group.title}>
-            <h3 className="text-lg font-bold uppercase tracking-wide text-brand-ink">
+            <h3 className="text-lg font-bold uppercase tracking-[0.18em] text-white">
               {group.title}
             </h3>
             <div className="mt-3 h-0.5 w-12 bg-brand-green" />
@@ -152,7 +207,7 @@ function Footer() {
                 <li key={link.label}>
                   <NavLink
                     to={link.to}
-                    className="text-sm text-brand-muted transition hover:text-brand-green"
+                    className="text-sm leading-7 text-white/68 transition hover:text-brand-green-muted"
                   >
                     {link.label}
                   </NavLink>
@@ -163,7 +218,7 @@ function Footer() {
         ))}
 
         <div>
-          <h3 className="text-lg font-bold uppercase tracking-wide text-brand-ink">
+          <h3 className="text-lg font-bold uppercase tracking-[0.18em] text-white">
             Contact
           </h3>
           <div className="mt-3 h-0.5 w-12 bg-brand-green" />
@@ -173,18 +228,18 @@ function Footer() {
 
               return (
                 <li key={item.label} className="flex items-start gap-3">
-                  <span className="mt-1 text-brand-ink">
+                  <span className="mt-1 text-brand-green-muted">
                     <Icon />
                   </span>
                   {item.href ? (
                     <a
                       href={item.href}
-                      className="text-sm leading-7 text-brand-muted transition hover:text-brand-green"
+                      className="text-sm leading-7 text-white/68 transition hover:text-brand-green-muted"
                     >
                       {item.label}
                     </a>
                   ) : (
-                    <span className="text-sm leading-7 text-brand-muted">
+                    <span className="text-sm leading-7 text-white/68">
                       {item.label}
                     </span>
                   )}
@@ -192,12 +247,42 @@ function Footer() {
               )
             })}
           </ul>
+
+          <div className="mt-8 flex flex-wrap gap-3">
+            {socialLinks.map((item) => {
+              const Icon = socialIcons[item.icon]
+              const iconColor = socialIconColors[item.icon]
+
+              return (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  aria-label={item.label}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/6 text-lg transition hover:-translate-y-0.5"
+                  style={{ color: iconColor }}
+                >
+                  <Icon />
+                </a>
+              )
+            })}
+          </div>
         </div>
       </div>
 
-      <div className="bg-[#d6d6d6]">
-        <div className="mx-auto max-w-7xl px-4 py-4 text-sm text-brand-muted sm:px-6 lg:px-8">
-          <p>© 2026 Copyright: {company.name}</p>
+      <div className="border-t border-white/10 bg-black/12">
+        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-5 text-sm text-white/60 sm:px-6 lg:flex-row lg:items-center lg:justify-between lg:px-8">
+          <p>© 2026 {company.name}. All rights reserved.</p>
+          <div className="flex flex-wrap gap-4">
+            {footerMetaLinks.map((link) => (
+              <NavLink
+                key={link.label}
+                to={link.to}
+                className="transition hover:text-brand-green-muted"
+              >
+                {link.label}
+              </NavLink>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
