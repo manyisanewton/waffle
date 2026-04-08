@@ -228,7 +228,7 @@ function GlobalProductSearch({ mobile = false, onNavigate, desktopWide = false }
     >
       <label className="relative block">
         <span className="sr-only">Search products</span>
-        <FaSearch className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-xs text-brand-muted" />
+        <FaSearch className="pointer-events-none absolute left-3.5 top-1/2 -translate-y-1/2 text-xs text-brand-muted" />
         <input
           type="search"
           value={query}
@@ -248,11 +248,11 @@ function GlobalProductSearch({ mobile = false, onNavigate, desktopWide = false }
           }}
           placeholder="Search products, pumps, membranes..."
           className={[
-            'w-full border border-brand-border bg-white pl-10 pr-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/70 focus:border-brand-green',
+            'w-full border border-brand-border bg-white pl-9 pr-3.5 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/70 focus:border-brand-green',
             mobile
               ? 'h-11 rounded-full shadow-none'
               : desktopWide
-                ? 'h-12 rounded-[1rem] shadow-[0_16px_36px_rgba(35,33,32,0.08)]'
+                ? 'h-10 rounded-[0.9rem] shadow-[0_12px_28px_rgba(35,33,32,0.07)]'
                 : 'h-11 rounded-full shadow-[0_12px_28px_rgba(35,33,32,0.06)]',
           ].join(' ')}
         />

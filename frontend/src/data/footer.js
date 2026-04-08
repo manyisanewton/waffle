@@ -4,10 +4,9 @@ export const footerGroups = [
   {
     title: 'Products',
     links: [
-      { label: 'Pre-Treatment Systems', to: '/products/category/pre-treatment-systems' },
       { label: 'Filtration Systems', to: '/products/category/filtration-systems' },
       { label: 'RO Systems', to: '/products/category/reverse-osmosis-systems' },
-      { label: 'Water Treatment Chemicals', to: '/products/category/water-treatment-chemicals' },
+      { label: 'Industrial Chemicals', to: '/products/category/water-treatment-chemicals' },
       { label: 'Pumps & Fluid Handling', to: '/products/category/pumps-fluid-handling' },
       { label: 'Monitoring & Instrumentation', to: '/products/category/monitoring-instrumentation' },
     ],
@@ -27,7 +26,6 @@ export const footerGroups = [
     title: 'Company',
     links: [
       { label: 'About Us', to: '/about-us' },
-      { label: 'Blog', to: '/blog' },
       { label: 'Contact Us', to: '/contact-us' },
       { label: 'Request a Quote', to: '/contact-us' },
     ],
@@ -36,22 +34,23 @@ export const footerGroups = [
 
 export const footerHighlights = [
   {
-    title: 'Product-First Catalog',
-    text: 'Industrial water-treatment products, components, chemicals, pumps, controls, and instrumentation organized for faster discovery.',
+    title: 'Products',
+    text: 'Pumps, membranes, chemicals, meters, controls, tanks, and more.',
   },
   {
-    title: 'Industry Alignment',
-    text: 'Category browsing is supported by industry views so buyers can move from application need to product shortlist quickly.',
+    title: 'Industries',
+    text: 'Products matched to food, pharma, textile, mining, power, and agriculture.',
   },
   {
-    title: 'RFQ Ready',
-    text: 'Every major product path is designed to move directly into a quotation request instead of a consumer-style cart flow.',
+    title: 'Quotations',
+    text: 'Send your requirement and get the right product quote quickly.',
   },
 ]
 
 export const socialLinks = [
   { label: 'Facebook', href: company.socialLinks.facebook, icon: 'facebook' },
   { label: 'Twitter', href: company.socialLinks.twitter, icon: 'twitter' },
+  { label: 'TikTok', href: company.socialLinks.tiktok, icon: 'tiktok' },
   { label: 'Instagram', href: company.socialLinks.instagram, icon: 'instagram' },
   { label: 'LinkedIn', href: company.socialLinks.linkedin, icon: 'linkedin' },
   { label: 'WhatsApp', href: company.whatsapp, icon: 'whatsapp' },
@@ -64,9 +63,26 @@ export const contactItems = [
   { label: company.tagline, icon: 'fax' },
 ]
 
+export const officeLocations = [
+  {
+    label: 'Dar Es Salaam Rd, Nairobi',
+    href: 'https://www.google.com/maps/search/?api=1&query=Dar%20Es%20Salaam%20Rd,%20Nairobi',
+    embedSrc: 'https://www.google.com/maps?q=Dar%20Es%20Salaam%20Rd,%20Nairobi&z=15&output=embed',
+  },
+  {
+    label: 'Cabanas, Mombasa Road, Nairobi',
+    href: 'https://www.google.com/maps/search/?api=1&query=Cabanas,%20Mombasa%20Road,%20Nairobi',
+    embedSrc: 'https://www.google.com/maps?q=Cabanas,%20Mombasa%20Road,%20Nairobi&z=15&output=embed',
+  },
+  {
+    label: 'Mombasa',
+    href: 'https://www.google.com/maps?q=-4.062417,39.665306',
+    embedSrc: 'https://www.google.com/maps?q=-4.062417,39.665306&z=15&output=embed',
+  },
+]
+
 export const footerMetaLinks = [
   { label: 'Products', to: '/products' },
   { label: 'Industries', to: '/industries' },
-  { label: 'Blog', to: '/blog' },
   { label: 'Contact', to: '/contact-us' },
 ]

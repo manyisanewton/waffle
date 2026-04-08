@@ -140,7 +140,7 @@ function ProductCategoryPage() {
                 <img
                   src={product.image || '/place holder.jpg'}
                   alt={product.name}
-                  className="h-52 w-full object-cover"
+                  className="h-52 w-full bg-white p-3 object-contain"
                 />
                 <div className="space-y-2.5 px-4 py-4">
                   <div className="flex flex-wrap items-center gap-2">

@@ -48,22 +48,26 @@ button {
     'opsz' 24;
 }
 
-@keyframes heroBackgroundFade {
-  0%,
-  16% {
-    opacity: 1;
-    transform: scale(1);
+@keyframes heroBackgroundSlide {
+  0% {
+    transform: translateX(0);
   }
-  20%,
+  46.15% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(-33.3333%);
+  }
+  96.15% {
+    transform: translateX(-33.3333%);
+  }
   100% {
-    opacity: 0;
-    transform: scale(1.04);
+    transform: translateX(-66.6667%);
   }
 }
 
-.hero-bg-slide {
-  animation: heroBackgroundFade 30s ease-in-out infinite;
-  opacity: 0;
+.hero-bg-track {
+  animation: heroBackgroundSlide 18s ease-in-out infinite;
 }
 
 #root {

@@ -158,7 +158,7 @@ function CompareProductsPage() {
                 <img
                   src={product.image || '/place holder.jpg'}
                   alt={product.name}
-                  className="h-52 w-full object-cover"
+                  className="h-52 w-full bg-white p-3 object-contain"
                 />
                 <div className="space-y-4 px-5 py-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-green">

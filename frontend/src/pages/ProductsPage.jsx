@@ -28,6 +28,14 @@ const BRAND_IMAGE_STOP_WORDS = new Set([
   'home',
   'extra',
 ])
+const hiddenCategoryFilterSlugs = new Set([
+  'wastewater-treatment-equipment',
+  'industrial-etp',
+  'sewage-treatment-plants',
+  'recycling-reuse-systems',
+  'industry-specific-solutions',
+  'sludge-handling-disposal',
+])
 
 function formatBrandImageName(imagePath = '') {
   const fileName = imagePath.split('/').pop() || ''
@@ -238,6 +246,10 @@ function ProductsPage() {
       }),
     [activeBrand?.slug, brandGalleryImages, brandMatchedProducts],
   )
+  const filterCategories = useMemo(
+    () => productCategories.filter((category) => !hiddenCategoryFilterSlugs.has(category.slug)),
+    [],
+  )
 
   const visibleProducts = useMemo(() => {
     const normalizedQuery = query.trim().toLowerCase()
@@ -329,7 +341,7 @@ function ProductsPage() {
               className="h-12 w-full rounded-[1rem] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition focus:border-brand-green"
             >
               <option value="all">All Categories</option>
-              {productCategories.map((category) => (
+              {filterCategories.map((category) => (
                 <option key={category.slug} value={category.slug}>
                   {category.name}
                 </option>
@@ -486,7 +498,7 @@ function ProductsPage() {
               <img
                 src={product.image || '/place holder.jpg'}
                 alt={product.name}
-                className="h-52 w-full object-cover"
+                className="h-52 w-full bg-white p-3 object-contain"
               />
               <div className="space-y-2.5 px-4 py-4">
                 <div className="flex flex-wrap gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-green">

@@ -15,7 +15,7 @@ function SiteLayout() {
       <div className="theme-layout-glow absolute inset-x-0 top-0 -z-10 h-[28rem]" />
       <Navbar />
       {isSolutionsRoute ? <SolutionsSubnav /> : null}
-      <div className={`flex min-h-screen flex-col ${isSolutionsRoute ? 'pt-[144px] lg:pt-[152px]' : 'pt-[92px] xl:pt-[130px]'}`}>
+      <div className={`flex min-h-screen flex-col ${isSolutionsRoute ? 'pt-[132px] lg:pt-[140px]' : 'pt-[104px] xl:pt-[152px]'}`}>
         <main className="mx-auto w-full max-w-7xl flex-1 px-4 pb-16 sm:px-6 lg:px-8 lg:pb-24">
           <Outlet />
         </main>

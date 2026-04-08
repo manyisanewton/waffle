@@ -1,5 +1,5 @@
 {
-  "totalProducts": 2586,
+  "totalProducts": 1907,
   "featuredProducts": [
     {
       "id": 1,
@@ -25,7 +25,7 @@
         "food-beverage",
         "agriculture-irrigation"
       ],
-      "image": "/images/products/automation-control/pump-controller.webp",
+      "image": "/Control pannels/Expersion Module 230VAC.jpg",
       "featured": true
     },
     {
@@ -52,7 +52,7 @@
         "power-plants",
         "food-beverage"
       ],
-      "image": "/images/products/reverse-osmosis-systems/ro-skid.webp",
+      "image": "/electricals/Ferrule Connector 2.5mm.jpeg",
       "featured": true
     },
     {
@@ -79,7 +79,7 @@
         "pharmaceutical",
         "agriculture-irrigation"
       ],
-      "image": "/images/products/filtration-systems/sand-media.webp",
+      "image": "/Sand media/Sand media C.jpeg",
       "featured": true
     },
     {
@@ -106,7 +106,7 @@
         "food-beverage",
         "mining"
       ],
-      "image": "/images/products/pumps-fluid-handling/submersible-pump.webp",
+      "image": "/electricals/cable ties.jpeg",
       "featured": true
     },
     {
@@ -163,33 +163,6 @@
       "featured": true
     },
     {
-      "id": 43,
-      "slug": "push-button-n-c",
-      "name": "Push Button N.C",
-      "itemGroup": "Wt-Project Consumable",
-      "categorySlug": "spare-parts-components",
-      "subcategory": "Valve Spare Parts",
-      "summary": "Valve Spare Parts item currently available in stock and listed in the product catalog.",
-      "description": "Push Button N.C is part of the current stock list under Wt-Project Consumable. It is presented online as a valve spare parts product within spare parts & components so buyers can find it quickly, compare related items, and move into RFQ.",
-      "applications": [
-        "Maintenance planning",
-        "Replacement support",
-        "Operational spares"
-      ],
-      "specHighlights": [
-        "Stock group: Wt-Project Consumable",
-        "Category: Spare Parts & Components",
-        "Model, size, or rating is usually included directly in the item name"
-      ],
-      "industrySlugs": [
-        "food-beverage",
-        "power-plants",
-        "agriculture-irrigation"
-      ],
-      "image": "/place holder.jpg",
-      "featured": true
-    },
-    {
       "id": 107,
       "slug": "victaulic-coupling-21-2",
       "name": "Victaulic coupling 21/2\"",
@@ -240,60 +213,6 @@
         "pharmaceutical"
       ],
       "image": "/images/products/disinfection-systems/uv-complete-system.jpg",
-      "featured": true
-    },
-    {
-      "id": 128,
-      "slug": "spun-filter-10-5-mic-slim",
-      "name": "Spun Filter 10\" 5 mic Slim",
-      "itemGroup": "Wt-Filters And Catridges",
-      "categorySlug": "industry-specific-solutions",
-      "subcategory": "Food & Beverage Water Systems",
-      "summary": "Food & Beverage Water Systems item currently available in stock and listed in the product catalog.",
-      "description": "Spun Filter 10\" 5 mic Slim is part of the current stock list under Wt-Filters And Catridges. It is presented online as a food & beverage water systems product within industry-specific solutions so buyers can find it quickly, compare related items, and move into RFQ.",
-      "applications": [
-        "Industry-focused product selection",
-        "Application alignment",
-        "RFQ preparation"
-      ],
-      "specHighlights": [
-        "Stock group: Wt-Filters And Catridges",
-        "Category: Industry-Specific Solutions",
-        "Model, size, or rating is usually included directly in the item name"
-      ],
-      "industrySlugs": [
-        "food-beverage",
-        "pharmaceutical",
-        "textile"
-      ],
-      "image": "/place holder.jpg",
-      "featured": true
-    },
-    {
-      "id": 161,
-      "slug": "norwa-blower-nhbh-002-34-ir5-3ph-1-6kw-single-stage",
-      "name": "Norwa Blower NHBH-002-34-IR5 3PH 1.6KW Single Stage",
-      "itemGroup": "Wt-Blowers",
-      "categorySlug": "wastewater-treatment-equipment",
-      "subcategory": "Aeration Systems",
-      "summary": "Aeration Systems item currently available in stock and listed in the product catalog.",
-      "description": "Norwa Blower NHBH-002-34-IR5 3PH 1.6KW Single Stage is part of the current stock list under Wt-Blowers. It is presented online as a aeration systems product within wastewater treatment equipment so buyers can find it quickly, compare related items, and move into RFQ.",
-      "applications": [
-        "Biological treatment",
-        "Solids separation",
-        "Dewatering support"
-      ],
-      "specHighlights": [
-        "Stock group: Wt-Blowers",
-        "Category: Wastewater Treatment Equipment",
-        "Model, size, or rating is usually included directly in the item name"
-      ],
-      "industrySlugs": [
-        "textile",
-        "mining",
-        "food-beverage"
-      ],
-      "image": "/place holder.jpg",
       "featured": true
     }
   ]

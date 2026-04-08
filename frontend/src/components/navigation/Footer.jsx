@@ -10,22 +10,24 @@ import {
   FaRegCommentDots,
   FaPhoneAlt,
   FaPrint,
-  FaTwitter,
   FaWhatsapp,
 } from 'react-icons/fa'
+import { FaTiktok, FaXTwitter } from 'react-icons/fa6'
 import { MdEmail } from 'react-icons/md'
 import {
   contactItems,
   footerGroups,
   footerHighlights,
   footerMetaLinks,
+  officeLocations,
   socialLinks,
 } from '../../data/footer'
 import { company } from '../../data/site/company'
 
 const socialIcons = {
   facebook: FaFacebookF,
-  twitter: FaTwitter,
+  twitter: FaXTwitter,
+  tiktok: FaTiktok,
   google: FaGoogle,
   instagram: FaInstagram,
   linkedin: FaLinkedinIn,
@@ -34,7 +36,8 @@ const socialIcons = {
 
 const socialIconColors = {
   facebook: 'var(--color-social-facebook)',
-  twitter: 'var(--color-social-twitter)',
+  twitter: '#000000',
+  tiktok: '#000000',
   google: 'var(--color-social-google)',
   instagram: 'var(--color-social-instagram)',
   linkedin: 'var(--color-social-linkedin)',
@@ -51,6 +54,7 @@ const contactIcons = {
 function Footer() {
   const [isSocialPanelOpen, setIsSocialPanelOpen] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
+  const [activeLocation, setActiveLocation] = useState(null)
 
   useEffect(() => {
     const updateBackToTopVisibility = () => {
@@ -74,7 +78,7 @@ function Footer() {
 
   return (
     <footer className="mt-12 bg-brand-ink text-white">
-      <div className="fixed right-3 bottom-3 z-40 flex flex-col items-end gap-3 sm:right-5 sm:bottom-5 lg:right-8 lg:bottom-8 xl:right-10">
+      <div className="fixed right-[5px] bottom-[5px] z-40 flex flex-col items-end gap-3">
         <div
           className={[
             'overflow-hidden transition-all duration-300',
@@ -146,10 +150,8 @@ function Footer() {
               className="h-14 w-auto object-contain sm:h-16"
             />
             <p className="mt-5 max-w-2xl text-sm leading-8 text-white/72">
-              Vortexus Industrial Solutions is being structured into an RFQ-ready
-              industrial product catalog covering water-treatment equipment,
-              chemicals, pumps, instrumentation, automation, tanks, and related
-              process components.
+              Industrial products for water treatment, pumping, dosing, control,
+              storage, and process support.
             </p>
             <div className="mt-8 flex flex-wrap gap-3">
               <NavLink
@@ -183,16 +185,15 @@ function Footer() {
         </div>
       </div>
 
-      <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-2 xl:grid-cols-[1.05fr_0.72fr_0.72fr_0.9fr] lg:px-8">
+      <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+        <div className="grid gap-10 md:grid-cols-2 xl:grid-cols-[0.95fr_0.68fr_0.68fr_0.68fr_0.95fr]">
         <div>
           <h3 className="text-lg font-bold uppercase tracking-[0.18em] text-white">
             Company Overview
           </h3>
           <div className="mt-3 h-0.5 w-12 bg-brand-green" />
           <p className="mt-6 max-w-sm text-sm leading-8 text-white/68">
-            The public site is moving toward a product-first industrial catalog
-            so buyers can browse categories, compare product groups, and move
-            directly into quotation requests.
+            We supply industrial products for water treatment and related systems.
           </p>
         </div>
 
@@ -265,6 +266,54 @@ function Footer() {
                 </a>
               )
             })}
+          </div>
+        </div>
+        </div>
+
+        <div className="mt-12 grid gap-8 xl:grid-cols-[280px_minmax(760px,1fr)] xl:items-start">
+          <div>
+            <h3 className="text-lg font-bold uppercase tracking-[0.18em] text-white">
+              Locations
+            </h3>
+            <div className="mt-3 h-0.5 w-12 bg-brand-green" />
+            <ul className="mt-6 space-y-3">
+              {officeLocations.map((location) => (
+                <li key={location.label}>
+                  <button
+                    type="button"
+                    onClick={() => setActiveLocation(location)}
+                    className={[
+                      'block w-full rounded-[1rem] px-4 py-3 text-left text-sm transition',
+                      activeLocation?.label === location.label
+                        ? 'bg-brand-green text-white'
+                        : 'bg-white/6 text-white/78 hover:bg-white/12 hover:text-white',
+                    ].join(' ')}
+                  >
+                    {location.label}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <div className="xl:min-w-[760px]">
+              {activeLocation ? (
+                <div className="overflow-hidden rounded-[1.2rem] border border-white/10 bg-white/4">
+                  <iframe
+                    title={activeLocation.label}
+                    src={activeLocation.embedSrc}
+                    className="h-[340px] w-full border-0"
+                    loading="lazy"
+                    referrerPolicy="no-referrer-when-downgrade"
+                  />
+                </div>
+              ) : (
+                <div className="flex h-[340px] items-center justify-center rounded-[1.2rem] border border-dashed border-white/10 bg-white/4 px-6 text-center text-sm text-white/55">
+                  Select a location to open the map.
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>

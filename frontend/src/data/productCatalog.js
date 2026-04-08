@@ -2,22 +2,6 @@ const placeholderImage = '/place holder.jpg'
 
 export const productCategories = [
   {
-    slug: 'pre-treatment-systems',
-    name: 'Pre-Treatment Systems',
-    icon: '🧪',
-    description:
-      'Equipment used before the main purification stage to protect downstream treatment and stabilize process conditions.',
-    image: placeholderImage,
-    subcategories: [
-      'Screening Systems',
-      'Grit Removal Systems',
-      'Oil & Grease Separators',
-      'Equalization Tanks',
-      'Coagulation & Flocculation Units',
-      'Chemical Dosing Systems',
-    ],
-  },
-  {
     slug: 'filtration-systems',
     name: 'Filtration Systems',
     icon: '⚗️',
@@ -54,7 +38,7 @@ export const productCategories = [
   },
   {
     slug: 'water-treatment-chemicals',
-    name: 'Water Treatment Chemicals',
+    name: 'Industrial Chemicals',
     icon: '🧴',
     description:
       'Chemical consumables for coagulation, flocculation, disinfection, pH balancing, corrosion control, and scale management.',
@@ -279,7 +263,6 @@ export const industriesCatalog = [
       'Reliable instrumentation for line monitoring',
     ],
     categorySlugs: [
-      'pre-treatment-systems',
       'filtration-systems',
       'disinfection-systems',
       'monitoring-instrumentation',

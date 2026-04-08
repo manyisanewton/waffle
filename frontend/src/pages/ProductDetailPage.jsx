@@ -71,7 +71,7 @@ function ProductDetailPage() {
           <img
             src={product.image || '/place holder.jpg'}
             alt={product.name}
-            className="aspect-square w-full object-cover"
+            className="aspect-square w-full bg-white p-4 object-contain"
           />
         </div>
 
@@ -201,7 +201,7 @@ function ProductDetailPage() {
                 <img
                   src={relatedProduct.image || '/place holder.jpg'}
                   alt={relatedProduct.name}
-                  className="h-48 w-full object-cover"
+                  className="h-48 w-full bg-white p-3 object-contain"
                 />
                 <div className="space-y-3 px-5 py-5">
                   <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-green">

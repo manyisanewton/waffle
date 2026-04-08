@@ -7,8 +7,8 @@ import { industriesCatalog, productCategories } from '../../data/productCatalog'
 import { navigationItems } from '../../data/navigation'
 import { company } from '../../data/site/company'
 
+const productExpertPhone = '0794582560'
 const hiddenProductDropdownSlugs = new Set([
-  'pre-treatment-systems',
   'wastewater-treatment-equipment',
   'industrial-etp',
   'sewage-treatment-plants',
@@ -17,7 +17,7 @@ const hiddenProductDropdownSlugs = new Set([
 
 function getLinkClasses({ isActive }) {
   return [
-    'rounded-full px-3 py-2 text-sm font-medium transition xl:px-4',
+    'rounded-full px-3 py-1.5 text-sm font-medium transition xl:px-4',
     isActive
       ? 'bg-brand-green text-white shadow-[0_10px_30px_rgba(43,162,82,0.22)]'
       : 'text-brand-muted hover:bg-white hover:text-brand-ink',
@@ -93,7 +93,7 @@ function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-brand-border/70 bg-brand-canvas/92 backdrop-blur">
-      <div className="flex w-full items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8 2xl:px-10 xl:py-4">
+      <div className="flex w-full items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8 2xl:px-10 xl:pb-2 xl:pt-4">
         <NavLink
           to="/"
           className="flex items-center gap-3 text-left"
@@ -310,12 +310,12 @@ function Navbar() {
           </nav>
           <NavLink
             to="/compare"
-            className="inline-flex items-center gap-2 rounded-full border border-brand-border bg-white px-4 py-3 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-border bg-white px-3.5 py-2 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
           >
             <FaBalanceScale className="text-sm" />
             <span>Compare</span>
             {comparedCount ? (
-              <span className="inline-flex h-6 min-w-6 items-center justify-center rounded-full bg-brand-green px-2 text-xs font-semibold text-white">
+              <span className="inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-brand-green px-1.5 text-[0.7rem] font-semibold text-white">
                 {comparedCount}
               </span>
             ) : null}
@@ -354,30 +354,30 @@ function Navbar() {
         </div>
       </div>
 
-      <div className="hidden border-t border-brand-border bg-brand-surface/85 px-4 py-3 sm:px-6 lg:px-8 2xl:px-10 xl:block">
-        <div className="flex items-center gap-4">
+      <div className="hidden bg-transparent px-4 pb-3 pt-2 sm:px-6 lg:px-8 2xl:px-10 xl:block">
+        <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">
             <GlobalProductSearch desktopWide />
           </div>
           <a
-            href={`tel:${company.phone.replace(/[^\d+]/g, '')}`}
-            className="inline-flex min-w-[17rem] items-center gap-2.5 rounded-[1rem] bg-brand-ink px-4 py-2.5 text-white transition hover:bg-brand-ink/92"
+            href={`tel:${productExpertPhone.replace(/[^\d+]/g, '')}`}
+            className="inline-flex min-w-[14.5rem] items-center gap-2 rounded-[0.9rem] bg-brand-ink px-3 py-2 text-white transition hover:bg-brand-ink/92"
           >
-            <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white">
-              <FaPhoneAlt className="text-[0.85rem]" />
+            <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white">
+              <FaPhoneAlt className="text-[0.8rem]" />
             </span>
             <span className="min-w-0">
-              <span className="block text-[0.64rem] font-semibold uppercase tracking-[0.16em] text-white/72">
+              <span className="block text-[0.56rem] font-semibold uppercase tracking-[0.14em] text-white/72">
                 Request Product Expert
               </span>
-              <span className="mt-0.5 block text-[1rem] font-semibold text-white">
-                {company.phone}
+              <span className="mt-0.5 block text-[0.92rem] font-semibold text-white">
+                {productExpertPhone}
               </span>
             </span>
           </a>
           <NavLink
             to="/request-quote"
-            className="inline-flex shrink-0 items-center justify-center rounded-full border border-brand-green/20 bg-brand-green px-4.5 py-2.5 text-sm font-semibold text-white transition hover:bg-brand-green-soft"
+            className="inline-flex shrink-0 items-center justify-center rounded-full border border-brand-green/20 bg-brand-green px-4 py-2 text-sm font-semibold text-white transition hover:bg-brand-green-soft"
           >
             Request Quote
           </NavLink>
@@ -517,11 +517,11 @@ function Navbar() {
               Request Quote
             </NavLink>
             <a
-              href={`tel:${company.phone.replace(/[^\d+]/g, '')}`}
+              href={`tel:${productExpertPhone.replace(/[^\d+]/g, '')}`}
               className="mt-3 rounded-2xl border border-brand-border bg-white px-4 py-3 text-center text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
               onClick={handleCloseMenu}
             >
-              Product Expert: {company.phone}
+              Product Expert: {productExpertPhone}
             </a>
           </nav>
         </div>
