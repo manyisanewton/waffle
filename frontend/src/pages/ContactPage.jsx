@@ -75,12 +75,12 @@ function ContactPage() {
     <div className="text-brand-ink">
       <Seo
         title="Contact Us"
-        description="Contact Vortexus for water treatment projects, borehole systems, pump solutions, solar water delivery, partnerships, and regional engineering support."
+        description="Contact Vortexus Industrial Excellence for product enquiries, quotations, and Kenya-wide support across filtration, pumps, chemicals, instrumentation, and control equipment."
       />
       <BlueAccentHero
         eyebrow="Contact Vortexus"
         title="Contact Us"
-        description="Speak with our team about projects, partnerships, regional support, and worldwide delivery."
+        description="Speak with our team about product enquiries, quotations, and Kenya-wide support."
       />
 
       <section className="mx-auto max-w-5xl px-4 py-16 sm:px-6 lg:px-8 lg:py-20">
@@ -224,28 +224,22 @@ function ContactPage() {
             Our Operations
           </h2>
           <p className="mx-auto mt-4 max-w-3xl text-base leading-8 text-brand-muted">
-            We are working worldwide, supporting regional teams and cross-border
-            projects from East Africa, Southern Africa, the Indian Ocean, and
-            remote delivery hubs. Our operations are designed to serve clients
-            wherever they are.
+            Our current operations are Kenya-wide, with active support points aligned to the same locations shown in the footer. This helps clients reach the right team faster for quotations, delivery coordination, and product support.
           </p>
         </div>
 
-        <div className="mt-14">
+        <div className="mt-12 sm:mt-14">
           <div className="overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-[0_24px_80px_rgba(35,33,32,0.08)]">
-            <div className="grid gap-8 px-6 py-8 lg:grid-cols-[0.92fr_1.08fr] lg:px-10 lg:py-10">
+            <div className="grid gap-8 px-5 py-6 sm:px-6 sm:py-8 xl:grid-cols-[0.92fr_1.08fr] lg:px-10 lg:py-10">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-accent-blue-highlight)]">
-                  Worldwide Delivery Network
+                  Kenya Coverage
                 </p>
-                <h3 className="mt-4 font-display text-3xl font-semibold text-brand-ink sm:text-4xl">
-                  Regional teams with cross-border project support.
+                <h3 className="mt-4 font-display text-2xl font-semibold text-brand-ink sm:text-3xl lg:text-4xl">
+                  Local support aligned to our operating locations.
                 </h3>
                 <p className="mt-4 max-w-2xl text-base leading-8 text-brand-muted">
-                  We coordinate projects from East Africa, Southern Africa, the Indian Ocean,
-                  and remote delivery hubs. That means clients get engineering support,
-                  response coordination, and implementation visibility without depending on a
-                  single physical office.
+                  We currently serve clients across Kenya through our active Nairobi and Mombasa points. That means clearer communication, faster quotation follow-up, and better coordination for supply, delivery, and product support.
                 </p>
 
                 <div className="mt-8 grid gap-4 sm:grid-cols-2">
@@ -268,7 +262,7 @@ function ContactPage() {
                 </div>
               </div>
 
-              <div className="rounded-[1.8rem] border border-brand-border bg-[linear-gradient(160deg,rgba(16,27,143,0.96),rgba(41,86,227,0.92),rgba(70,166,255,0.88))] p-6 text-white">
+              <div className="rounded-[1.8rem] border border-brand-border bg-[linear-gradient(160deg,rgba(16,27,143,0.96),rgba(41,86,227,0.92),rgba(70,166,255,0.88))] p-5 text-white sm:p-6">
                 <div className="grid gap-4 md:grid-cols-2">
                   {activeOffices.map((office, index) => (
                     <div
@@ -293,20 +287,19 @@ function ContactPage() {
                     Coverage
                   </p>
                   <p className="mt-3 text-sm leading-7 text-white/84">
-                    Commercial, institutional, industrial, agricultural, community water,
-                    and remote implementation support across regional and international projects.
+                    Commercial, institutional, industrial, agricultural, and water-treatment product support across Kenya.
                   </p>
                 </div>
               </div>
             </div>
 
             <div className="border-t border-brand-border px-6 py-4 text-center text-xs font-semibold uppercase tracking-[0.4em] text-brand-muted/60 lg:px-10">
-              Worldwide Delivery Network
+              Kenya-Wide Support Network
             </div>
           </div>
         </div>
 
-        <div className="mt-16 grid gap-x-12 gap-y-12 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-14 grid gap-x-10 gap-y-10 md:grid-cols-2 xl:grid-cols-3">
           {officeLocations.map((office) => (
             <div key={office.country} className="border-t border-brand-border pt-6">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-[var(--color-accent-blue-highlight)]">

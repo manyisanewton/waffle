@@ -46,7 +46,7 @@ function IndustriesPage() {
           >
             <img src={industry.image} alt={industry.name} className="h-52 w-full object-cover" />
             <div className="space-y-4 px-5 py-5">
-              <h2 className="font-display text-3xl font-semibold text-brand-ink">
+              <h2 className="font-display text-2xl font-semibold text-brand-ink sm:text-3xl">
                 {industry.name}
               </h2>
               <p className="text-sm leading-7 text-brand-muted">{industry.description}</p>
@@ -58,7 +58,7 @@ function IndustriesPage() {
                 {industry.challenges.slice(0, 3).map((challenge) => (
                   <span
                     key={challenge}
-                    className="rounded-full bg-brand-surface px-3 py-1 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-green"
+                    className="rounded-full bg-brand-surface px-3 py-1 text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-brand-green sm:text-[0.68rem]"
                   >
                     {challenge}
                   </span>

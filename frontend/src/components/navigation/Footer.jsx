@@ -60,14 +60,23 @@ function Footer() {
     const updateBackToTopVisibility = () => {
       const pageHeight = document.documentElement.scrollHeight
       const viewportHeight = window.innerHeight
+      const scrollableHeight = pageHeight - viewportHeight
+      const currentScroll = window.scrollY || window.pageYOffset || 0
 
-      setShowBackToTop(pageHeight - viewportHeight > 24)
+      if (scrollableHeight <= 24) {
+        setShowBackToTop(false)
+        return
+      }
+
+      setShowBackToTop(currentScroll >= scrollableHeight * 0.75)
     }
 
     updateBackToTopVisibility()
+    window.addEventListener('scroll', updateBackToTopVisibility, { passive: true })
     window.addEventListener('resize', updateBackToTopVisibility)
 
     return () => {
+      window.removeEventListener('scroll', updateBackToTopVisibility)
       window.removeEventListener('resize', updateBackToTopVisibility)
     }
   }, [])

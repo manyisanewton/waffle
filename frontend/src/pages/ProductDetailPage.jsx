@@ -66,7 +66,7 @@ function ProductDetailPage() {
         </div>
       </section>
 
-      <section className="grid gap-8 lg:grid-cols-[0.95fr_1.05fr] lg:items-start">
+      <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr] lg:items-start lg:gap-8">
         <div className="overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-[0_18px_46px_rgba(35,33,32,0.05)]">
           <img
             src={product.image || '/place holder.jpg'}
@@ -79,7 +79,7 @@ function ProductDetailPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
             {category?.name}
           </p>
-          <h1 className="mt-4 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
+          <h1 className="mt-4 font-display text-3xl font-semibold text-brand-ink sm:text-4xl lg:text-5xl">
             {product.name}
           </h1>
           <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-brand-muted">
@@ -117,7 +117,7 @@ function ProductDetailPage() {
             ))}
           </div>
 
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <button
               type="button"
               onClick={() => setIsRfqOpen(true)}
@@ -186,7 +186,7 @@ function ProductDetailPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
                 Related Products
               </p>
-              <h2 className="mt-4 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
+              <h2 className="mt-4 font-display text-3xl font-semibold text-brand-ink sm:text-4xl lg:text-5xl">
                 Products often reviewed alongside this item.
               </h2>
             </div>

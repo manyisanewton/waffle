@@ -93,7 +93,7 @@ function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 border-b border-brand-border/70 bg-brand-canvas/92 backdrop-blur">
-      <div className="flex w-full items-center justify-between px-4 py-3.5 sm:px-6 lg:px-8 2xl:px-10 xl:pb-2 xl:pt-4">
+      <div className="flex w-full items-center justify-between px-4 py-2.5 sm:px-6 lg:px-8 2xl:px-10 xl:pb-2 xl:pt-3">
         <NavLink
           to="/"
           className="flex items-center gap-3 text-left"
@@ -102,7 +102,7 @@ function Navbar() {
           <img
             src={company.logo}
             alt={`${company.name} logo`}
-            className="h-12 w-auto object-contain sm:h-14"
+            className="h-10 w-auto object-contain sm:h-12"
           />
         </NavLink>
 
@@ -162,7 +162,7 @@ function Navbar() {
                         onMouseLeave={scheduleProductsClose}
                       />
                       <div
-                        className="fixed left-1/2 top-[7.3rem] z-50 w-[min(1320px,calc(100vw-2.5rem))] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-[0_30px_80px_rgba(35,33,32,0.16)]"
+                        className="fixed left-1/2 top-[7.1rem] z-50 w-[min(1280px,calc(100vw-2.5rem))] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-[0_30px_80px_rgba(35,33,32,0.16)]"
                         onMouseEnter={cancelProductsClose}
                         onMouseLeave={scheduleProductsClose}
                       >
@@ -258,7 +258,7 @@ function Navbar() {
                         onMouseLeave={scheduleIndustriesClose}
                       />
                       <div
-                        className="fixed left-1/2 top-[7.3rem] z-50 w-[min(1100px,calc(100vw-2.5rem))] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-[0_30px_80px_rgba(35,33,32,0.16)]"
+                        className="fixed left-1/2 top-[7.1rem] z-50 w-[min(1040px,calc(100vw-2.5rem))] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-[0_30px_80px_rgba(35,33,32,0.16)]"
                         onMouseEnter={cancelIndustriesClose}
                         onMouseLeave={scheduleIndustriesClose}
                       >
@@ -354,14 +354,14 @@ function Navbar() {
         </div>
       </div>
 
-      <div className="hidden bg-transparent px-4 pb-3 pt-2 sm:px-6 lg:px-8 2xl:px-10 xl:block">
+      <div className="hidden bg-transparent px-4 pb-2 pt-1.5 sm:px-6 lg:px-8 2xl:px-10 xl:block">
         <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">
             <GlobalProductSearch desktopWide />
           </div>
           <a
             href={`tel:${productExpertPhone.replace(/[^\d+]/g, '')}`}
-            className="inline-flex min-w-[14.5rem] items-center gap-2 rounded-[0.9rem] bg-brand-ink px-3 py-2 text-white transition hover:bg-brand-ink/92"
+            className="inline-flex min-w-[13rem] items-center gap-2 rounded-[0.9rem] bg-brand-ink px-3 py-2 text-white transition hover:bg-brand-ink/92"
           >
             <span className="inline-flex h-8 w-8 items-center justify-center rounded-full border border-white/15 bg-white/8 text-white">
               <FaPhoneAlt className="text-[0.8rem]" />
@@ -385,7 +385,7 @@ function Navbar() {
       </div>
 
       {isSearchOpen && (
-        <div className="border-t border-brand-border bg-brand-surface px-4 py-4 sm:px-6 lg:px-8 xl:hidden">
+        <div className="border-t border-brand-border bg-brand-surface px-4 py-3 sm:px-6 lg:px-8 xl:hidden">
           <GlobalProductSearch mobile onNavigate={handleCloseMenu} />
         </div>
       )}

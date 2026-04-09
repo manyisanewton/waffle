@@ -63,14 +63,14 @@ function HomePage() {
       <img
         src={product.image || '/place holder.jpg'}
         alt={product.name}
-        className="h-52 w-full bg-white p-3 object-contain"
+        className="h-44 w-full bg-white p-3 object-contain sm:h-52"
       />
       <div className="space-y-4 px-5 py-5">
         <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-green">
           {product.subcategory}
         </p>
         <div>
-          <h3 className="font-display text-[1.7rem] font-semibold leading-tight text-brand-ink">
+          <h3 className="font-display text-[1.28rem] font-semibold leading-tight text-brand-ink sm:text-[1.45rem] lg:text-[1.7rem]">
             {product.name}
           </h3>
         </div>
@@ -99,7 +99,7 @@ function HomePage() {
         title="Industrial Water Treatment Products"
         description={`${company.name} is building a product-focused catalog for water treatment equipment, RO systems, chemicals, pumps, instrumentation, automation, tanks, and industrial water process applications.`}
       />
-      <section className="relative left-1/2 mt-0 h-[500px] w-screen -translate-x-1/2 overflow-hidden bg-brand-ink">
+      <section className="relative left-1/2 mt-0 h-[300px] w-screen -translate-x-1/2 overflow-hidden bg-brand-ink sm:h-[380px] lg:h-[500px]">
         <div className="absolute inset-0">
           <div
             className="hero-bg-track flex h-full"
@@ -117,11 +117,11 @@ function HomePage() {
           </div>
         </div>
 
-        <div className="relative mx-auto h-[500px] w-full max-w-7xl px-6 py-8 sm:px-8 lg:px-10 lg:py-10">
-          <div className="absolute bottom-[5px] left-[5px]">
+        <div className="relative mx-auto h-[300px] w-full max-w-7xl px-4 py-6 sm:h-[380px] sm:px-8 lg:h-[500px] lg:px-10 lg:py-10">
+          <div className="absolute bottom-4 left-4 sm:bottom-5 sm:left-5">
             <NavLink
               to="/products"
-              className="inline-flex items-center justify-center rounded-full bg-brand-green-soft px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-green"
+              className="inline-flex items-center justify-center rounded-full bg-brand-green-soft px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-green"
             >
               Explore Products
             </NavLink>
@@ -136,17 +136,17 @@ function HomePage() {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 items-center gap-x-8 gap-y-8 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+        <div className="grid grid-cols-2 items-center gap-x-5 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
             {brandsCatalog.map((brand) => (
               <NavLink
                 key={brand.name}
                 to={`/products?brand=${encodeURIComponent(brand.slug)}`}
-                className="flex min-h-[70px] items-center justify-center px-3 py-3 transition hover:-translate-y-0.5"
+                className="flex min-h-[56px] items-center justify-center px-2 py-2 transition hover:-translate-y-0.5 sm:min-h-[70px] sm:px-3 sm:py-3"
               >
                 <img
                   src={brand.image}
                   alt={brand.name}
-                  className="max-h-12 w-auto max-w-full object-contain"
+                  className="max-h-9 w-auto max-w-full object-contain sm:max-h-12"
                   loading="lazy"
                 />
               </NavLink>
@@ -160,7 +160,7 @@ function HomePage() {
             <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
               Featured Products
             </p>
-            <h2 className="mt-4 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
+            <h2 className="mt-4 font-display text-3xl font-semibold text-brand-ink sm:text-4xl lg:text-5xl">
               Featured products ready for quotation.
             </h2>
             <p className="mt-4 max-w-2xl text-base leading-8 text-brand-muted">
@@ -190,7 +190,7 @@ function HomePage() {
           <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
             Industries
           </p>
-          <h2 className="mt-4 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold text-brand-ink sm:text-4xl lg:text-5xl">
             Products for every industry.
           </h2>
         </div>
@@ -213,7 +213,7 @@ function HomePage() {
             <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green-muted">
               Ready To Talk?
             </p>
-            <h2 className="mt-4 max-w-3xl font-display text-4xl font-semibold sm:text-5xl">
+            <h2 className="mt-4 max-w-3xl font-display text-3xl font-semibold sm:text-4xl lg:text-5xl">
               Tell us what you need.
             </h2>
             <p className="mt-5 max-w-2xl text-base leading-8 text-white/72">

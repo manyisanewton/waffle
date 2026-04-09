@@ -68,7 +68,7 @@ function IndustryDetailPage() {
           <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
             Typical Needs
           </p>
-          <h2 className="mt-4 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
+          <h2 className="mt-4 font-display text-3xl font-semibold text-brand-ink sm:text-4xl lg:text-5xl">
             Product groups commonly reviewed in this industry.
           </h2>
           <ul className="mt-6 space-y-4">
@@ -111,7 +111,7 @@ function IndustryDetailPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
               Matching Products
             </p>
-            <h2 className="mt-4 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
+            <h2 className="mt-4 font-display text-3xl font-semibold text-brand-ink sm:text-4xl lg:text-5xl">
               Relevant product options for {industry.name.toLowerCase()}.
             </h2>
           </div>
@@ -128,7 +128,7 @@ function IndustryDetailPage() {
           <Pagination currentPage={currentPage} totalPages={totalPages} onPageChange={setCurrentPage} />
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {paginatedProducts.map((product) => (
             <article
               key={product.slug}

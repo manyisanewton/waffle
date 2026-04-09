@@ -292,7 +292,7 @@ function ProductsPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
                 Products By Brand
               </p>
-              <h2 className="mt-4 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
+              <h2 className="mt-4 font-display text-3xl font-semibold text-brand-ink sm:text-4xl lg:text-5xl">
                 {activeBrand.name} products in the current catalog.
               </h2>
               <p className="mt-4 max-w-2xl text-base leading-8 text-brand-muted">
@@ -304,14 +304,14 @@ function ProductsPage() {
               <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
                 Search The Catalog
               </p>
-              <h2 className="mt-4 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
+              <h2 className="mt-4 font-display text-3xl font-semibold text-brand-ink sm:text-4xl lg:text-5xl">
                 Find products by name, group, category, or application.
               </h2>
             </>
           )}
         </div>
 
-        <div className="grid gap-4 rounded-[1.9rem] border border-brand-border bg-white p-5 shadow-[0_18px_46px_rgba(35,33,32,0.05)] lg:grid-cols-[1fr_0.8fr_0.8fr]">
+        <div className="grid gap-4 rounded-[1.9rem] border border-brand-border bg-white p-4 shadow-[0_18px_46px_rgba(35,33,32,0.05)] sm:p-5 lg:grid-cols-[1fr_0.8fr_0.8fr]">
           <label className="block">
             <span className="mb-2 block text-sm font-medium text-brand-ink">Search products</span>
             <input
@@ -372,7 +372,7 @@ function ProductsPage() {
                 <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
                   {activeBrand.name} Brand Images
                 </p>
-                <h3 className="mt-2 font-display text-2xl font-semibold text-brand-ink sm:text-3xl">
+                <h3 className="mt-2 font-display text-xl font-semibold text-brand-ink sm:text-2xl lg:text-3xl">
                   Product visuals for {activeBrand.name}.
                 </h3>
               </div>
@@ -415,7 +415,7 @@ function ProductsPage() {
                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-green">
                       {activeBrand.name}
                     </p>
-                    <h4 className="font-display text-base font-semibold leading-snug text-brand-ink">
+                    <h4 className="font-display text-[0.98rem] font-semibold leading-snug text-brand-ink sm:text-base">
                       {imageName || `${activeBrand.name} Product ${index + 1}`}
                     </h4>
                     <p className="text-sm leading-6 text-brand-muted">
@@ -489,7 +489,7 @@ function ProductsPage() {
           </div>
         </div>
 
-        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
+        <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
           {paginatedProducts.map((product) => (
             <article
               key={product.slug}
@@ -505,7 +505,7 @@ function ProductsPage() {
                   <span>{product.subcategory}</span>
                 </div>
                 <div>
-                  <h3 className="font-display text-[1.55rem] leading-tight font-semibold text-brand-ink">
+                  <h3 className="font-display text-[1.2rem] leading-tight font-semibold text-brand-ink sm:text-[1.35rem] xl:text-[1.55rem]">
                     {product.name}
                   </h3>
                 </div>
@@ -552,9 +552,9 @@ function ProductsPage() {
             <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
               Featured Products
             </p>
-            <h2 className="mt-4 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
-              Stock-led product highlights from the imported inventory.
-            </h2>
+              <h2 className="mt-4 font-display text-3xl font-semibold text-brand-ink sm:text-4xl lg:text-5xl">
+                Stock-led product highlights from the imported inventory.
+              </h2>
           </div>
         </div>
         <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
@@ -566,7 +566,7 @@ function ProductsPage() {
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-brand-green">
                 {product.subcategory}
               </p>
-              <h3 className="mt-2.5 font-display text-[1.35rem] leading-tight font-semibold text-brand-ink">
+              <h3 className="mt-2.5 font-display text-[1.1rem] leading-tight font-semibold text-brand-ink sm:text-[1.2rem] xl:text-[1.35rem]">
                 {product.name}
               </h3>
               <NavLink

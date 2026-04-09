@@ -1,6 +1,6 @@
 function BlueAccentHero({ eyebrow = 'Company', title, description }) {
   return (
-    <section className="theme-hero-blue relative left-1/2 mt-2 w-screen -translate-x-1/2 overflow-hidden text-white sm:mt-3 lg:mt-4">
+    <section className="theme-hero-blue relative left-1/2 mt-1 w-screen -translate-x-1/2 overflow-hidden text-white sm:mt-2 lg:mt-4">
       <div className="theme-hero-blue-overlay absolute inset-0" />
       <div className="theme-hero-blue-mist absolute inset-y-0 left-[-12%] w-[42%]" />
       <div className="theme-hero-blue-mist theme-hero-blue-mist-right absolute inset-y-0 right-[-8%] w-[34%]" />
@@ -9,7 +9,7 @@ function BlueAccentHero({ eyebrow = 'Company', title, description }) {
       <div className="theme-hero-blue-grid absolute inset-0 opacity-20" />
       <div className="theme-hero-blue-stripes absolute inset-x-0 bottom-10 h-12 opacity-70 sm:bottom-12 sm:h-14" />
 
-      <div className="relative mx-auto flex min-h-[300px] w-full max-w-7xl items-center px-4 py-20 sm:px-6 lg:min-h-[360px] lg:px-8 lg:py-24">
+      <div className="relative mx-auto flex min-h-[240px] w-full max-w-7xl items-center px-4 py-14 sm:min-h-[280px] sm:px-6 sm:py-16 lg:min-h-[360px] lg:px-8 lg:py-24">
         <div className="max-w-4xl">
           <div className="inline-flex items-center gap-3 rounded-full border border-white/20 bg-white/10 px-4 py-2 backdrop-blur-sm">
             <span className="h-2 w-2 rounded-full bg-white/90" />
@@ -18,7 +18,7 @@ function BlueAccentHero({ eyebrow = 'Company', title, description }) {
             </span>
           </div>
 
-          <h1 className="mt-6 max-w-3xl font-display text-4xl font-semibold tracking-tight text-white sm:text-5xl lg:text-6xl">
+          <h1 className="mt-6 max-w-3xl font-display text-3xl font-semibold tracking-tight text-white sm:text-4xl lg:text-6xl">
             {title}
           </h1>
 

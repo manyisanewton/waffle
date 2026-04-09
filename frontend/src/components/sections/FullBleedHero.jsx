@@ -9,7 +9,7 @@ function FullBleedHero({
   children,
 }) {
   return (
-    <section className="relative left-1/2 -mt-8 w-screen -translate-x-1/2 overflow-hidden bg-brand-ink text-white lg:-mt-12">
+    <section className="relative left-1/2 -mt-4 w-screen -translate-x-1/2 overflow-hidden bg-brand-ink text-white sm:-mt-6 lg:-mt-12">
       {media ?? (
         <img
           src={imageSrc}
@@ -18,14 +18,14 @@ function FullBleedHero({
         />
       )}
       <div className={`absolute inset-0 ${overlayClassName}`} />
-      <div className="relative mx-auto w-full max-w-7xl px-4 py-24 sm:px-6 lg:px-8 lg:py-32">
+      <div className="relative mx-auto w-full max-w-7xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-32">
         <div className="max-w-4xl">
           {eyebrow ? (
             <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green-muted">
               {eyebrow}
             </p>
           ) : null}
-          <h1 className="mt-5 font-display text-4xl font-semibold tracking-tight sm:text-5xl lg:text-6xl">
+          <h1 className="mt-5 max-w-4xl font-display text-3xl font-semibold tracking-tight sm:text-4xl lg:text-6xl">
             {title}
           </h1>
           {description ? (
