@@ -16,17 +16,17 @@ const heroSlides = [
   {
     src: treatmentImage,
     alt: 'Industrial water treatment equipment and product systems',
-    fit: 'object-cover object-center',
+    fit: 'object-cover object-left sm:object-center',
   },
   {
     src: fieldImage,
     alt: 'Field water infrastructure installation and product deployment',
-    fit: 'object-cover object-center',
+    fit: 'object-cover object-right sm:object-center',
   },
   {
     src: thirdHeroImage,
     alt: 'Industrial water-treatment products and product-brand presentation',
-    fit: 'object-cover object-center',
+    fit: 'object-cover object-right sm:object-center',
   },
 ]
 
@@ -74,8 +74,6 @@ function HomePage() {
     catalogProducts.find((product) => product.name === 'Water meter 20E 3/4'),
     catalogProducts.find((product) => product.name === 'RO SKID 1000LPH'),
   ].filter(Boolean)
-
-  const activeHeroSlide = heroSlides[currentHeroSlide] || heroSlides[0]
 
   const goToPreviousHeroSlide = () => {
     setCurrentHeroSlide((current) =>
@@ -136,11 +134,24 @@ function HomePage() {
       <section className="relative left-1/2 mt-0 w-screen -translate-x-1/2 bg-white">
         <div className="mx-auto w-full max-w-[1800px] px-0 sm:px-4 lg:px-6">
           <div className="relative overflow-hidden bg-white aspect-[16/8.4] sm:aspect-[16/6.9] lg:aspect-[16/5.5]">
-            <img
-              src={activeHeroSlide.src}
-              alt={activeHeroSlide.alt}
-              className={`absolute inset-0 h-full w-full bg-white ${activeHeroSlide.fit}`}
-            />
+            {heroSlides.map((slide, index) => {
+              const isActive = index === currentHeroSlide
+
+              return (
+                <img
+                  key={slide.src}
+                  src={slide.src}
+                  alt={slide.alt}
+                  className={[
+                    'absolute inset-0 h-full w-full bg-white transition-all duration-700 ease-out',
+                    slide.fit,
+                    isActive
+                      ? 'translate-x-0 scale-100 opacity-100'
+                      : 'translate-x-12 scale-[1.01] opacity-0',
+                  ].join(' ')}
+                />
+              )
+            })}
 
             <button
               type="button"

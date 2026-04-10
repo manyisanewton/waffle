@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 
 const SITE_NAME = 'Vortexus'
 const DEFAULT_DESCRIPTION =
-  'Vortexus delivers water treatment, borehole systems, pumping, solar-powered water infrastructure, and project support for commercial, industrial, institutional, and community applications.'
+  'Vortexus Industrial Excellence supplies industrial water-treatment products, pumps, filtration systems, chemicals, instrumentation, tanks, and RFQ-ready equipment from world-leading brands.'
 
 function upsertMeta(attr, key, content) {
   if (!content) {

@@ -35,19 +35,15 @@ function ProductDetailPage() {
     [catalogProducts, productSlug],
   )
 
-  if (!catalogProducts.length) {
-    return <div className="py-24 text-sm text-brand-muted">Loading product...</div>
-  }
-
-  if (!product) {
-    return <Navigate to="/products" replace />
-  }
-
-  const category = getCategoryBySlug(product.categorySlug)
-  const industries = product.industrySlugs
-    .map((slug) => getIndustryBySlug(slug))
-    .filter(Boolean)
-  const relatedProducts = getRelatedCatalogProducts(catalogProducts, product, 4)
+  const category = product ? getCategoryBySlug(product.categorySlug) : null
+  const industries = product
+    ? product.industrySlugs
+        .map((slug) => getIndustryBySlug(slug))
+        .filter(Boolean)
+    : []
+  const relatedProducts = product
+    ? getRelatedCatalogProducts(catalogProducts, product, 4)
+    : []
 
   useEffect(() => {
     if (!product) {
@@ -61,6 +57,14 @@ function ProductDetailPage() {
       subcategory: product.subcategory || '(not set)',
     })
   }, [product, category?.name])
+
+  if (!catalogProducts.length) {
+    return <div className="py-24 text-sm text-brand-muted">Loading product...</div>
+  }
+
+  if (!product) {
+    return <Navigate to="/products" replace />
+  }
 
   return (
     <div className="space-y-16 text-brand-ink lg:space-y-24">
