@@ -12,6 +12,9 @@ import { company } from '../data/site/company'
 const treatmentImage = '/homepage products (1).png'
 const fieldImage = '/homepage products (2).png'
 const thirdHeroImage = '/homepage products (3).png'
+const fourthHeroImage = '/homepage products (4).png'
+const fifthHeroImage = '/homepage products (5).png'
+
 const heroSlides = [
   {
     src: treatmentImage,
@@ -27,6 +30,16 @@ const heroSlides = [
     src: thirdHeroImage,
     alt: 'Industrial water-treatment products and product-brand presentation',
     fit: 'object-cover object-right sm:object-center',
+  },
+  {
+    src: fourthHeroImage,
+    alt: 'Comprehensive industrial product solutions and applications',
+    fit: 'object-cover object-center sm:object-center',
+  },
+  {
+    src: fifthHeroImage,
+    alt: 'Advanced water technology and specialized equipment',
+    fit: 'object-cover object-center sm:object-center',
   },
 ]
 
