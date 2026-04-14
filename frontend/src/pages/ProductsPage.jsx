@@ -10,24 +10,9 @@ import { loadCatalog, loadCatalogSummary } from '../lib/catalogApi'
 
 const PAGE_SIZE = 24
 const BRAND_IMAGE_PRODUCT_OVERRIDES = {
-  '/danfos/Pressure switch, KP35.png': 'low-pressure-switch-danfoss-kp-35',
-  '/danfos/Pressure switch, KP36.png': 'high-pressure-switch-danfoss-kp-36',
+  '/danfos/Pressure switch, KP35.png': 'danfoss-pressure-switch-kp35',
+  '/danfos/Pressure switch, KP36.png': 'danfoss-pressure-switch-kp36',
 }
-const BRAND_IMAGE_STOP_WORDS = new Set([
-  'and',
-  'for',
-  'with',
-  'water',
-  'system',
-  'systems',
-  'product',
-  'products',
-  'industrial',
-  'domestic',
-  'commercial',
-  'home',
-  'extra',
-])
 const hiddenCategoryFilterSlugs = new Set([
   'wastewater-treatment-equipment',
   'industrial-etp',
@@ -101,80 +86,6 @@ function ImageLightbox({ image, onClose }) {
   )
 }
 
-function normalizeSearchText(value = '') {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9\s]/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
-
-function compactSearchText(value = '') {
-  return normalizeSearchText(value).replace(/\s+/g, '')
-}
-
-function getMeaningfulTokens(value = '') {
-  return normalizeSearchText(value)
-    .split(' ')
-    .flatMap((token) => {
-      const parts = token.match(/[a-z]+|\d+/g) || []
-      return parts.length ? [token, ...parts] : [token]
-    })
-    .filter((token) => token.length > 0 && !BRAND_IMAGE_STOP_WORDS.has(token))
-}
-
-function findBestProductForBrandImage(products, imageName) {
-  const imageTokens = getMeaningfulTokens(imageName)
-  const imageText = normalizeSearchText(imageName)
-  const compactImageText = compactSearchText(imageName)
-
-  if (!products.length) {
-    return null
-  }
-
-  let bestMatch = null
-  let bestScore = -1
-
-  for (const product of products) {
-    const productText = normalizeSearchText(
-      `${product.name} ${product.summary || ''} ${product.subcategory || ''} ${product.itemGroup || ''}`,
-    )
-    const compactProductText = compactSearchText(
-      `${product.name} ${product.summary || ''} ${product.subcategory || ''} ${product.itemGroup || ''}`,
-    )
-    const productTokens = getMeaningfulTokens(product.name)
-    let score = 0
-
-    for (const token of imageTokens) {
-      if (productText.includes(token)) {
-        score += token.length > 4 ? 3 : 2
-      }
-      if (productTokens.includes(token)) {
-        score += 2
-      }
-    }
-
-    if (imageText && (productText.includes(imageText) || imageText.includes(productText))) {
-      score += 6
-    }
-
-    if (
-      compactImageText &&
-      (compactProductText.includes(compactImageText) ||
-        compactImageText.includes(compactProductText))
-    ) {
-      score += 8
-    }
-
-    if (score > bestScore) {
-      bestScore = score
-      bestMatch = product
-    }
-  }
-
-  return bestScore > 0 ? bestMatch : null
-}
-
 function ProductsPage() {
   const [searchParams, setSearchParams] = useSearchParams()
   const [query, setQuery] = useState(searchParams.get('q') || '')
@@ -235,16 +146,18 @@ function ProductsPage() {
       brandGalleryImages.map((imagePath, index) => {
         const imageName = formatBrandImageName(imagePath)
         const overrideSlug = BRAND_IMAGE_PRODUCT_OVERRIDES[imagePath]
+
         return {
           imagePath,
           imageName,
           key: `${activeBrand?.slug || 'brand'}-${index}-${imagePath}`,
           matchedProduct:
+            catalogProducts.find((product) => product.image === imagePath) ||
             brandMatchedProducts.find((product) => product.slug === overrideSlug) ||
-            findBestProductForBrandImage(brandMatchedProducts, imageName),
+            null,
         }
       }),
-    [activeBrand?.slug, brandGalleryImages, brandMatchedProducts],
+    [activeBrand?.slug, brandGalleryImages, brandMatchedProducts, catalogProducts],
   )
   const filterCategories = useMemo(
     () => productCategories.filter((category) => !hiddenCategoryFilterSlugs.has(category.slug)),
@@ -388,7 +301,7 @@ function ProductsPage() {
                     ? `/products/item/${matchedProduct.slug}`
                     : `/products?brand=${activeBrand.slug}&q=${encodeURIComponent(
                         imageName || activeBrand.name,
-                      )}`
+                      )}#catalog-results`
 
                   return (
                 <article
@@ -429,7 +342,7 @@ function ProductsPage() {
                         to={detailsHref}
                         className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-3.5 py-2 text-[0.95rem] font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
                       >
-                        View Details
+                        {matchedProduct ? 'View Details' : 'Browse Matches'}
                       </NavLink>
                       <button
                         type="button"
@@ -455,7 +368,7 @@ function ProductsPage() {
           </section>
         ) : null}
 
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
+        <div id="catalog-results" className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
           <p className="text-sm leading-7 text-brand-muted">
             Showing <span className="font-semibold text-brand-ink">{visibleProducts.length}</span> products
             {activeBrand ? ` for ${activeBrand.name}` : ''}

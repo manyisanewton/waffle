@@ -1,5 +1,5 @@
 {
-  "totalProducts": 1676,
+  "totalProducts": 325,
   "featuredProducts": [
     {
       "id": 1,
@@ -26,33 +26,6 @@
         "agriculture-irrigation"
       ],
       "image": "/Control pannels/Expersion Module 230VAC.jpg",
-      "featured": true
-    },
-    {
-      "id": 6,
-      "slug": "ferrule-connector-2-5mm",
-      "name": "Ferrule Connector 2.5mm",
-      "itemGroup": "Wt-Ro Machines Accessories",
-      "categorySlug": "reverse-osmosis-systems",
-      "subcategory": "RO Plants",
-      "summary": "RO Plants item currently available in stock and listed in the product catalog.",
-      "description": "Ferrule Connector 2.5mm is part of the current stock list under Wt-Ro Machines Accessories. It is presented online as a ro plants product within reverse osmosis (ro) systems so buyers can find it quickly, compare related items, and move into RFQ.",
-      "applications": [
-        "Brackish-water treatment",
-        "Industrial desalting",
-        "Purified water preparation"
-      ],
-      "specHighlights": [
-        "Stock group: Wt-Ro Machines Accessories",
-        "Category: Reverse Osmosis (RO) Systems",
-        "Model, size, or rating is usually included directly in the item name"
-      ],
-      "industrySlugs": [
-        "pharmaceutical",
-        "power-plants",
-        "food-beverage"
-      ],
-      "image": "/electricals/Ferrule Connector 2.5mm.jpeg",
       "featured": true
     },
     {
@@ -163,57 +136,56 @@
       "featured": true
     },
     {
-      "id": 43,
-      "slug": "push-button-n-c",
-      "name": "Push Button N.C",
-      "itemGroup": "Wt-Project Consumable",
-      "categorySlug": "spare-parts-components",
-      "subcategory": "Valve Spare Parts",
-      "summary": "Valve Spare Parts item currently available in stock and listed in the product catalog.",
-      "description": "Push Button N.C is part of the current stock list under Wt-Project Consumable. It is presented online as a valve spare parts product within spare parts & components so buyers can find it quickly, compare related items, and move into RFQ.",
+      "id": 111,
+      "slug": "telescopic-handle-2-4m",
+      "name": "Telescopic Handle 2-4M",
+      "itemGroup": "Wt-Pool Accessories",
+      "categorySlug": "disinfection-systems",
+      "subcategory": "Chlorination Systems",
+      "summary": "Chlorination Systems item currently available in stock and listed in the product catalog.",
+      "description": "Telescopic Handle 2-4M is part of the current stock list under Wt-Pool Accessories. It is presented online as a chlorination systems product within disinfection systems so buyers can find it quickly, compare related items, and move into RFQ.",
       "applications": [
-        "Maintenance planning",
-        "Replacement support",
-        "Operational spares"
+        "Microbiological control",
+        "Post-treatment protection",
+        "Storage and delivery hygiene"
       ],
       "specHighlights": [
-        "Stock group: Wt-Project Consumable",
-        "Category: Spare Parts & Components",
+        "Stock group: Wt-Pool Accessories",
+        "Category: Disinfection Systems",
         "Model, size, or rating is usually included directly in the item name"
       ],
       "industrySlugs": [
         "food-beverage",
-        "power-plants",
-        "agriculture-irrigation"
+        "pharmaceutical"
       ],
-      "image": "/place holder.jpg",
+      "image": "/flow meters/Plastic Flange.jpeg",
       "featured": true
     },
     {
-      "id": 107,
-      "slug": "victaulic-coupling-21-2",
-      "name": "Victaulic coupling 21/2\"",
-      "itemGroup": "Wt-Vessels Accessories",
-      "categorySlug": "storage-tanks",
-      "subcategory": "Pressure Vessels",
-      "summary": "Pressure Vessels item currently available in stock and listed in the product catalog.",
-      "description": "Victaulic coupling 21/2\" is part of the current stock list under Wt-Vessels Accessories. It is presented online as a pressure vessels product within storage & tanks so buyers can find it quickly, compare related items, and move into RFQ.",
+      "id": 161,
+      "slug": "norwa-blower-nhbh-002-34-ir5-3ph-1-6kw-single-stage",
+      "name": "Norwa Blower NHBH-002-34-IR5 3PH 1.6KW Single Stage",
+      "itemGroup": "Wt-Blowers",
+      "categorySlug": "wastewater-treatment-equipment",
+      "subcategory": "Aeration Systems",
+      "summary": "Aeration Systems item currently available in stock and listed in the product catalog.",
+      "description": "Norwa Blower NHBH-002-34-IR5 3PH 1.6KW Single Stage is part of the current stock list under Wt-Blowers. It is presented online as a aeration systems product within wastewater treatment equipment so buyers can find it quickly, compare related items, and move into RFQ.",
       "applications": [
-        "Chemical storage",
-        "Water balancing",
-        "Process buffering"
+        "Biological treatment",
+        "Solids separation",
+        "Dewatering support"
       ],
       "specHighlights": [
-        "Stock group: Wt-Vessels Accessories",
-        "Category: Storage & Tanks",
+        "Stock group: Wt-Blowers",
+        "Category: Wastewater Treatment Equipment",
         "Model, size, or rating is usually included directly in the item name"
       ],
       "industrySlugs": [
-        "food-beverage",
-        "agriculture-irrigation",
-        "textile"
+        "textile",
+        "mining",
+        "food-beverage"
       ],
-      "image": "/images/products/storage-tanks/pressure-vessel.jpg",
+      "image": "/place holder.jpg",
       "featured": true
     }
   ]
