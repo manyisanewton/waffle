@@ -1,4 +1,5 @@
 import { Outlet, useLocation } from 'react-router-dom'
+import ScrollPromoAd from '../ads/ScrollPromoAd'
 import Footer from '../navigation/Footer'
 import Navbar from '../navigation/Navbar'
 import SolutionsSubnav from '../navigation/SolutionsSubnav'
@@ -12,6 +13,7 @@ function SiteLayout() {
   return (
     <div className="min-h-screen overflow-x-hidden bg-brand-canvas text-brand-ink">
       <ScrollRevealManager />
+      <ScrollPromoAd />
       <div className="theme-layout-glow absolute inset-x-0 top-0 -z-10 h-[28rem]" />
       <Navbar />
       {isSolutionsRoute ? <SolutionsSubnav /> : null}

@@ -146,18 +146,26 @@ function ProductsPage() {
       brandGalleryImages.map((imagePath, index) => {
         const imageName = formatBrandImageName(imagePath)
         const overrideSlug = BRAND_IMAGE_PRODUCT_OVERRIDES[imagePath]
+        const preferredBrandMatch =
+          brandMatchedProducts.find(
+            (product) =>
+              product.image === imagePath &&
+              (product.itemGroup || '').toLowerCase() === (activeBrand?.name || '').toLowerCase(),
+          ) ||
+          brandMatchedProducts.find((product) => product.image === imagePath)
 
         return {
           imagePath,
           imageName,
           key: `${activeBrand?.slug || 'brand'}-${index}-${imagePath}`,
           matchedProduct:
-            catalogProducts.find((product) => product.image === imagePath) ||
+            preferredBrandMatch ||
             brandMatchedProducts.find((product) => product.slug === overrideSlug) ||
+            catalogProducts.find((product) => product.image === imagePath) ||
             null,
         }
       }),
-    [activeBrand?.slug, brandGalleryImages, brandMatchedProducts, catalogProducts],
+    [activeBrand?.name, activeBrand?.slug, brandGalleryImages, brandMatchedProducts, catalogProducts],
   )
   const filterCategories = useMemo(
     () => productCategories.filter((category) => !hiddenCategoryFilterSlugs.has(category.slug)),

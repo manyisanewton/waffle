@@ -54,7 +54,7 @@ export const brandsCatalog = [
       '/danfos/network pressure management.png',
     ],
   },
-  { slug: 'dupont', name: 'DuPont', image: '/brands/dupon.jpeg', matchTerms: ['dupont', 'dupon', 'filmtec'], galleryImages: [] },
+
   { slug: 'frotec', name: 'Frotec', image: '/brands/frotect.jpeg', matchTerms: ['frotec', 'frotect'], galleryImages: [] },
   {
     slug: 'genesys',
@@ -104,8 +104,7 @@ export const brandsCatalog = [
       '/hydramem/Membrane Bio Reactor.png',
     ],
   },
-  { slug: 'hydromchem', name: 'Hydrom Chem', image: '/brands/hydromchem.jpeg', matchTerms: ['hydromchem', 'hydrochem'], galleryImages: [] },
-  { slug: 'improchem', name: 'ImproChem', image: '/brands/improchem.jpeg', matchTerms: ['improchem'], galleryImages: [] },
+
   {
     slug: 'jacobi',
     name: 'Jacobi',
@@ -117,7 +116,20 @@ export const brandsCatalog = [
       '/jacobi/Ion Exchange Resins (2).png',
     ],
   },
-  { slug: 'keensen', name: 'Keensen', image: '/brands/keesen.jpeg', matchTerms: ['keensen', 'keesen'], galleryImages: [] },
+  {
+    slug: 'keensen',
+    name: 'Keensen',
+    image: '/brands/keesen.jpeg',
+    matchTerms: ['keensen', 'keesen'],
+    galleryImages: [
+      '/keensen/Brackish Water Reverse Osmosis Membrane.png',
+      '/keensen/NF Membrane Elements.png',
+      '/keensen/Nanofiltration membrane 8040 .png',
+      '/keensen/Reverse Osmosis Membrane.png',
+      '/keensen/Sea Water Desalination RO Membrane Elements.png',
+      '/keensen/Ultra Low Pressure RO Membrane.png',
+    ],
+  },
   {
     slug: 'leo-pump',
     name: 'Leo Pump',
@@ -174,8 +186,8 @@ export const brandsCatalog = [
     ],
   },
   { slug: 'pedrollo', name: 'Pedrollo', image: '/brands/prdrollo.jpeg', matchTerms: ['pedrollo', 'prdrollo'], galleryImages: [] },
-  { slug: 'purolite', name: 'Purolite', image: '/brands/purolite.jpeg', matchTerms: ['purolite'], galleryImages: [] },
-  { slug: 'rzbc', name: 'RZBC', image: '/brands/rzbc.jpeg', matchTerms: ['rzbc'], galleryImages: [] },
+
+
   {
     slug: 'seko',
     name: 'SEKO',
@@ -188,7 +200,7 @@ export const brandsCatalog = [
       '/seko/Compatible with Arkad J0007,.png',
     ],
   },
-  { slug: 'suez', name: 'SUEZ', image: '/brands/suez.jpeg', matchTerms: ['suez'], galleryImages: [] },
+
   {
     slug: 'vontron',
     name: 'Vontron',
