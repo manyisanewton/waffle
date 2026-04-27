@@ -6,33 +6,18 @@ import LeadCaptureModal from '../components/leads/LeadCaptureModal'
 import FullBleedHero from '../components/sections/FullBleedHero'
 import Seo from '../components/seo/Seo'
 import { getCategoryBySlug } from '../data/productCatalog'
-import { filterProductsByCategory, loadCatalog } from '../lib/catalogApi'
+import { filterProductsByCategory, getCatalog } from '../lib/catalogApi'
 
 const PAGE_SIZE = 24
 
 function ProductCategoryPage() {
   const { categorySlug } = useParams()
   const category = getCategoryBySlug(categorySlug)
-  const [catalogProducts, setCatalogProducts] = useState([])
+  const catalogProducts = getCatalog()
   const [activeSubcategory, setActiveSubcategory] = useState('all')
   const [query, setQuery] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [rfqProduct, setRfqProduct] = useState(null)
-
-  useEffect(() => {
-    let isMounted = true
-    loadCatalog()
-      .then((products) => {
-        if (isMounted) {
-          setCatalogProducts(products)
-        }
-      })
-      .catch(() => {})
-
-    return () => {
-      isMounted = false
-    }
-  }, [])
 
   useEffect(() => {
     setCurrentPage(1)

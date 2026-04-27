@@ -26,6 +26,7 @@ export const footerGroups = [
     title: 'Company',
     links: [
       { label: 'About Us', to: '/about-us' },
+      { label: 'FAQ', to: '/faq' },
       { label: 'Contact Us', to: '/contact-us' },
       { label: 'Request a Quote', to: '/contact-us' },
     ],
@@ -84,5 +85,6 @@ export const officeLocations = [
 export const footerMetaLinks = [
   { label: 'Products', to: '/products' },
   { label: 'Industries', to: '/industries' },
+  { label: 'FAQ', to: '/faq' },
   { label: 'Contact', to: '/contact-us' },
 ]

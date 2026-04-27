@@ -1,6 +1,7 @@
 export const company = {
   shortName: 'Vortexus',
   name: 'Vortexus Industrial Excellence',
+  siteUrl: 'https://vortexusindustrial.com',
   tagline: 'Water, Energy & Automation Systems',
   logo: '/logos and favicon/logo.png',
   logoOnDark: '/logos and favicon/Vortex White.png',

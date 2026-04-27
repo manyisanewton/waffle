@@ -1,16 +1,27 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot, hydrateRoot } from 'react-dom/client'
 import { BrowserRouter } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
+import { SeoProvider } from './components/seo/SeoProvider'
 import './index.css'
 import App from './App.jsx'
 
-createRoot(document.getElementById('root')).render(
+const container = document.getElementById('root')
+
+const app = (
   <StrictMode>
-    <AuthProvider>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </AuthProvider>
-  </StrictMode>,
+    <SeoProvider>
+      <AuthProvider>
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      </AuthProvider>
+    </SeoProvider>
+  </StrictMode>
 )
+
+if (container?.hasChildNodes()) {
+  hydrateRoot(container, app)
+} else if (container) {
+  createRoot(container).render(app)
+}

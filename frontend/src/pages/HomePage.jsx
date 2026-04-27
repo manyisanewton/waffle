@@ -5,7 +5,7 @@ import LeadCaptureModal from '../components/leads/LeadCaptureModal'
 import Seo from '../components/seo/Seo'
 import { industriesCatalog } from '../data/productCatalog'
 import { brandsCatalog } from '../data/brandsCatalog'
-import { loadCatalog, loadCatalogSummary } from '../lib/catalogApi'
+import { getCatalog } from '../lib/catalogApi'
 import { trackEvent } from '../lib/analytics'
 import { company } from '../data/site/company'
 
@@ -46,28 +46,7 @@ const heroSlides = [
 function HomePage() {
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false)
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0)
-  const [catalogProducts, setCatalogProducts] = useState([])
-  const [catalogSummary, setCatalogSummary] = useState({
-    totalProducts: 0,
-    featuredProducts: [],
-  })
-
-  useEffect(() => {
-    let isMounted = true
-
-    Promise.all([loadCatalog(), loadCatalogSummary()])
-      .then(([products, summary]) => {
-        if (isMounted) {
-          setCatalogProducts(products)
-          setCatalogSummary(summary)
-        }
-      })
-      .catch(() => {})
-
-    return () => {
-      isMounted = false
-    }
-  }, [])
+  const catalogProducts = getCatalog()
 
   useEffect(() => {
     const intervalId = window.setInterval(() => {
@@ -85,7 +64,20 @@ function HomePage() {
     catalogProducts.find((product) => product.name === 'CNP CHL 8-50 1PH/220V/2.2KW SS304'),
     catalogProducts.find((product) => product.name === 'Membrane FilmTec BW30 PRO-4040'),
     catalogProducts.find((product) => product.name === 'Water meter 20E 3/4'),
-    catalogProducts.find((product) => product.name === 'RO SKID 1000LPH'),
+    catalogProducts.find((product) => product.name === 'RO SKID 8000LPH'),
+  ].filter(Boolean)
+
+  const featuredQuotationProducts = [
+    catalogProducts.find(
+      (product) => product.name === 'Self-Priming Stainless Steel Multistage Centrifugal',
+    ),
+    catalogProducts.find(
+      (product) => product.name === 'Domestic RO Water Purifier with IC controller',
+    ),
+    catalogProducts.find(
+      (product) => product.name === 'Lowara Kreiselpumpe ähnlich Typ CO35005A',
+    ),
+    catalogProducts.find((product) => product.name === 'Chlorine 65% 45kgs'),
   ].filter(Boolean)
 
   const goToPreviousHeroSlide = () => {
@@ -205,36 +197,6 @@ function HomePage() {
       </section>
 
       <section className="space-y-8">
-        <div>
-          <p className="text-center text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
-            Industry-Leading Brands
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 items-center gap-x-5 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
-            {brandsCatalog.map((brand) => (
-              <NavLink
-                key={brand.name}
-                to={`/products?brand=${encodeURIComponent(brand.slug)}`}
-                onClick={() =>
-                  trackEvent('view_brand_products', {
-                    brand_name: brand.name,
-                    brand_slug: brand.slug,
-                  })}
-                className="flex min-h-[56px] items-center justify-center px-2 py-2 transition hover:-translate-y-0.5 sm:min-h-[70px] sm:px-3 sm:py-3"
-              >
-                <img
-                  src={brand.image}
-                  alt={brand.name}
-                  className="max-h-9 w-auto max-w-full object-contain sm:max-h-12"
-                  loading="lazy"
-                />
-              </NavLink>
-            ))}
-        </div>
-      </section>
-
-      <section className="space-y-8">
         <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
@@ -260,8 +222,38 @@ function HomePage() {
             {spotlightProducts.map(renderProductCard)}
           </div>
           <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-4">
-            {catalogSummary.featuredProducts.slice(0, 4).map(renderProductCard)}
+            {featuredQuotationProducts.map(renderProductCard)}
           </div>
+        </div>
+      </section>
+
+      <section className="space-y-8">
+        <div>
+          <p className="text-center text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
+            Industry-Leading Brands
+          </p>
+        </div>
+
+        <div className="grid grid-cols-2 items-center gap-x-5 gap-y-6 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
+            {brandsCatalog.map((brand) => (
+              <NavLink
+                key={brand.name}
+                to={`/brands/${brand.slug}`}
+                onClick={() =>
+                  trackEvent('view_brand_products', {
+                    brand_name: brand.name,
+                    brand_slug: brand.slug,
+                  })}
+                className="flex min-h-[56px] items-center justify-center px-2 py-2 transition hover:-translate-y-0.5 sm:min-h-[70px] sm:px-3 sm:py-3"
+              >
+                <img
+                  src={brand.image}
+                  alt={brand.name}
+                  className="max-h-9 w-auto max-w-full object-contain sm:max-h-12"
+                  loading="lazy"
+                />
+              </NavLink>
+            ))}
         </div>
       </section>
 

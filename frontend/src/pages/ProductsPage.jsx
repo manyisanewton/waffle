@@ -4,9 +4,14 @@ import Pagination from '../components/catalog/Pagination'
 import CompareButton from '../components/catalog/CompareButton'
 import LeadCaptureModal from '../components/leads/LeadCaptureModal'
 import Seo from '../components/seo/Seo'
-import { getBrandBySlug, productMatchesBrand } from '../data/brandsCatalog'
+import {
+  buildBrandImageDescription,
+  formatBrandImageName,
+  getBrandBySlug,
+  productMatchesBrand,
+} from '../data/brandsCatalog'
 import { industriesCatalog, productCategories } from '../data/productCatalog'
-import { loadCatalog, loadCatalogSummary } from '../lib/catalogApi'
+import { getCatalog, getCatalogSummary } from '../lib/catalogApi'
 
 const PAGE_SIZE = 24
 const BRAND_IMAGE_PRODUCT_OVERRIDES = {
@@ -21,20 +26,6 @@ const hiddenCategoryFilterSlugs = new Set([
   'industry-specific-solutions',
   'sludge-handling-disposal',
 ])
-
-function formatBrandImageName(imagePath = '') {
-  const fileName = imagePath.split('/').pop() || ''
-  const baseName = fileName.replace(/\.[^.]+$/, '')
-
-  return baseName
-    .replace(/[_-]+/g, ' ')
-    .replace(/\s+/g, ' ')
-    .trim()
-}
-
-function buildBrandImageDescription(brandName, imageName) {
-  return `${imageName} from the ${brandName} product range currently highlighted for brand browsing.`
-}
 
 function ImageLightbox({ image, onClose }) {
   useEffect(() => {
@@ -91,11 +82,8 @@ function ProductsPage() {
   const [query, setQuery] = useState(searchParams.get('q') || '')
   const [activeCategory, setActiveCategory] = useState('all')
   const [activeIndustry, setActiveIndustry] = useState('all')
-  const [catalogProducts, setCatalogProducts] = useState([])
-  const [catalogSummary, setCatalogSummary] = useState({
-    totalProducts: 0,
-    featuredProducts: [],
-  })
+  const catalogProducts = getCatalog()
+  const catalogSummary = getCatalogSummary()
   const [currentPage, setCurrentPage] = useState(1)
   const [leadModalConfig, setLeadModalConfig] = useState({
     isOpen: false,
@@ -104,24 +92,6 @@ function ProductsPage() {
     serviceInterest: 'Product quotation',
   })
   const [lightboxImage, setLightboxImage] = useState(null)
-
-  useEffect(() => {
-    let isMounted = true
-
-    Promise.all([loadCatalog(), loadCatalogSummary()])
-      .then(([products, summary]) => {
-        if (!isMounted) {
-          return
-        }
-        setCatalogProducts(products)
-        setCatalogSummary(summary)
-      })
-      .catch(() => {})
-
-    return () => {
-      isMounted = false
-    }
-  }, [])
 
   useEffect(() => {
     setQuery(searchParams.get('q') || '')
@@ -305,10 +275,11 @@ function ProductsPage() {
             <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
               {brandGalleryItems.map(({ imagePath, imageName, key, matchedProduct }, index) => (
                 (() => {
+                  const displayName = matchedProduct?.name || imageName || `${activeBrand.name} Product ${index + 1}`
                   const detailsHref = matchedProduct
                     ? `/products/item/${matchedProduct.slug}`
                     : `/products?brand=${activeBrand.slug}&q=${encodeURIComponent(
-                        imageName || activeBrand.name,
+                        displayName || activeBrand.name,
                       )}#catalog-results`
 
                   return (
@@ -337,12 +308,13 @@ function ProductsPage() {
                       {activeBrand.name}
                     </p>
                     <h4 className="font-display text-[0.98rem] font-semibold leading-snug text-brand-ink sm:text-base">
-                      {imageName || `${activeBrand.name} Product ${index + 1}`}
+                      {displayName}
                     </h4>
                     <p className="text-sm leading-6 text-brand-muted">
                       {buildBrandImageDescription(
                         activeBrand.name,
-                        imageName || `Product ${index + 1}`,
+                        displayName,
+                        matchedProduct,
                       )}
                     </p>
                     <div className="flex flex-wrap gap-2.5 pt-1">
@@ -350,15 +322,15 @@ function ProductsPage() {
                         to={detailsHref}
                         className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-3.5 py-2 text-[0.95rem] font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
                       >
-                        {matchedProduct ? 'View Details' : 'Browse Matches'}
+                        {matchedProduct ? 'View Details' : 'Search Catalog'}
                       </NavLink>
                       <button
                         type="button"
                         onClick={() =>
                           setLeadModalConfig({
                             isOpen: true,
-                            title: `Request Quote for ${imageName || activeBrand.name}`,
-                            productInterest: imageName || activeBrand.name,
+                            title: `Request Quote for ${displayName}`,
+                            productInterest: displayName,
                             serviceInterest: activeBrand.name,
                           })}
                         className="inline-flex items-center justify-center rounded-full bg-brand-green px-3.5 py-2 text-[0.95rem] font-semibold text-white transition hover:bg-brand-green-soft"

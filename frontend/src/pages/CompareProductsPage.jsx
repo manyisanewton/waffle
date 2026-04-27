@@ -1,10 +1,10 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useMemo } from 'react'
 import { NavLink } from 'react-router-dom'
 import FullBleedHero from '../components/sections/FullBleedHero'
 import Seo from '../components/seo/Seo'
 import useProductCompare from '../hooks/useProductCompare'
 import { getCategoryBySlug, getIndustryBySlug } from '../data/productCatalog'
-import { loadCatalog } from '../lib/catalogApi'
+import { getCatalog } from '../lib/catalogApi'
 
 const comparisonRows = [
   { label: 'Category', key: 'category' },
@@ -33,24 +33,8 @@ function renderList(items) {
 }
 
 function CompareProductsPage() {
-  const [catalogProducts, setCatalogProducts] = useState([])
+  const catalogProducts = getCatalog()
   const { comparedSlugs, comparedCount, removeComparedSlug, clearComparedSlugs } = useProductCompare()
-
-  useEffect(() => {
-    let isMounted = true
-
-    loadCatalog()
-      .then((products) => {
-        if (isMounted) {
-          setCatalogProducts(products)
-        }
-      })
-      .catch(() => {})
-
-    return () => {
-      isMounted = false
-    }
-  }, [])
 
   const comparedProducts = useMemo(
     () =>

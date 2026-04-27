@@ -4,10 +4,18 @@ import { apiRequest } from '../lib/api'
 const AuthContext = createContext(null)
 const TOKEN_KEY = 'vortexus_admin_token'
 
+function readStoredToken() {
+  if (typeof window === 'undefined' || typeof window.localStorage === 'undefined') {
+    return ''
+  }
+
+  return window.localStorage.getItem(TOKEN_KEY) || ''
+}
+
 export function AuthProvider({ children }) {
-  const [token, setToken] = useState(() => localStorage.getItem(TOKEN_KEY) || '')
+  const [token, setToken] = useState(readStoredToken)
   const [user, setUser] = useState(null)
-  const [isLoading, setIsLoading] = useState(Boolean(localStorage.getItem(TOKEN_KEY)))
+  const [isLoading, setIsLoading] = useState(Boolean(readStoredToken()))
 
   useEffect(() => {
     if (!token) {
@@ -26,7 +34,9 @@ export function AuthProvider({ children }) {
       })
       .catch(() => {
         if (isMounted) {
-          localStorage.removeItem(TOKEN_KEY)
+          if (typeof window !== 'undefined') {
+            window.localStorage.removeItem(TOKEN_KEY)
+          }
           setToken('')
           setUser(null)
         }
@@ -48,14 +58,18 @@ export function AuthProvider({ children }) {
       body: { email, password },
     })
 
-    localStorage.setItem(TOKEN_KEY, data.access_token)
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(TOKEN_KEY, data.access_token)
+    }
     setToken(data.access_token)
     setUser(data.user)
     return data.user
   }
 
   const logout = () => {
-    localStorage.removeItem(TOKEN_KEY)
+    if (typeof window !== 'undefined') {
+      window.localStorage.removeItem(TOKEN_KEY)
+    }
     setToken('')
     setUser(null)
   }

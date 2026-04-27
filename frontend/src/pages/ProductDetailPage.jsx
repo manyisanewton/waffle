@@ -8,27 +8,12 @@ import {
   getCategoryBySlug,
   getIndustryBySlug,
 } from '../data/productCatalog'
-import { findProductBySlug, getRelatedCatalogProducts, loadCatalog } from '../lib/catalogApi'
+import { findProductBySlug, getCatalog, getRelatedCatalogProducts } from '../lib/catalogApi'
 
 function ProductDetailPage() {
   const { productSlug } = useParams()
-  const [catalogProducts, setCatalogProducts] = useState([])
+  const catalogProducts = getCatalog()
   const [isRfqOpen, setIsRfqOpen] = useState(false)
-
-  useEffect(() => {
-    let isMounted = true
-    loadCatalog()
-      .then((products) => {
-        if (isMounted) {
-          setCatalogProducts(products)
-        }
-      })
-      .catch(() => {})
-
-    return () => {
-      isMounted = false
-    }
-  }, [])
 
   const product = useMemo(
     () => findProductBySlug(catalogProducts, productSlug),
@@ -58,17 +43,20 @@ function ProductDetailPage() {
     })
   }, [product, category?.name])
 
-  if (!catalogProducts.length) {
-    return <div className="py-24 text-sm text-brand-muted">Loading product...</div>
-  }
-
   if (!product) {
     return <Navigate to="/products" replace />
   }
 
+  const productSummary = product.shortDescription || product.summary
+  const productTechnicalSummary = product.technicalSummary || product.description
+  const productFeatures = product.keyFeatures || product.specHighlights || []
+  const productSelectionNotes = product.selectionNotes || []
+  const productCompatibilityNotes = product.compatibilityNotes || []
+  const productRfqFields = product.rfqFields || []
+
   return (
     <div className="space-y-16 text-brand-ink lg:space-y-24">
-      <Seo title={product.name} description={product.summary} />
+      <Seo title={product.name} description={product.seoDescription || productSummary} />
 
       <section className="space-y-5">
         <div className="flex flex-wrap items-center gap-2 text-sm text-brand-muted">
@@ -107,7 +95,7 @@ function ProductDetailPage() {
             {product.itemGroup}
           </p>
           <p className="mt-6 max-w-3xl text-base leading-8 text-brand-muted">
-            {product.description}
+            {productTechnicalSummary}
           </p>
 
           {industries.length ? (
@@ -125,7 +113,7 @@ function ProductDetailPage() {
           ) : null}
 
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {product.specHighlights.map((item) => (
+            {productFeatures.map((item) => (
               <div
                 key={item}
                 className="rounded-[1.4rem] border border-brand-border bg-white px-4 py-4 text-sm leading-7 text-brand-muted"
@@ -165,7 +153,7 @@ function ProductDetailPage() {
           <p className="text-xs font-semibold uppercase tracking-[0.34em] text-brand-green">
             Product Summary
           </p>
-          <p className="mt-3 text-sm leading-7 text-brand-muted">{product.summary}</p>
+          <p className="mt-3 text-sm leading-7 text-brand-muted">{productSummary}</p>
         </div>
         <div className="rounded-[1.75rem] border border-brand-border bg-white px-5 py-5 shadow-[0_18px_46px_rgba(35,33,32,0.05)]">
           <p className="text-xs font-semibold uppercase tracking-[0.34em] text-brand-green">
@@ -189,13 +177,56 @@ function ProductDetailPage() {
             Product Data
           </p>
           <p className="mt-3 text-sm leading-7 text-brand-muted">
-            {product.specHighlights.length} specification highlights
+            {productFeatures.length} specification highlights
           </p>
           <p className="mt-2 text-sm leading-7 text-brand-muted">
             Stock-listed item with size or model often embedded directly in the product name
           </p>
         </div>
       </section>
+
+      {(productSelectionNotes.length || productCompatibilityNotes.length || productRfqFields.length) ? (
+        <section className="grid gap-6 lg:grid-cols-3">
+          {productSelectionNotes.length ? (
+            <div className="rounded-[1.75rem] border border-brand-border bg-white px-5 py-5 shadow-[0_18px_46px_rgba(35,33,32,0.05)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-brand-green">
+                Selection Notes
+              </p>
+              <ul className="mt-3 space-y-2 text-sm leading-7 text-brand-muted">
+                {productSelectionNotes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          {productCompatibilityNotes.length ? (
+            <div className="rounded-[1.75rem] border border-brand-border bg-white px-5 py-5 shadow-[0_18px_46px_rgba(35,33,32,0.05)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-brand-green">
+                Compatibility Notes
+              </p>
+              <ul className="mt-3 space-y-2 text-sm leading-7 text-brand-muted">
+                {productCompatibilityNotes.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+
+          {productRfqFields.length ? (
+            <div className="rounded-[1.75rem] border border-brand-border bg-white px-5 py-5 shadow-[0_18px_46px_rgba(35,33,32,0.05)]">
+              <p className="text-xs font-semibold uppercase tracking-[0.34em] text-brand-green">
+                Confirm Before RFQ
+              </p>
+              <ul className="mt-3 space-y-2 text-sm leading-7 text-brand-muted">
+                {productRfqFields.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          ) : null}
+        </section>
+      ) : null}
 
       {relatedProducts.length ? (
         <section className="space-y-8">
@@ -228,7 +259,9 @@ function ProductDetailPage() {
                   <h3 className="font-display text-xl font-semibold text-brand-ink">
                     {relatedProduct.name}
                   </h3>
-                  <p className="text-sm leading-7 text-brand-muted">{relatedProduct.summary}</p>
+                  <p className="text-sm leading-7 text-brand-muted">
+                    {relatedProduct.shortDescription || relatedProduct.summary}
+                  </p>
                   <NavLink
                     to={`/products/item/${relatedProduct.slug}`}
                     className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-4 py-2.5 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"

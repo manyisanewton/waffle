@@ -1,4 +1,6 @@
 import { useEffect } from 'react'
+import { company } from '../../data/site/company'
+import { useSeoContext } from './SeoProvider'
 
 const SITE_NAME = 'Vortexus'
 const DEFAULT_DESCRIPTION =
@@ -20,17 +22,70 @@ function upsertMeta(attr, key, content) {
   element.setAttribute('content', content)
 }
 
-function Seo({ title, description = DEFAULT_DESCRIPTION }) {
+function upsertLink(rel, href) {
+  if (!href) {
+    return
+  }
+
+  let element = document.head.querySelector(`link[rel="${rel}"]`)
+
+  if (!element) {
+    element = document.createElement('link')
+    element.setAttribute('rel', rel)
+    document.head.appendChild(element)
+  }
+
+  element.setAttribute('href', href)
+}
+
+function buildCanonicalUrl(pathname = '/') {
+  const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`
+
+  return new URL(normalizedPath, company.siteUrl).toString()
+}
+
+function Seo({
+  title,
+  description = DEFAULT_DESCRIPTION,
+  canonicalPath = '',
+  imagePath = company.logo,
+  type = 'website',
+}) {
+  const seoContext = useSeoContext()
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME
+  const routePath = canonicalPath || seoContext?.routePath || '/'
+  const canonicalUrl = buildCanonicalUrl(routePath)
+  const imageUrl = imagePath ? new URL(imagePath, company.siteUrl).toString() : ''
+
+  if (seoContext?.setSeo) {
+    seoContext.setSeo({
+      title: fullTitle,
+      description,
+      canonicalUrl,
+      imageUrl,
+      type,
+    })
+  }
+
   useEffect(() => {
-    const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME
+    if (typeof document === 'undefined') {
+      return
+    }
 
     document.title = fullTitle
     upsertMeta('name', 'description', description)
+    upsertMeta('name', 'robots', 'index,follow')
     upsertMeta('property', 'og:title', fullTitle)
     upsertMeta('property', 'og:description', description)
+    upsertMeta('property', 'og:type', type)
+    upsertMeta('property', 'og:url', canonicalUrl)
+    upsertMeta('property', 'og:image', imageUrl)
     upsertMeta('name', 'twitter:title', fullTitle)
     upsertMeta('name', 'twitter:description', description)
-  }, [title, description])
+    upsertMeta('name', 'twitter:card', 'summary_large_image')
+    upsertMeta('name', 'twitter:image', imageUrl)
+    upsertLink('canonical', canonicalUrl)
+  }, [canonicalUrl, description, fullTitle, imageUrl, type])
 
   return null
 }

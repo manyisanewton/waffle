@@ -127,7 +127,7 @@ function ScrollPromoAd() {
           <img
             src={selectedAd.image}
             alt={selectedAd.alt}
-            className="max-h-[58vh] w-full object-contain bg-white sm:max-h-[49vh] xl:max-h-[46vh]"
+            className="max-h-[calc(58vh+50px)] w-full object-contain bg-white sm:max-h-[calc(49vh+50px)] xl:max-h-[calc(46vh+50px)]"
           />
           <button
             type="button"

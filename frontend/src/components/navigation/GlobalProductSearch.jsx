@@ -7,7 +7,7 @@ import {
   productCategories,
 } from '../../data/productCatalog'
 import { trackEvent } from '../../lib/analytics'
-import { loadCatalog } from '../../lib/catalogApi'
+import { getCatalog } from '../../lib/catalogApi'
 
 function useDebouncedValue(value, delay = 220) {
   const [debouncedValue, setDebouncedValue] = useState(value)
@@ -26,7 +26,7 @@ function useDebouncedValue(value, delay = 220) {
 function GlobalProductSearch({ mobile = false, onNavigate, desktopWide = false }) {
   const [query, setQuery] = useState('')
   const [isOpen, setIsOpen] = useState(false)
-  const [catalogProducts, setCatalogProducts] = useState([])
+  const catalogProducts = getCatalog()
   const wrapperRef = useRef(null)
   const navigate = useNavigate()
   const location = useLocation()
@@ -53,21 +53,6 @@ function GlobalProductSearch({ mobile = false, onNavigate, desktopWide = false }
     setIsOpen(false)
     setQuery('')
   }, [location.pathname])
-
-  useEffect(() => {
-    let isMounted = true
-    loadCatalog()
-      .then((products) => {
-        if (isMounted) {
-          setCatalogProducts(products)
-        }
-      })
-      .catch(() => {})
-
-    return () => {
-      isMounted = false
-    }
-  }, [])
 
   const suggestions = useMemo(() => {
     if (!normalizedQuery) {

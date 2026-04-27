@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useState } from 'react'
 import { Navigate, NavLink, useParams } from 'react-router-dom'
 import Pagination from '../components/catalog/Pagination'
 import CompareButton from '../components/catalog/CompareButton'
@@ -6,31 +6,16 @@ import LeadCaptureModal from '../components/leads/LeadCaptureModal'
 import FullBleedHero from '../components/sections/FullBleedHero'
 import Seo from '../components/seo/Seo'
 import { getCategoryBySlug, getIndustryBySlug } from '../data/productCatalog'
-import { filterProductsByIndustry, loadCatalog } from '../lib/catalogApi'
+import { filterProductsByIndustry, getCatalog } from '../lib/catalogApi'
 
 const PAGE_SIZE = 24
 
 function IndustryDetailPage() {
   const { industrySlug } = useParams()
   const industry = getIndustryBySlug(industrySlug)
-  const [catalogProducts, setCatalogProducts] = useState([])
+  const catalogProducts = getCatalog()
   const [currentPage, setCurrentPage] = useState(1)
   const [rfqTitle, setRfqTitle] = useState('')
-
-  useEffect(() => {
-    let isMounted = true
-    loadCatalog()
-      .then((products) => {
-        if (isMounted) {
-          setCatalogProducts(products)
-        }
-      })
-      .catch(() => {})
-
-    return () => {
-      isMounted = false
-    }
-  }, [])
 
   if (!industry) {
     return <Navigate to="/industries" replace />

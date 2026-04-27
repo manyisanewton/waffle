@@ -1,0 +1,299 @@
+{
+  "totalProducts": 331,
+  "featuredProducts": [
+    {
+      "id": 1,
+      "slug": "expersion-module-230vac",
+      "name": "Expersion Module 230VAC",
+      "itemGroup": "wt-Elecritical",
+      "categorySlug": "automation-control",
+      "subcategory": "Control Panels",
+      "summary": "Expersion Module 230VAC is listed as a panel-control component used for switching, indication, or operator control in pump and treatment automation systems.",
+      "description": "Expersion Module 230VAC is presented within automation and control for buyers sourcing panel-side components used on pump panels, treatment skids, and electrical control stations. These items should be selected according to their control role, voltage, mounting arrangement, and the specific panel function they support. During RFQ, confirm the installed panel use case and whether the requirement is for replacement maintenance or new panel assembly.",
+      "applications": [
+        "Pump panel assembly and maintenance",
+        "Motor-start and operator control stations",
+        "Treatment-system electrical panel support"
+      ],
+      "specHighlights": [
+        "Brand: wt-Elecritical",
+        "Product family: panel-control component",
+        "Stock group: wt-Elecritical"
+      ],
+      "industrySlugs": [
+        "power-plants",
+        "food-beverage",
+        "agriculture-irrigation"
+      ],
+      "image": "/Control pannels/Expersion Module 230VAC.jpg",
+      "featured": true,
+      "shortDescription": "Expersion Module 230VAC is listed as a panel-control component used for switching, indication, or operator control in pump and treatment automation systems.",
+      "technicalSummary": "Expersion Module 230VAC is presented within automation and control for buyers sourcing panel-side components used on pump panels, treatment skids, and electrical control stations. These items should be selected according to their control role, voltage, mounting arrangement, and the specific panel function they support. During RFQ, confirm the installed panel use case and whether the requirement is for replacement maintenance or new panel assembly.",
+      "keyFeatures": [
+        "Brand: wt-Elecritical",
+        "Product family: panel-control component",
+        "Stock group: wt-Elecritical"
+      ],
+      "selectionNotes": [
+        "Confirm panel function and the control role of the item before RFQ.",
+        "Check whether the request is for a switch, indicator, push button, or panel module.",
+        "Share the current panel layout or component reference where replacement certainty matters."
+      ],
+      "compatibilityNotes": [
+        "Compatibility depends on panel design, voltage, mounting style, and control logic.",
+        "Panel components should be matched against the installed panel arrangement before replacement."
+      ],
+      "rfqFields": [
+        "Panel function or control role",
+        "Voltage if known",
+        "Existing component reference",
+        "Quantity required"
+      ],
+      "seoDescription": "Expersion Module 230VAC available for control-panel component sourcing and RFQ support from Vortexus Industrial Excellence."
+    },
+    {
+      "id": 12,
+      "slug": "sand-media-c",
+      "name": "Sand media C",
+      "itemGroup": "Wt-Medias",
+      "categorySlug": "filtration-systems",
+      "subcategory": "Sand Filters",
+      "summary": "Sand media C is listed as filtration media used for clarification, pretreatment, or packed-bed polishing stages inside industrial water-treatment systems.",
+      "description": "Sand media C is presented within filtration media for buyers sourcing granular material used in packed-bed filters and pretreatment vessels. Media products should be matched to the contaminant issue, vessel configuration, backwash arrangement, and the process stage they support. Before quotation, confirm whether the material is being used for basic clarification, membrane pretreatment, iron or manganese reduction support, or general water polishing.",
+      "applications": [
+        "Granular media filtration stages",
+        "Pretreatment ahead of membrane systems",
+        "Utility-water clarification and polishing"
+      ],
+      "specHighlights": [
+        "Product family: granular filter media",
+        "Stock group: Wt-Medias"
+      ],
+      "industrySlugs": [
+        "food-beverage",
+        "pharmaceutical",
+        "agriculture-irrigation"
+      ],
+      "image": "/Sand media/Sand media C.jpeg",
+      "featured": true,
+      "shortDescription": "Sand media C is listed as filtration media used for clarification, pretreatment, or packed-bed polishing stages inside industrial water-treatment systems.",
+      "technicalSummary": "Sand media C is presented within filtration media for buyers sourcing granular material used in packed-bed filters and pretreatment vessels. Media products should be matched to the contaminant issue, vessel configuration, backwash arrangement, and the process stage they support. Before quotation, confirm whether the material is being used for basic clarification, membrane pretreatment, iron or manganese reduction support, or general water polishing.",
+      "keyFeatures": [
+        "Product family: granular filter media",
+        "Stock group: Wt-Medias"
+      ],
+      "selectionNotes": [
+        "Confirm the contaminant issue or pretreatment duty before selecting media.",
+        "Check vessel size, bed depth, and backwash arrangement where applicable.",
+        "Media choice should follow process need, not only material familiarity."
+      ],
+      "compatibilityNotes": [
+        "Media compatibility depends on the contaminant target, vessel loading, and process sequence.",
+        "Media replacement should be reviewed together with the operating filter vessel and backwash arrangement."
+      ],
+      "rfqFields": [
+        "Type of water problem or contaminant target",
+        "Quantity or vessel size",
+        "Current media type if replacing",
+        "Whether the media is for pretreatment or polishing"
+      ],
+      "seoDescription": "Sand media C listed for filtration media, pretreatment vessel loading, and packed-bed RFQ support from Vortexus Industrial Excellence."
+    },
+    {
+      "id": 16,
+      "slug": "cable-ties-8-500mm-100-pcs",
+      "name": "Cable ties 8*500mm 100 pcs",
+      "itemGroup": "Wt-Borehole Accessories",
+      "categorySlug": "pumps-fluid-handling",
+      "subcategory": "Pump Accessories",
+      "summary": "Cable ties 8*500mm 100 pcs is listed as a pump-support accessory used around borehole, submersible, or general fluid-handling installations to support setup, control, or serviceability.",
+      "description": "Cable ties 8*500mm 100 pcs is presented within pumps and fluid handling as an installation-support accessory rather than a main pump body. These accessories usually support control, cable handling, line setup, mounting, or borehole-side installation work. For accurate replacement matching, confirm the installed pump arrangement, the exact role of the accessory, and any size or line detail tied to the existing setup.",
+      "applications": [
+        "Pump installation and support accessories",
+        "Borehole and submersible line setup",
+        "Electrical or mounting-side pump support"
+      ],
+      "specHighlights": [
+        "Product family: pump or borehole accessory",
+        "Stock group: Wt-Borehole Accessories"
+      ],
+      "industrySlugs": [
+        "agriculture-irrigation",
+        "food-beverage",
+        "mining"
+      ],
+      "image": "/electricals/cable ties.jpeg",
+      "featured": true,
+      "shortDescription": "Cable ties 8*500mm 100 pcs is listed as a pump-support accessory used around borehole, submersible, or general fluid-handling installations to support setup, control, or serviceability.",
+      "technicalSummary": "Cable ties 8*500mm 100 pcs is presented within pumps and fluid handling as an installation-support accessory rather than a main pump body. These accessories usually support control, cable handling, line setup, mounting, or borehole-side installation work. For accurate replacement matching, confirm the installed pump arrangement, the exact role of the accessory, and any size or line detail tied to the existing setup.",
+      "keyFeatures": [
+        "Product family: pump or borehole accessory",
+        "Stock group: Wt-Borehole Accessories"
+      ],
+      "selectionNotes": [
+        "Confirm the accessory function before ordering, especially on borehole or submersible installations.",
+        "Check whether the item supports control, mounting, cable management, or rising main setup.",
+        "Installed photos or old part references help avoid accessory mismatches."
+      ],
+      "compatibilityNotes": [
+        "Compatibility depends on the installed pump arrangement and the accessory function it supports.",
+        "Borehole and submersible accessories should be checked against the existing installation layout."
+      ],
+      "rfqFields": [
+        "Pump type or installation supported",
+        "Accessory function",
+        "Size or length where relevant",
+        "Photo of the installed setup if available"
+      ],
+      "seoDescription": "Cable ties 8*500mm 100 pcs available for pump accessory sourcing, borehole installation support, and RFQ review from Vortexus Industrial Excellence."
+    },
+    {
+      "id": 17,
+      "slug": "flanges-2-1-2-ss",
+      "name": "Flanges 2 1/2' ss",
+      "itemGroup": "Wt-Water Meters",
+      "categorySlug": "monitoring-instrumentation",
+      "subcategory": "Flow Meters",
+      "summary": "Flow Meters item currently available in stock and listed in the product catalog.",
+      "description": "Flanges 2 1/2' ss is part of the current stock list under Wt-Water Meters. It is presented online as a flow meters product within monitoring & instrumentation so buyers can find it quickly, compare related items, and move into RFQ.",
+      "applications": [
+        "Online quality monitoring",
+        "Process verification",
+        "Plant visibility"
+      ],
+      "specHighlights": [
+        "Stock group: Wt-Water Meters",
+        "Category: Monitoring & Instrumentation",
+        "Model, size, or rating is usually included directly in the item name"
+      ],
+      "industrySlugs": [
+        "power-plants",
+        "food-beverage"
+      ],
+      "image": "/flow meters/Flanges 2 12 ss.jpeg",
+      "featured": true
+    },
+    {
+      "id": 23,
+      "slug": "antiscallant-high-silica-5kg",
+      "name": "Antiscallant  High Silica 5kg",
+      "itemGroup": "Wt-Chemicals",
+      "categorySlug": "water-treatment-chemicals",
+      "subcategory": "Scale Inhibitors",
+      "summary": "Antiscallant High Silica 5kg is listed as scale-control or antiscalant chemistry used where deposits, silica, or related scaling risk need to be managed inside treatment systems.",
+      "description": "Antiscallant High Silica 5kg is presented within scale-management chemistry for buyers sourcing antiscalants and related treatment chemicals used to protect membranes, control deposits, or stabilize process-water performance. Selection should be matched to the water profile, scaling tendency, and the point where the chemical enters the process. Before quotation, confirm whether the program is tied to RO pretreatment, general deposit control, or another scaling-related application.",
+      "applications": [
+        "Scale control in membrane and treatment systems",
+        "Pretreatment chemical support",
+        "Deposit management in process-water lines"
+      ],
+      "specHighlights": [
+        "Product family: scale-inhibitor or antiscalant chemistry",
+        "Stock group: Wt-Chemicals"
+      ],
+      "industrySlugs": [
+        "food-beverage",
+        "textile",
+        "power-plants"
+      ],
+      "image": "/images/products/water-treatment-chemicals/antiscalant-low.webp",
+      "featured": true,
+      "shortDescription": "Antiscallant High Silica 5kg is listed as scale-control or antiscalant chemistry used where deposits, silica, or related scaling risk need to be managed inside treatment systems.",
+      "technicalSummary": "Antiscallant High Silica 5kg is presented within scale-management chemistry for buyers sourcing antiscalants and related treatment chemicals used to protect membranes, control deposits, or stabilize process-water performance. Selection should be matched to the water profile, scaling tendency, and the point where the chemical enters the process. Before quotation, confirm whether the program is tied to RO pretreatment, general deposit control, or another scaling-related application.",
+      "keyFeatures": [
+        "Product family: scale-inhibitor or antiscalant chemistry",
+        "Stock group: Wt-Chemicals"
+      ],
+      "selectionNotes": [
+        "Confirm whether the treatment challenge is scaling, silica control, stain control, or general deposit management.",
+        "Check the system type, especially if the chemical is tied to RO pretreatment.",
+        "Feed-water profile and existing dosing rate help verify the correct chemical path."
+      ],
+      "compatibilityNotes": [
+        "Compatibility should be checked against membrane chemistry, feed-water profile, and dosing or cleaning program.",
+        "Wrong chemical selection can reduce performance or damage downstream treatment stages."
+      ],
+      "rfqFields": [
+        "System type, especially RO where applicable",
+        "Current scaling or fouling issue",
+        "Pack size or quantity required",
+        "Water analysis or treatment history if available"
+      ],
+      "seoDescription": "Antiscallant High Silica 5kg listed for scale-control chemistry, antiscalant review, and RFQ support from Vortexus Industrial Excellence."
+    },
+    {
+      "id": 111,
+      "slug": "telescopic-handle-2-4m",
+      "name": "Telescopic Handle 2-4M",
+      "itemGroup": "Wt-Pool Accessories",
+      "categorySlug": "disinfection-systems",
+      "subcategory": "Pool Accessories",
+      "summary": "Telescopic Handle 2-4M is listed as a pool-service accessory used around cleaning, maintenance, safety, or recreational-water system support.",
+      "description": "Telescopic Handle 2-4M is presented within disinfection systems for buyers sourcing accessories used around swimming-pool maintenance and operational support. These items should be selected according to the installed pool arrangement and the specific cleaning, safety, or operating role they support. During RFQ, confirm the accessory function and any size or fit detail tied to the current pool setup.",
+      "applications": [
+        "Pool maintenance and service support",
+        "Swimming-pool cleaning and operating accessories",
+        "Support items around recreational water systems"
+      ],
+      "specHighlights": [
+        "Product family: pool maintenance accessory",
+        "Stock group: Wt-Pool Accessories"
+      ],
+      "industrySlugs": [
+        "food-beverage",
+        "pharmaceutical"
+      ],
+      "image": "/flow meters/Plastic Flange.jpeg",
+      "featured": true,
+      "shortDescription": "Telescopic Handle 2-4M is listed as a pool-service accessory used around cleaning, maintenance, safety, or recreational-water system support.",
+      "technicalSummary": "Telescopic Handle 2-4M is presented within disinfection systems for buyers sourcing accessories used around swimming-pool maintenance and operational support. These items should be selected according to the installed pool arrangement and the specific cleaning, safety, or operating role they support. During RFQ, confirm the accessory function and any size or fit detail tied to the current pool setup.",
+      "keyFeatures": [
+        "Product family: pool maintenance accessory",
+        "Stock group: Wt-Pool Accessories"
+      ],
+      "selectionNotes": [
+        "Confirm whether the item supports cleaning, safety, lighting, or pool-side maintenance.",
+        "Check installed size or model where the accessory connects to existing pool hardware.",
+        "Pool-service accessories should be matched against the current setup before RFQ."
+      ],
+      "compatibilityNotes": [
+        "Compatibility depends on the pool service method and the equipment or chemical program already in use.",
+        "Do not assume all pool-care items interchange without checking the current installation or maintenance routine."
+      ],
+      "rfqFields": [
+        "Pool application",
+        "Current maintenance or equipment reference",
+        "Quantity required",
+        "Whether the request is for replacement or routine supply"
+      ],
+      "seoDescription": "Telescopic Handle 2-4M available for pool accessory sourcing and RFQ support from Vortexus Industrial Excellence."
+    },
+    {
+      "id": 161,
+      "slug": "norwa-blower-nhbh-002-34-ir5-3ph-1-6kw-single-stage",
+      "name": "Norwa Blower NHBH-002-34-IR5 3PH 1.6KW Single Stage",
+      "itemGroup": "Wt-Blowers",
+      "categorySlug": "wastewater-treatment-equipment",
+      "subcategory": "Aeration Systems",
+      "summary": "Aeration Systems item currently available in stock and listed in the product catalog.",
+      "description": "Norwa Blower NHBH-002-34-IR5 3PH 1.6KW Single Stage is part of the current stock list under Wt-Blowers. It is presented online as a aeration systems product within wastewater treatment equipment so buyers can find it quickly, compare related items, and move into RFQ.",
+      "applications": [
+        "Biological treatment",
+        "Solids separation",
+        "Dewatering support"
+      ],
+      "specHighlights": [
+        "Stock group: Wt-Blowers",
+        "Category: Wastewater Treatment Equipment",
+        "Model, size, or rating is usually included directly in the item name"
+      ],
+      "industrySlugs": [
+        "textile",
+        "mining",
+        "food-beverage"
+      ],
+      "image": "/place holder.jpg",
+      "featured": true
+    }
+  ]
+}

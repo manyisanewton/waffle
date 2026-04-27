@@ -9,8 +9,10 @@ import AdminLoginPage from './pages/AdminLoginPage'
 import AboutPage from './pages/AboutPage'
 import BlogPage from './pages/BlogPage'
 import BlogPostPage from './pages/BlogPostPage'
+import BrandDetailPage from './pages/BrandDetailPage'
 import ContactPage from './pages/ContactPage'
 import CompareProductsPage from './pages/CompareProductsPage'
+import FaqPage from './pages/FaqPage'
 import HomePage from './pages/HomePage'
 import IndustriesPage from './pages/IndustriesPage'
 import IndustryDetailPage from './pages/IndustryDetailPage'
@@ -46,12 +48,14 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="about-us" element={<AboutPage />} />
           <Route path="products" element={<ProductsPage />} />
+          <Route path="brands/:brandSlug" element={<BrandDetailPage />} />
           <Route path="products/category/:categorySlug" element={<ProductCategoryPage />} />
           <Route path="products/item/:productSlug" element={<ProductDetailPage />} />
           <Route path="compare" element={<CompareProductsPage />} />
           <Route path="industries" element={<IndustriesPage />} />
           <Route path="industries/:industrySlug" element={<IndustryDetailPage />} />
           <Route path="request-quote" element={<RequestQuotePage />} />
+          <Route path="faq" element={<FaqPage />} />
           <Route path="services" element={<ServicesPage />} />
           <Route path="solutions" element={<SolutionsPage />} />
           <Route path="solutions/:slug" element={<SolutionDetailPage />} />

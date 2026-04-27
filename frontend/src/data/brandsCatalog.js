@@ -235,3 +235,29 @@ export function productMatchesBrand(product, brand) {
   const haystack = `${product.name} ${product.summary || ''} ${product.description || ''}`.toLowerCase()
   return brand.matchTerms.some((term) => haystack.includes(term.toLowerCase()))
 }
+
+export function formatBrandImageName(imagePath = '') {
+  const fileName = imagePath.split('/').pop() || ''
+  const baseName = fileName.replace(/\.[^.]+$/, '')
+
+  return baseName
+    .replace(/[_-]+/g, ' ')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+export function buildBrandImageDescription(brandName, imageName, matchedProduct = null) {
+  if (matchedProduct) {
+    return matchedProduct.shortDescription || matchedProduct.summary || `${matchedProduct.name} from ${brandName}.`
+  }
+
+  return `${imageName} from the ${brandName} range is shown here as a visual reference so buyers can identify the product family and move into RFQ or catalog search.`
+}
+
+export function getBrandDescription(brand) {
+  if (!brand) {
+    return ''
+  }
+
+  return `${brand.name} products available in the Vortexus catalog for industrial water treatment, pumping, filtration, chemicals, controls, and RFQ-ready buying.`
+}

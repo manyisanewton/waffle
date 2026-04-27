@@ -1,27 +1,11 @@
-import { useEffect, useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import FullBleedHero from '../components/sections/FullBleedHero'
 import Seo from '../components/seo/Seo'
 import { industriesCatalog } from '../data/productCatalog'
-import { loadCatalogSummary } from '../lib/catalogApi'
+import { getCatalogSummary } from '../lib/catalogApi'
 
 function IndustriesPage() {
-  const [catalogSummary, setCatalogSummary] = useState({ industryCounts: {} })
-
-  useEffect(() => {
-    let isMounted = true
-    loadCatalogSummary()
-      .then((summary) => {
-        if (isMounted) {
-          setCatalogSummary(summary)
-        }
-      })
-      .catch(() => {})
-
-    return () => {
-      isMounted = false
-    }
-  }, [])
+  const catalogSummary = getCatalogSummary()
 
   return (
     <div className="space-y-16 text-brand-ink lg:space-y-24">
