@@ -14,6 +14,7 @@ function ProductCategoryPage() {
   const { categorySlug } = useParams()
   const category = getCategoryBySlug(categorySlug)
   const catalogProducts = getCatalog()
+  const isSwimmingPoolCategory = categorySlug === 'swimming-pool-systems'
   const [activeSubcategory, setActiveSubcategory] = useState('all')
   const [query, setQuery] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
@@ -64,7 +65,18 @@ function ProductCategoryPage() {
         description={category.description}
         imageSrc={category.image}
         imageAlt={category.name}
-        overlayClassName="theme-hero-dark"
+        media={
+          isSwimmingPoolCategory ? (
+            <img
+              src={category.image}
+              alt={category.name}
+              className="absolute inset-0 h-full w-full object-cover object-top"
+            />
+          ) : undefined
+        }
+        overlayClassName={isSwimmingPoolCategory ? '' : 'theme-hero-dark'}
+        hideContent={isSwimmingPoolCategory}
+        hideWaterline={isSwimmingPoolCategory}
       >
         <div className="flex flex-wrap gap-4 text-sm font-medium text-white/76">
           <p>{categoryProducts.length} products in this category</p>
@@ -127,26 +139,26 @@ function ProductCategoryPage() {
                   alt={product.name}
                   className="h-52 w-full bg-white p-3 object-contain"
                 />
-                <div className="space-y-2.5 px-4 py-4">
+                <div className="space-y-2 px-4 py-4">
                   <div className="flex flex-wrap items-center gap-2">
                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-brand-green">
                       {product.subcategory}
                     </p>
                   </div>
-                  <h2 className="font-display text-[1.55rem] leading-tight font-semibold text-brand-ink">
+                  <h2 className="font-display text-[1.06rem] leading-snug font-semibold text-brand-ink sm:text-[1.14rem] xl:text-[1.22rem]">
                     {product.name}
                   </h2>
-                  <div className="flex flex-wrap gap-2.5">
+                  <div className="flex flex-wrap gap-2">
                     <NavLink
                       to={`/products/item/${product.slug}`}
-                      className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-3.5 py-2 text-[0.95rem] font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
+                      className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-3 py-2 text-[0.88rem] font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
                     >
                       View Details
                     </NavLink>
                     <button
                       type="button"
                       onClick={() => setRfqProduct(product)}
-                      className="inline-flex items-center justify-center rounded-full bg-brand-green px-3.5 py-2 text-[0.95rem] font-semibold text-white transition hover:bg-brand-green-soft"
+                      className="inline-flex items-center justify-center rounded-full bg-brand-green px-3 py-2 text-[0.88rem] font-semibold text-white transition hover:bg-brand-green-soft"
                     >
                       RFQ
                     </button>

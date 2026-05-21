@@ -38,7 +38,18 @@ export const brandsCatalog = [
     matchTerms: ['certikin', 'glass media'],
     galleryImages: ['/certikin/External thread vac point with lid - 50mm long.png'],
   },
-  { slug: 'cnp', name: 'CNP', image: '/brands/cnp.jpeg', matchTerms: ['cnp'], galleryImages: [] },
+  {
+    slug: 'cnp',
+    name: 'CNP',
+    image: '/brands/cnp.jpeg',
+    matchTerms: ['cnp'],
+    galleryImages: [
+      '/CNP/Vertical Inline Centrifugal Pump.png',
+      '/CNP/Blue Cast Iron End-Suction Centrifugal Pump.png',
+      '/CNP/Vertical Multistage Centrifugal Pump.png',
+      '/CNP/Stainless Steel Horizontal Centrifugal Pump.png',
+    ],
+  },
   {
     slug: 'danfoss',
     name: 'Danfoss',
@@ -54,8 +65,6 @@ export const brandsCatalog = [
       '/danfos/network pressure management.png',
     ],
   },
-
-  { slug: 'frotec', name: 'Frotec', image: '/brands/frotect.jpeg', matchTerms: ['frotec', 'frotect'], galleryImages: [] },
   {
     slug: 'genesys',
     name: 'Genesys',

@@ -307,7 +307,7 @@ function ProductsPage() {
                     <p className="text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-green">
                       {activeBrand.name}
                     </p>
-                    <h4 className="font-display text-[0.98rem] font-semibold leading-snug text-brand-ink sm:text-base">
+                    <h4 className="font-display text-[0.92rem] font-semibold leading-snug text-brand-ink sm:text-[0.98rem]">
                       {displayName}
                     </h4>
                     <p className="text-sm leading-6 text-brand-muted">
@@ -320,7 +320,7 @@ function ProductsPage() {
                     <div className="flex flex-wrap gap-2.5 pt-1">
                       <NavLink
                         to={detailsHref}
-                        className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-3.5 py-2 text-[0.95rem] font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
+                        className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-3 py-2 text-[0.88rem] font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
                       >
                         {matchedProduct ? 'View Details' : 'Search Catalog'}
                       </NavLink>
@@ -333,7 +333,7 @@ function ProductsPage() {
                             productInterest: displayName,
                             serviceInterest: activeBrand.name,
                           })}
-                        className="inline-flex items-center justify-center rounded-full bg-brand-green px-3.5 py-2 text-[0.95rem] font-semibold text-white transition hover:bg-brand-green-soft"
+                        className="inline-flex items-center justify-center rounded-full bg-brand-green px-3 py-2 text-[0.88rem] font-semibold text-white transition hover:bg-brand-green-soft"
                       >
                         RFQ
                       </button>
@@ -393,19 +393,19 @@ function ProductsPage() {
                 alt={product.name}
                 className="h-52 w-full bg-white p-3 object-contain"
               />
-              <div className="space-y-2.5 px-4 py-4">
+              <div className="space-y-2 px-4 py-4">
                 <div className="flex flex-wrap gap-2 text-[0.68rem] font-semibold uppercase tracking-[0.18em] text-brand-green">
                   <span>{product.subcategory}</span>
                 </div>
                 <div>
-                  <h3 className="font-display text-[1.2rem] leading-tight font-semibold text-brand-ink sm:text-[1.35rem] xl:text-[1.55rem]">
+                  <h3 className="font-display text-[1.02rem] leading-snug font-semibold text-brand-ink sm:text-[1.12rem] xl:text-[1.22rem]">
                     {product.name}
                   </h3>
                 </div>
-                <div className="flex flex-wrap gap-2.5">
+                <div className="flex flex-wrap gap-2">
                   <NavLink
                     to={`/products/item/${product.slug}`}
-                    className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-3.5 py-2 text-[0.95rem] font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
+                    className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-3 py-2 text-[0.88rem] font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
                   >
                     View Details
                   </NavLink>
@@ -418,7 +418,7 @@ function ProductsPage() {
                         productInterest: product.name,
                         serviceInterest: product.subcategory,
                       })}
-                    className="inline-flex items-center justify-center rounded-full bg-brand-green px-3.5 py-2 text-[0.95rem] font-semibold text-white transition hover:bg-brand-green-soft"
+                    className="inline-flex items-center justify-center rounded-full bg-brand-green px-3 py-2 text-[0.88rem] font-semibold text-white transition hover:bg-brand-green-soft"
                   >
                     RFQ
                   </button>
@@ -459,7 +459,7 @@ function ProductsPage() {
               <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-brand-green">
                 {product.subcategory}
               </p>
-              <h3 className="mt-2.5 font-display text-[1.1rem] leading-tight font-semibold text-brand-ink sm:text-[1.2rem] xl:text-[1.35rem]">
+              <h3 className="mt-2.5 font-display text-[0.98rem] leading-snug font-semibold text-brand-ink sm:text-[1.06rem] xl:text-[1.12rem]">
                 {product.name}
               </h3>
               <NavLink

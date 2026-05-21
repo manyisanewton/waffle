@@ -1509,12 +1509,12 @@
   {
     "id": 167,
     "slug": "automatic-softener-valve-f99a1-2-63515-15m-h",
-    "name": "Automatic Softener Valve F99A1 2\"(63515)15m\u00b3/h",
+    "name": "Automatic Softener Valve F99A1 2\"(63515)15m³/h",
     "itemGroup": "Wt-Mpvs",
     "categorySlug": "pumps-fluid-handling",
     "subcategory": "Valves",
     "summary": "Valves item currently available in stock and listed in the product catalog.",
-    "description": "Automatic Softener Valve F99A1 2\"(63515)15m\u00b3/h is part of the current stock list under Wt-Mpvs. It is presented online as a valves product within pumps & fluid handling so buyers can find it quickly, compare related items, and move into RFQ.",
+    "description": "Automatic Softener Valve F99A1 2\"(63515)15m³/h is part of the current stock list under Wt-Mpvs. It is presented online as a valves product within pumps & fluid handling so buyers can find it quickly, compare related items, and move into RFQ.",
     "applications": [
       "Water transfer",
       "Pressurization",
@@ -1536,12 +1536,12 @@
   {
     "id": 168,
     "slug": "automatic-softener-valve-f118a-1-18604a-4m-h",
-    "name": "Automatic Softener Valve F118A 1\" (18604A)4m\u00b3/h",
+    "name": "Automatic Softener Valve F118A 1\" (18604A)4m³/h",
     "itemGroup": "Wt-Mpvs",
     "categorySlug": "pumps-fluid-handling",
     "subcategory": "Valves",
     "summary": "Valves item currently available in stock and listed in the product catalog.",
-    "description": "Automatic Softener Valve F118A 1\" (18604A)4m\u00b3/h is part of the current stock list under Wt-Mpvs. It is presented online as a valves product within pumps & fluid handling so buyers can find it quickly, compare related items, and move into RFQ.",
+    "description": "Automatic Softener Valve F118A 1\" (18604A)4m³/h is part of the current stock list under Wt-Mpvs. It is presented online as a valves product within pumps & fluid handling so buyers can find it quickly, compare related items, and move into RFQ.",
     "applications": [
       "Water transfer",
       "Pressurization",
@@ -6437,12 +6437,12 @@
   {
     "id": 2595,
     "slug": "auxin-f92-2-twin-alternating-softeners-valves-two-valves",
-    "name": "F92\u00d72 Twin Alternating Softeners Valves(two valves",
+    "name": "F92×2 Twin Alternating Softeners Valves(two valves",
     "itemGroup": "Auxin",
     "categorySlug": "filtration-systems",
     "subcategory": "Cartridge Filters",
-    "summary": "F92\u00d72 Twin Alternating Softeners Valves(two valves from the Auxin product showcase now listed in the catalog.",
-    "description": "F92\u00d72 Twin Alternating Softeners Valves(two valves is a Auxin showcase product added to the Vortexus catalog for product discovery, comparison, and RFQ. It is grouped under cartridge filters within the current product structure.",
+    "summary": "F92×2 Twin Alternating Softeners Valves(two valves from the Auxin product showcase now listed in the catalog.",
+    "description": "F92×2 Twin Alternating Softeners Valves(two valves is a Auxin showcase product added to the Vortexus catalog for product discovery, comparison, and RFQ. It is grouped under cartridge filters within the current product structure.",
     "applications": [
       "Auxin product selection",
       "Technical review",
@@ -6458,7 +6458,7 @@
       "pharmaceutical",
       "agriculture-irrigation"
     ],
-    "image": "/run-xin/F92\u00d72 Twin Alternating Softeners Valves(two valves.png",
+    "image": "/run-xin/F92×2 Twin Alternating Softeners Valves(two valves.png",
     "featured": false
   },
   {
@@ -7651,13 +7651,13 @@
   },
   {
     "id": 2630,
-    "slug": "lowara-kreiselpumpe-ahnlich-typ-co35005a",
-    "name": "Lowara Kreiselpumpe \u00e4hnlich Typ CO35005A",
+    "slug": "lowara-kreiselpump",
+    "name": "Lowara Kreiselpump",
     "itemGroup": "Lowara",
     "categorySlug": "pumps-fluid-handling",
     "subcategory": "Centrifugal Pumps",
     "summary": "Lowara centrifugal pump unit similar to type CO35005A for industrial transfer and circulation requirements.",
-    "description": "Lowara Kreiselpumpe \u00e4hnlich Typ CO35005A is part of the current stock list under Lowara. It is presented online as a pumps & fluid handling product so buyers can assess centrifugal pump options and proceed to RFQ quickly.",
+    "description": "Lowara Kreiselpump is part of the current stock list under Lowara. It is presented online as a pumps & fluid handling product so buyers can assess centrifugal pump options and proceed to RFQ quickly.",
     "applications": [
       "Industrial circulation",
       "Water transfer lines",
@@ -7673,7 +7673,7 @@
       "agriculture-irrigation",
       "textile"
     ],
-    "image": "/Lowara/Lowara Kreiselpumpe \u00e4hnlich Typ CO35005A.png",
+    "image": "/Lowara/Lowara Kreiselpump.png",
     "featured": false
   },
   {
@@ -7727,7 +7727,7 @@
       "power-plants",
       "mining"
     ],
-    "image": "/Xylem/Gas Feed V10K\u2122 Vacuum System.png",
+    "image": "/Xylem/Gas Feed V10K™ Vacuum System.png",
     "featured": false
   },
   {
@@ -8738,9 +8738,21 @@
     "subcategory": "RO Membranes",
     "summary": "RO Membranes item currently available in stock and listed in the product catalog.",
     "description": "Brackish Water Reverse Osmosis Membrane is part of the current stock list under Wt-Keensen. It is presented online as a ro membranes product within reverse osmosis systems so buyers can find it quickly, compare related items, and move into RFQ.",
-    "applications": ["Water purification", "Process fluid treatment", "Industrial filtration"],
-    "specHighlights": ["Brand: Keensen", "Category: Reverse Osmosis Systems", "Model, size, or rating is usually included directly in the item name"],
-    "industrySlugs": ["power-plants", "food-beverage", "mining"],
+    "applications": [
+      "Water purification",
+      "Process fluid treatment",
+      "Industrial filtration"
+    ],
+    "specHighlights": [
+      "Brand: Keensen",
+      "Category: Reverse Osmosis Systems",
+      "Model, size, or rating is usually included directly in the item name"
+    ],
+    "industrySlugs": [
+      "power-plants",
+      "food-beverage",
+      "mining"
+    ],
     "image": "/keensen/Brackish Water Reverse Osmosis Membrane.png",
     "featured": false
   },
@@ -8753,9 +8765,21 @@
     "subcategory": "RO Membranes",
     "summary": "RO Membranes item currently available in stock and listed in the product catalog.",
     "description": "NF Membrane Elements is part of the current stock list under Wt-Keensen. It is presented online as a ro membranes product within reverse osmosis systems so buyers can find it quickly, compare related items, and move into RFQ.",
-    "applications": ["Water purification", "Process fluid treatment", "Industrial filtration"],
-    "specHighlights": ["Brand: Keensen", "Category: Reverse Osmosis Systems", "Model, size, or rating is usually included directly in the item name"],
-    "industrySlugs": ["power-plants", "food-beverage", "mining"],
+    "applications": [
+      "Water purification",
+      "Process fluid treatment",
+      "Industrial filtration"
+    ],
+    "specHighlights": [
+      "Brand: Keensen",
+      "Category: Reverse Osmosis Systems",
+      "Model, size, or rating is usually included directly in the item name"
+    ],
+    "industrySlugs": [
+      "power-plants",
+      "food-beverage",
+      "mining"
+    ],
     "image": "/keensen/NF Membrane Elements.png",
     "featured": false
   },
@@ -8768,9 +8792,21 @@
     "subcategory": "RO Membranes",
     "summary": "RO Membranes item currently available in stock and listed in the product catalog.",
     "description": "Nanofiltration membrane 8040 is part of the current stock list under Wt-Keensen. It is presented online as a ro membranes product within reverse osmosis systems so buyers can find it quickly, compare related items, and move into RFQ.",
-    "applications": ["Water purification", "Process fluid treatment", "Industrial filtration"],
-    "specHighlights": ["Brand: Keensen", "Category: Reverse Osmosis Systems", "Model, size, or rating is usually included directly in the item name"],
-    "industrySlugs": ["power-plants", "food-beverage", "mining"],
+    "applications": [
+      "Water purification",
+      "Process fluid treatment",
+      "Industrial filtration"
+    ],
+    "specHighlights": [
+      "Brand: Keensen",
+      "Category: Reverse Osmosis Systems",
+      "Model, size, or rating is usually included directly in the item name"
+    ],
+    "industrySlugs": [
+      "power-plants",
+      "food-beverage",
+      "mining"
+    ],
     "image": "/keensen/Nanofiltration membrane 8040 .png",
     "featured": false
   },
@@ -8783,9 +8819,21 @@
     "subcategory": "RO Membranes",
     "summary": "RO Membranes item currently available in stock and listed in the product catalog.",
     "description": "Reverse Osmosis Membrane is part of the current stock list under Wt-Keensen. It is presented online as a ro membranes product within reverse osmosis systems so buyers can find it quickly, compare related items, and move into RFQ.",
-    "applications": ["Water purification", "Process fluid treatment", "Industrial filtration"],
-    "specHighlights": ["Brand: Keensen", "Category: Reverse Osmosis Systems", "Model, size, or rating is usually included directly in the item name"],
-    "industrySlugs": ["power-plants", "food-beverage", "mining"],
+    "applications": [
+      "Water purification",
+      "Process fluid treatment",
+      "Industrial filtration"
+    ],
+    "specHighlights": [
+      "Brand: Keensen",
+      "Category: Reverse Osmosis Systems",
+      "Model, size, or rating is usually included directly in the item name"
+    ],
+    "industrySlugs": [
+      "power-plants",
+      "food-beverage",
+      "mining"
+    ],
     "image": "/keensen/Reverse Osmosis Membrane.png",
     "featured": false
   },
@@ -8798,9 +8846,21 @@
     "subcategory": "RO Membranes",
     "summary": "RO Membranes item currently available in stock and listed in the product catalog.",
     "description": "Sea Water Desalination RO Membrane Elements is part of the current stock list under Wt-Keensen. It is presented online as a ro membranes product within reverse osmosis systems so buyers can find it quickly, compare related items, and move into RFQ.",
-    "applications": ["Water purification", "Process fluid treatment", "Industrial filtration"],
-    "specHighlights": ["Brand: Keensen", "Category: Reverse Osmosis Systems", "Model, size, or rating is usually included directly in the item name"],
-    "industrySlugs": ["power-plants", "food-beverage", "mining"],
+    "applications": [
+      "Water purification",
+      "Process fluid treatment",
+      "Industrial filtration"
+    ],
+    "specHighlights": [
+      "Brand: Keensen",
+      "Category: Reverse Osmosis Systems",
+      "Model, size, or rating is usually included directly in the item name"
+    ],
+    "industrySlugs": [
+      "power-plants",
+      "food-beverage",
+      "mining"
+    ],
     "image": "/keensen/Sea Water Desalination RO Membrane Elements.png",
     "featured": false
   },
@@ -8813,10 +8873,498 @@
     "subcategory": "RO Membranes",
     "summary": "RO Membranes item currently available in stock and listed in the product catalog.",
     "description": "Ultra Low Pressure RO Membrane is part of the current stock list under Wt-Keensen. It is presented online as a ro membranes product within reverse osmosis systems so buyers can find it quickly, compare related items, and move into RFQ.",
-    "applications": ["Water purification", "Process fluid treatment", "Industrial filtration"],
-    "specHighlights": ["Brand: Keensen", "Category: Reverse Osmosis Systems", "Model, size, or rating is usually included directly in the item name"],
-    "industrySlugs": ["power-plants", "food-beverage", "mining"],
+    "applications": [
+      "Water purification",
+      "Process fluid treatment",
+      "Industrial filtration"
+    ],
+    "specHighlights": [
+      "Brand: Keensen",
+      "Category: Reverse Osmosis Systems",
+      "Model, size, or rating is usually included directly in the item name"
+    ],
+    "industrySlugs": [
+      "power-plants",
+      "food-beverage",
+      "mining"
+    ],
     "image": "/keensen/Ultra Low Pressure RO Membrane.png",
+    "featured": false
+  },
+  {
+    "id": null,
+    "slug": "cnp-vertical-inline-centrifugal-pump",
+    "name": "CNP Vertical Inline Centrifugal Pump",
+    "itemGroup": "Wt-Pumps",
+    "categorySlug": "pumps-fluid-handling",
+    "subcategory": "Centrifugal Pumps",
+    "summary": "Compact vertical inline centrifugal pump designed for pressure boosting, HVAC circulation, water transfer, and industrial piping systems.",
+    "description": "Compact vertical inline centrifugal pump designed for pressure boosting, HVAC circulation, water transfer, and industrial piping systems. Space-saving design delivers efficient flow performance, stable pressure, and reliable continuous operation.",
+    "applications": [
+      "Pressure boosting",
+      "HVAC circulation",
+      "Industrial piping systems"
+    ],
+    "specHighlights": [
+      "Category: Pumps & Fluid Handling",
+      "Pump family: Vertical inline centrifugal",
+      "Compact pressure-boosting duty support"
+    ],
+    "industrySlugs": [
+      "power-plants",
+      "food-beverage",
+      "agriculture-irrigation"
+    ],
+    "image": "/CNP/Vertical Inline Centrifugal Pump.png",
+    "featured": false
+  },
+  {
+    "id": null,
+    "slug": "cnp-blue-cast-iron-end-suction-centrifugal-pump",
+    "name": "CNP Blue Cast Iron End-Suction Centrifugal Pump",
+    "itemGroup": "Wt-Pumps",
+    "categorySlug": "pumps-fluid-handling",
+    "subcategory": "Centrifugal Pumps",
+    "summary": "Heavy-duty cast iron end-suction centrifugal pump designed for high-flow water transfer, pressure boosting, and industrial circulation systems.",
+    "description": "Heavy-duty cast iron end-suction centrifugal pump designed for high-flow water transfer, pressure boosting, and industrial circulation systems. Durable construction ensures reliable performance, efficient operation, and long service life in demanding applications.",
+    "applications": [
+      "High-flow water transfer",
+      "Pressure boosting",
+      "Industrial circulation systems"
+    ],
+    "specHighlights": [
+      "Category: Pumps & Fluid Handling",
+      "Pump family: End-suction centrifugal",
+      "Cast iron construction for demanding duty"
+    ],
+    "industrySlugs": [
+      "mining",
+      "power-plants",
+      "agriculture-irrigation"
+    ],
+    "image": "/CNP/Blue Cast Iron End-Suction Centrifugal Pump.png",
+    "featured": false
+  },
+  {
+    "id": null,
+    "slug": "cnp-vertical-multistage-centrifugal-pump",
+    "name": "CNP Vertical Multistage Centrifugal Pump",
+    "itemGroup": "Wt-Pumps",
+    "categorySlug": "pumps-fluid-handling",
+    "subcategory": "Centrifugal Pumps",
+    "summary": "High-pressure vertical multistage centrifugal pump engineered for efficient water boosting, RO systems, filtration plants, and industrial applications.",
+    "description": "High-pressure vertical multistage centrifugal pump engineered for efficient water boosting, RO systems, filtration plants, and industrial applications. Compact stainless steel construction delivers stable pressure, energy efficiency, and long operational life.",
+    "applications": [
+      "RO systems",
+      "Filtration plants",
+      "High-pressure water boosting"
+    ],
+    "specHighlights": [
+      "Category: Pumps & Fluid Handling",
+      "Pump family: Vertical multistage centrifugal",
+      "Compact stainless steel pressure-boosting duty"
+    ],
+    "industrySlugs": [
+      "food-beverage",
+      "pharmaceutical",
+      "power-plants"
+    ],
+    "image": "/CNP/Vertical Multistage Centrifugal Pump.png",
+    "featured": false
+  },
+  {
+    "id": null,
+    "slug": "cnp-stainless-steel-horizontal-centrifugal-pump",
+    "name": "CNP Stainless Steel Horizontal Centrifugal Pump",
+    "itemGroup": "Wt-Pumps",
+    "categorySlug": "pumps-fluid-handling",
+    "subcategory": "Centrifugal Pumps",
+    "summary": "High-performance stainless steel horizontal centrifugal pump designed for clean water transfer, pressure boosting, and industrial fluid handling.",
+    "description": "High-performance stainless steel horizontal centrifugal pump designed for clean water transfer, pressure boosting, and industrial fluid handling. Corrosion-resistant construction ensures durability, efficient operation, and dependable long-term performance.",
+    "applications": [
+      "Clean water transfer",
+      "Pressure boosting",
+      "Industrial fluid handling"
+    ],
+    "specHighlights": [
+      "Category: Pumps & Fluid Handling",
+      "Pump family: Horizontal centrifugal",
+      "Corrosion-resistant stainless steel build"
+    ],
+    "industrySlugs": [
+      "food-beverage",
+      "agriculture-irrigation",
+      "mining"
+    ],
+    "image": "/CNP/Stainless Steel Horizontal Centrifugal Pump.png",
+    "featured": false
+  },
+  {
+    "id": 30007,
+    "slug": "pool-air-blower-220v-1ph",
+    "name": "Pool Air Blower 220V 1PH",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Pumps",
+    "summary": "High-pressure pool air blower for spa jets, bubble effects, and aeration support in swimming pool and wellness systems.",
+    "description": "Compact high-pressure pool air blower built for spa jets, bubble benches, air massage features, and oxygenation support in swimming pool systems. The 220V single-phase design delivers stable dry airflow, efficient operation, and dependable performance for residential and commercial installations.",
+    "applications": [
+      "Spa jet air supply",
+      "Bubble features and air massage",
+      "Pool aeration support"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Pool air blower",
+      "220V single-phase dry airflow duty"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Air Blower Pool Pump 220V 1PH Industrial High Pressure Vortex Vacuum Pump Dry Air Blower For Industrial Machine.png",
+    "featured": false
+  },
+  {
+    "id": 30008,
+    "slug": "arc-hook-pool-waterfall",
+    "name": "Arc Hook Pool Waterfall",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Water Features",
+    "summary": "Decorative stainless pool waterfall feature for visual appeal, water circulation, and premium spa-style finishing.",
+    "description": "Arc hook stainless steel waterfall feature designed to create a clean sheet of flowing water for swimming pools and spas. It adds a premium architectural look while supporting circulation, sensory relaxation, and upscale leisure installations.",
+    "applications": [
+      "Swimming pool water features",
+      "Spa visual enhancements",
+      "Decorative recirculation outlets"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Pool waterfall feature",
+      "Architectural stainless decorative outlet"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Arc Hook Water Waterfall – Unique Water Feature for Swimming Pools and Spas.png",
+    "featured": false
+  },
+  {
+    "id": 30009,
+    "slug": "cartridge-filter-pump-combo",
+    "name": "Cartridge Filter Pump Combo",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Filters",
+    "summary": "Integrated cartridge filter and circulation pump combo for compact pool filtration and routine water clarity control.",
+    "description": "Integrated cartridge filter pump combo designed for compact swimming pools, above-ground systems, and light-duty circulation needs. The combined unit simplifies installation, supports effective debris removal, and helps maintain clear, balanced pool water with lower installation complexity.",
+    "applications": [
+      "Compact pool filtration",
+      "Above-ground pool circulation",
+      "Routine water clarity control"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Pool filter pump combo",
+      "Integrated filtration and circulation package"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Cartridge Filter Pump Combo For Swimming Pools.png",
+    "featured": false
+  },
+  {
+    "id": 30010,
+    "slug": "luxury-vichy-spa-shower",
+    "name": "Luxury Vichy Spa Shower",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Spa & Wellness Showers",
+    "summary": "Multi-head spa shower system for hydrotherapy zones, wellness suites, and premium leisure installations.",
+    "description": "Luxury Vichy spa shower with multiple shower heads designed for hydrotherapy treatment rooms, wellness centers, and premium leisure spaces. The layout supports full-body rinse coverage, relaxation-focused water delivery, and high-end spa presentation.",
+    "applications": [
+      "Spa hydrotherapy rooms",
+      "Wellness shower zones",
+      "Premium leisure facilities"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Spa shower system",
+      "Multi-head hydrotherapy-style configuration"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Luxury Vichy Shower Luxury Spa Shower with Multiple Shower Heads.png",
+    "featured": false
+  },
+  {
+    "id": 30011,
+    "slug": "pool-telescopic-pole",
+    "name": "Pool Telescopic Pole",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Cleaning Tools",
+    "summary": "Adjustable telescopic pole for pool brushes, skimmers, vacuums, and routine cleaning access.",
+    "description": "Adjustable telescopic pool pole built to extend operator reach for skimmers, wall brushes, vacuum heads, and maintenance attachments. It improves cleaning access across pool floors, walls, and surface areas while keeping routine care efficient and controlled.",
+    "applications": [
+      "Pool wall brushing",
+      "Surface skimming support",
+      "Vacuum head extension"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Pool cleaning pole",
+      "Adjustable reach for multi-tool cleaning use"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Pool Telescopic Pole – Adjustable Cleaning Pole for Swimming Pool Accessorie.png",
+    "featured": false
+  },
+  {
+    "id": 30012,
+    "slug": "fiberglass-sand-filter-combo",
+    "name": "Fiberglass Sand Filter Combo",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Filters",
+    "summary": "Fiberglass sand filter combo for complete pool filtration packages with durable corrosion-resistant housing.",
+    "description": "Fiberglass sand filter combo designed for pool water clarification, suspended solids removal, and packaged circulation systems. The corrosion-resistant vessel supports dependable outdoor use and stable filtration performance in commercial and residential pools.",
+    "applications": [
+      "Commercial pool filtration",
+      "Residential pool circulation",
+      "Suspended solids removal"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Sand filter combo",
+      "Fiberglass vessel for corrosion-resistant service"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Series Fiberglass Sand Filter Combo.png",
+    "featured": false
+  },
+  {
+    "id": 30013,
+    "slug": "fiberglass-top-mount-sand-filter",
+    "name": "Fiberglass Top Mount Sand Filter",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Filters",
+    "summary": "Top-mount fiberglass sand filter for efficient pool water clarification and dependable media filtration duty.",
+    "description": "Top-mount fiberglass sand filter engineered for continuous swimming pool filtration and clear water maintenance. The vessel offers corrosion resistance, straightforward valve access, and reliable media performance for routine pool operation.",
+    "applications": [
+      "Pool recirculation filtration",
+      "Water clarity maintenance",
+      "Residential and commercial pool duty"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Top-mount sand filter",
+      "Fiberglass body with top valve arrangement"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Series Fiberglass Top Mount Sand Filter.png",
+    "featured": false
+  },
+  {
+    "id": 30014,
+    "slug": "stainless-steel-pool-ladder-304-316",
+    "name": "Stainless Steel Pool Ladder 304/316",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Ladders & Rails",
+    "summary": "Corrosion-resistant stainless pool ladder for safe entry and exit in commercial and residential swimming pools.",
+    "description": "Stainless steel pool ladder in 304 or 316-grade construction designed for safe pool access, durability, and long-term corrosion resistance. It supports user comfort, stable footing, and dependable installation in both private and public pool environments.",
+    "applications": [
+      "Pool access systems",
+      "Commercial leisure facilities",
+      "Residential pool installations"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Pool ladder",
+      "304/316 stainless corrosion-resistant construction"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Series Stainless Steel 304316 Pool Ladder For Swimming Pool.png",
+    "featured": false
+  },
+  {
+    "id": 30015,
+    "slug": "stainless-steel-pool-ladder",
+    "name": "Stainless Steel Pool Ladder",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Ladders & Rails",
+    "summary": "Standard stainless steel ladder for swimming pool access, safety, and daily use durability.",
+    "description": "Standard stainless steel pool ladder designed for secure entry and exit, everyday durability, and clean architectural finishing. It suits a wide range of swimming pool layouts where user safety and corrosion resistance are required.",
+    "applications": [
+      "Pool entry and exit points",
+      "Residential pool safety",
+      "Leisure facility access hardware"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Pool ladder",
+      "Durable stainless access hardware"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Series Stainless SteelLadder For Swimming Pool.png",
+    "featured": false
+  },
+  {
+    "id": 30016,
+    "slug": "top-mount-plastic-filter",
+    "name": "Top Mount Plastic Filter",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Filters",
+    "summary": "Compact top-mount plastic pool filter for practical filtration duty in light commercial and residential pools.",
+    "description": "Top-mount plastic pool filter built for compact filtration systems where efficient water polishing and easy valve access are needed. The lightweight corrosion-resistant body supports dependable operation for routine pool maintenance programs.",
+    "applications": [
+      "Compact pool filtration",
+      "Residential pool systems",
+      "Light commercial leisure use"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Plastic pool filter",
+      "Compact top-mount filtration arrangement"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Series Top Mount Plastic Filters.png",
+    "featured": false
+  },
+  {
+    "id": 30017,
+    "slug": "heavy-duty-pool-brush",
+    "name": "Heavy-Duty Pool Brush",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Cleaning Tools",
+    "summary": "Heavy-duty wall and floor pool brush for removing algae, dirt, and stubborn surface buildup.",
+    "description": "Heavy-duty swimming pool brush designed for cleaning pool walls, floors, corners, and step areas. It helps remove algae film, dirt accumulation, and surface buildup to keep pools visually clean and operationally safe.",
+    "applications": [
+      "Pool wall scrubbing",
+      "Floor maintenance",
+      "Algae and debris removal"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Pool cleaning brush",
+      "Wall and floor maintenance duty"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Swimming Pool Cleaning Brush  Heavy Duty Pool Wall & Floor Brush for Commercial & Residential Use.png",
+    "featured": false
+  },
+  {
+    "id": 30018,
+    "slug": "pool-leaf-skimmer",
+    "name": "Pool Leaf Skimmer",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Cleaning Tools",
+    "summary": "Surface skimmer net for collecting leaves, insects, and floating debris from pool water.",
+    "description": "Heavy-duty pool leaf skimmer designed to remove leaves, insects, and floating debris from the water surface before they sink or overload the filter system. It supports cleaner presentation and more efficient routine pool upkeep.",
+    "applications": [
+      "Surface debris collection",
+      "Routine pool cleaning",
+      "Pre-filter maintenance support"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Pool skimmer net",
+      "Surface-cleaning debris capture tool"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Swimming Pool Leaf Skimmer  Heavy Duty Pool Surface Skimmer Net for Debris Cleaning.png",
+    "featured": false
+  },
+  {
+    "id": 30019,
+    "slug": "pool-main-drain-anti-vortex-cover",
+    "name": "Pool Main Drain Anti-Vortex Cover",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Drains & Fittings",
+    "summary": "Anti-vortex main drain cover for safer suction outlet performance in vinyl and lined swimming pools.",
+    "description": "Swimming pool main drain with anti-vortex cover designed for safer suction performance, debris management, and dependable bottom-water extraction. The ABS plus UV-resistant construction supports long-term outdoor service in vinyl and lined pool installations.",
+    "applications": [
+      "Pool bottom drainage",
+      "Suction outlet protection",
+      "Vinyl and lined pool fittings"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Pool main drain",
+      "ABS + UV anti-vortex suction outlet design"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Swimming Pool Main Drain for Vinyl Pool ABS+UV 2 Suction Outlet Anti-Vortex Cover.png",
+    "featured": false
+  },
+  {
+    "id": 30020,
+    "slug": "tubular-pool-heat-exchanger",
+    "name": "Tubular Pool Heat Exchanger",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Heat Exchangers",
+    "summary": "Tubular heat exchanger for controlled pool water heating through external boiler or hot-water circuits.",
+    "description": "Tubular pool heat exchanger designed to transfer heat efficiently from boilers, solar-assisted systems, or hot-water loops into swimming pool circulation lines. It supports controlled temperature management, energy-efficient heating, and reliable leisure operation.",
+    "applications": [
+      "Pool water heating",
+      "Boiler-to-pool heat transfer",
+      "Temperature control support"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Pool heat exchanger",
+      "Tubular heat-transfer duty for circulation systems"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/Tubular Heat Exchanger for Swimming Pool.png",
+    "featured": false
+  },
+  {
+    "id": 30021,
+    "slug": "vfpb-smart-variable-speed-pool-pump",
+    "name": "VFPB Smart Variable-Speed Pool Pump",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Pumps",
+    "summary": "Smart variable-speed pool pump for energy-efficient circulation, quieter operation, and controlled flow performance.",
+    "description": "VFPB smart variable-speed pool pump designed for energy-saving circulation, flexible speed control, and quieter daily operation. It supports better hydraulic tuning, lower running cost, and stable water movement in swimming pool and spa systems.",
+    "applications": [
+      "Energy-efficient pool circulation",
+      "Variable-speed flow control",
+      "Spa and pool recirculation"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Variable-speed pool pump",
+      "Smart speed control for efficient circulation"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/VFPB Series Smart Variable-Speed Water Pump for Swimming Pool & SPA.png",
+    "featured": false
+  },
+  {
+    "id": 30022,
+    "slug": "ps-fiberglass-side-mount-sand-filter",
+    "name": "PS Fiberglass Side Mount Sand Filter",
+    "itemGroup": "Pool Systems",
+    "categorySlug": "swimming-pool-systems",
+    "subcategory": "Pool Filters",
+    "summary": "Side-mount fiberglass sand filter for durable pool filtration and efficient maintenance access.",
+    "description": "PS series fiberglass side-mount sand filter designed for dependable pool filtration, corrosion resistance, and convenient side-valve access. It is suited for circulation systems that require stable media performance and straightforward maintenance routines.",
+    "applications": [
+      "Pool water clarification",
+      "Sand media filtration",
+      "Commercial and residential pool duty"
+    ],
+    "specHighlights": [
+      "Category: Swimming Pool Systems",
+      "Product family: Side-mount sand filter",
+      "Fiberglass vessel with side-valve access"
+    ],
+    "industrySlugs": [],
+    "image": "/swimmingpool/”PS” Series Fiberglass Side Mount Sand Filter.png",
     "featured": false
   }
 ]

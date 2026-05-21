@@ -61,7 +61,7 @@ export const contactItems = [
   { label: 'Nairobi, Kenya', icon: 'address' },
   { label: company.email, href: `mailto:${company.email}`, icon: 'email' },
   { label: company.phone, href: 'tel:0702539456', icon: 'phone' },
-  { label: company.tagline, icon: 'fax' },
+  { label: 'P.O. Box 1356-00518', icon: 'fax' },
 ]
 
 export const officeLocations = [

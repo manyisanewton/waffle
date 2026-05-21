@@ -3,7 +3,11 @@ import { Navigate, NavLink, useParams } from 'react-router-dom'
 import BlogContentRenderer from '../components/blog/BlogContentRenderer'
 import Seo from '../components/seo/Seo'
 import FullBleedHero from '../components/sections/FullBleedHero'
-import { getBlogPostBySlug, getRelatedBlogPosts } from '../data/blogPosts'
+import {
+  getRelatedBlogPosts,
+  loadBlogPostBySlug,
+  loadBlogPosts,
+} from '../lib/sanityBlogApi'
 
 function formatDate(dateString) {
   return new Intl.DateTimeFormat('en-GB', {
@@ -15,8 +19,39 @@ function formatDate(dateString) {
 
 function BlogPostPage() {
   const { slug } = useParams()
-  const post = getBlogPostBySlug(slug)
+  const [posts, setPosts] = useState([])
+  const [post, setPost] = useState(null)
+  const [isLoading, setIsLoading] = useState(true)
   const [selectedImage, setSelectedImage] = useState(null)
+
+  useEffect(() => {
+    let isCancelled = false
+
+    setPost(null)
+    setIsLoading(true)
+
+    Promise.all([loadBlogPosts(), loadBlogPostBySlug(slug)])
+      .then(([livePosts, livePost]) => {
+        if (isCancelled) {
+          return
+        }
+
+        setPosts(livePosts)
+        setPost(livePost)
+        setIsLoading(false)
+      })
+      .catch(() => {
+        if (!isCancelled) {
+          setPosts([])
+          setPost(null)
+          setIsLoading(false)
+        }
+      })
+
+    return () => {
+      isCancelled = true
+    }
+  }, [slug])
 
   const contentHeadings = useMemo(
     () =>
@@ -35,8 +70,8 @@ function BlogPostPage() {
   )
 
   const relatedPosts = useMemo(
-    () => (post ? getRelatedBlogPosts(post, 3) : []),
-    [post],
+    () => (post ? getRelatedBlogPosts(posts, post, 3) : []),
+    [posts, post],
   )
 
   useEffect(() => {
@@ -54,6 +89,22 @@ function BlogPostPage() {
     return () => window.removeEventListener('keydown', handleKeyDown)
   }, [selectedImage])
 
+  if (isLoading && !post) {
+    return (
+      <div className="space-y-10 text-brand-ink">
+        <Seo title="Loading Article" description="Loading the requested blog article." />
+        <section className="overflow-hidden rounded-[2rem] border border-brand-border bg-white px-6 py-14 shadow-[0_18px_46px_rgba(35,33,32,0.05)] sm:px-8">
+          <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
+            Loading Article
+          </p>
+          <h1 className="mt-4 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
+            Retrieving the requested post.
+          </h1>
+        </section>
+      </div>
+    )
+  }
+
   if (!post) {
     return <Navigate to="/blog" replace />
   }
@@ -63,40 +114,53 @@ function BlogPostPage() {
       <Seo title={post.title} description={post.seoDescription || post.excerpt} />
       <div className="space-y-14 text-brand-ink lg:space-y-20">
         <FullBleedHero
-          eyebrow={post.categoryLabel}
+          eyebrow={post.postKind || 'Blog Post'}
           title={post.title}
           description={post.excerpt}
           imageSrc={post.heroImage}
           imageAlt={post.title}
           overlayClassName="theme-hero-dark-strong"
         >
-          <div className="flex flex-wrap items-center gap-4 text-sm text-white/70">
-            <span>{post.author}</span>
-            <span className="h-1.5 w-1.5 rounded-full bg-white/40" />
-            <span>{formatDate(post.publishedAt)}</span>
-            <span className="h-1.5 w-1.5 rounded-full bg-white/40" />
-            <span>{post.readTime}</span>
+          <div className="flex flex-wrap items-center gap-3">
+            <span className="rounded-full border border-white/18 bg-white/10 px-4 py-2 text-sm font-medium text-white/84">
+              {formatDate(post.publishedAt)}
+            </span>
+            <span className="rounded-full border border-white/18 bg-white/10 px-4 py-2 text-sm font-medium text-white/84">
+              {post.readTime}
+            </span>
           </div>
         </FullBleedHero>
 
-        <section className="grid gap-10 lg:grid-cols-[minmax(0,0.7fr)_minmax(300px,0.3fr)] lg:items-start">
+        <section className="grid gap-10 lg:grid-cols-[minmax(0,0.72fr)_minmax(320px,0.28fr)] lg:items-start">
           <article className="space-y-8">
-            <div className="flex flex-wrap items-center gap-3">
-              <NavLink
-                to="/blog"
-                className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-4 py-2 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
-              >
-                Back to Blog
-              </NavLink>
-              <span className="rounded-full bg-brand-surface px-4 py-2 text-sm font-semibold text-brand-green">
-                {post.categoryLabel}
-              </span>
+            <div className="rounded-[2rem] border border-brand-border bg-white px-6 py-6 shadow-[0_20px_56px_rgba(35,33,32,0.06)] sm:px-8 sm:py-8">
+              <div className="flex flex-wrap items-center gap-3">
+                <NavLink
+                  to="/blog"
+                  className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-4 py-2 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
+                >
+                  Back to Blog
+                </NavLink>
+                <span className="rounded-full bg-brand-surface px-4 py-2 text-sm font-semibold text-brand-green">
+                  {post.postKind || 'Blog Post'}
+                </span>
+              </div>
+
+              <div className="mt-6 flex flex-wrap items-center gap-4 text-sm text-brand-muted">
+                <span>{formatDate(post.publishedAt)}</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-border" />
+                <span>{post.readTime}</span>
+                <span className="h-1.5 w-1.5 rounded-full bg-brand-border" />
+                <span>{post.author}</span>
+              </div>
             </div>
 
-            <BlogContentRenderer
-              blocks={post.blocks}
-              onImageClick={setSelectedImage}
-            />
+            <div className="rounded-[2rem] border border-brand-border bg-white px-6 py-8 shadow-[0_20px_56px_rgba(35,33,32,0.06)] sm:px-8">
+              <BlogContentRenderer
+                blocks={post.blocks}
+                onImageClick={setSelectedImage}
+              />
+            </div>
           </article>
 
           <aside className="space-y-5 lg:sticky lg:top-[108px]">
@@ -119,102 +183,40 @@ function BlogPostPage() {
               </div>
             ) : null}
 
-            <div className="rounded-[1.75rem] border border-brand-border bg-white px-5 py-5 shadow-[0_18px_46px_rgba(35,33,32,0.05)]">
-              <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
-                Article Details
-              </p>
-              <div className="mt-5 space-y-4 text-sm leading-7 text-brand-muted">
-                <p>
-                  <span className="font-semibold text-brand-ink">Author:</span>{' '}
-                  {post.author}
+            {relatedPosts.length ? (
+              <div className="rounded-[1.75rem] bg-brand-surface px-5 py-5">
+                <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
+                  More Posts
                 </p>
-                <p>
-                  <span className="font-semibold text-brand-ink">Published:</span>{' '}
-                  {formatDate(post.publishedAt)}
-                </p>
-                <p>
-                  <span className="font-semibold text-brand-ink">Read time:</span>{' '}
-                  {post.readTime}
-                </p>
-                <div>
-                  <p className="font-semibold text-brand-ink">Tags:</p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {post.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full bg-brand-surface px-3 py-1 text-xs font-semibold uppercase tracking-[0.18em] text-brand-green"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
+                <div className="mt-5 space-y-4">
+                  {relatedPosts.map((relatedPost) => (
+                    <NavLink
+                      key={relatedPost.slug}
+                      to={`/blog/${relatedPost.slug}`}
+                      className="block overflow-hidden rounded-[1.25rem] border border-brand-border bg-white transition hover:border-brand-green"
+                    >
+                      <img
+                        src={relatedPost.coverImage}
+                        alt={relatedPost.title}
+                        className="h-32 w-full object-cover"
+                      />
+                      <div className="px-4 py-4">
+                        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-green">
+                          {relatedPost.postKind}
+                        </p>
+                        <h2 className="mt-2 font-display text-xl font-semibold text-brand-ink">
+                          {relatedPost.title}
+                        </h2>
+                        <p className="mt-2 text-sm leading-7 text-brand-muted">
+                          {relatedPost.readTime}
+                        </p>
+                      </div>
+                    </NavLink>
+                  ))}
                 </div>
               </div>
-            </div>
-
-            <div className="rounded-[1.75rem] bg-brand-surface px-5 py-5">
-              <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
-                Next Reading
-              </p>
-              <div className="mt-5 space-y-4">
-                {relatedPosts.map((relatedPost) => (
-                  <NavLink
-                    key={relatedPost.slug}
-                    to={`/blog/${relatedPost.slug}`}
-                    className="block overflow-hidden rounded-[1.25rem] border border-brand-border bg-white transition hover:border-brand-green"
-                  >
-                    <img
-                      src={relatedPost.coverImage}
-                      alt={relatedPost.title}
-                      className="h-32 w-full object-cover"
-                    />
-                    <div className="px-4 py-4">
-                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-green">
-                        {relatedPost.categoryLabel}
-                      </p>
-                      <h2 className="mt-2 font-display text-xl font-semibold text-brand-ink">
-                        {relatedPost.title}
-                      </h2>
-                      <p className="mt-2 text-sm leading-7 text-brand-muted">
-                        {relatedPost.readTime}
-                      </p>
-                    </div>
-                  </NavLink>
-                ))}
-              </div>
-            </div>
+            ) : null}
           </aside>
-        </section>
-
-        <section className="overflow-hidden rounded-[2rem] bg-brand-ink px-6 py-10 text-white shadow-[0_24px_70px_rgba(35,33,32,0.12)] sm:px-8 lg:px-10 lg:py-12">
-          <div className="grid gap-6 lg:grid-cols-[1fr_auto] lg:items-center">
-            <div>
-              <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green-muted">
-                Continue Exploring
-              </p>
-              <h2 className="mt-4 font-display text-3xl font-semibold sm:text-4xl">
-                Looking for practical water, pumping, and infrastructure insight?
-              </h2>
-              <p className="mt-4 max-w-3xl text-base leading-8 text-white/78">
-                Browse more articles or move straight into the solutions and project
-                pages if you want to see how the ideas are applied in delivery.
-              </p>
-            </div>
-            <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-              <NavLink
-                to="/blog"
-                className="inline-flex items-center justify-center rounded-full bg-brand-green px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-green-soft"
-              >
-                Back to Blog
-              </NavLink>
-              <NavLink
-                to="/solutions"
-                className="inline-flex items-center justify-center rounded-full border border-white/18 bg-white/8 px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-white/12"
-              >
-                Browse Solutions
-              </NavLink>
-            </div>
-          </div>
         </section>
       </div>
 

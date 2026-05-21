@@ -19,8 +19,8 @@ function getLinkClasses({ isActive }) {
   return [
     'rounded-full px-3 py-1.5 text-sm font-medium transition xl:px-4',
     isActive
-      ? 'bg-brand-green text-white shadow-[0_10px_30px_rgba(43,162,82,0.22)]'
-      : 'text-brand-muted hover:bg-white hover:text-brand-ink',
+      ? 'bg-brand-green text-white shadow-[0_12px_30px_rgba(41,171,226,0.24)]'
+      : 'text-brand-ink hover:bg-brand-surface hover:text-brand-ink',
   ].join(' ')
 }
 
@@ -92,7 +92,7 @@ function Navbar() {
   }
 
   return (
-    <header className="fixed inset-x-0 top-0 z-50 border-b border-brand-border/70 bg-brand-canvas/92 backdrop-blur">
+    <header className="fixed inset-x-0 top-0 z-50 border-b border-brand-border bg-white text-brand-ink shadow-[0_18px_46px_rgba(35,33,32,0.08)] backdrop-blur">
       <div className="flex w-full items-center justify-between px-4 py-2.5 sm:px-6 lg:px-8 2xl:px-10 xl:pb-2 xl:pt-3">
         <NavLink
           to="/"
@@ -123,8 +123,8 @@ function Navbar() {
                     className={[
                       'inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition xl:px-4',
                       location.pathname.startsWith('/products')
-                        ? 'bg-brand-green text-white shadow-[0_10px_30px_rgba(43,162,82,0.22)]'
-                        : 'text-brand-muted hover:bg-white hover:text-brand-ink',
+                        ? 'bg-brand-green text-white shadow-[0_12px_30px_rgba(41,171,226,0.24)]'
+                        : 'text-brand-ink hover:bg-brand-surface hover:text-brand-ink',
                     ].join(' ')}
                   >
                     <NavLink
@@ -162,7 +162,7 @@ function Navbar() {
                         onMouseLeave={scheduleProductsClose}
                       />
                       <div
-                        className="fixed left-1/2 top-[7.1rem] z-50 w-[min(1280px,calc(100vw-2.5rem))] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-[0_30px_80px_rgba(35,33,32,0.16)]"
+                        className="fixed left-1/2 top-[7.1rem] z-50 w-[min(1280px,calc(100vw-2.5rem))] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(66,71,79,0.98),rgba(35,38,44,0.99))] shadow-[0_34px_84px_rgba(18,18,20,0.4)]"
                         onMouseEnter={cancelProductsClose}
                         onMouseLeave={scheduleProductsClose}
                       >
@@ -173,13 +173,13 @@ function Navbar() {
                               <NavLink
                                 key={category.slug}
                                 to={`/products/category/${category.slug}`}
-                                className="block rounded-[1rem] px-3 py-2.5 transition hover:bg-brand-surface"
+                                className="block rounded-[1rem] px-3 py-2.5 transition hover:bg-white/8"
                                 onClick={handleCloseMenu}
                               >
-                                <p className="text-[0.98rem] font-semibold leading-6 text-brand-ink">
+                                <p className="text-[0.98rem] font-semibold leading-6 text-white">
                                   {category.name}
                                 </p>
-                                <p className="mt-0.5 text-xs leading-5 text-brand-muted">
+                                <p className="mt-0.5 text-xs leading-5 text-white/64">
                                   {category.subcategories.slice(0, 2).join(' · ')}
                                 </p>
                               </NavLink>
@@ -187,7 +187,7 @@ function Navbar() {
                           </div>
                         ))}
                       </div>
-                      <div className="border-t border-brand-border bg-brand-ink px-7 py-4">
+                      <div className="border-t border-white/10 bg-black/18 px-7 py-4">
                         <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                           <p className="text-sm leading-7 text-white/74">
                             Open the full catalog or jump straight into a technical product family.
@@ -219,8 +219,8 @@ function Navbar() {
                     className={[
                       'inline-flex items-center gap-2 rounded-full px-3 py-2 text-sm font-medium transition xl:px-4',
                       location.pathname.startsWith('/industries')
-                        ? 'bg-brand-green text-white shadow-[0_10px_30px_rgba(43,162,82,0.22)]'
-                        : 'text-brand-muted hover:bg-white hover:text-brand-ink',
+                        ? 'bg-brand-green text-white shadow-[0_12px_30px_rgba(41,171,226,0.24)]'
+                        : 'text-brand-ink hover:bg-brand-surface hover:text-brand-ink',
                     ].join(' ')}
                   >
                     <NavLink
@@ -258,7 +258,7 @@ function Navbar() {
                         onMouseLeave={scheduleIndustriesClose}
                       />
                       <div
-                        className="fixed left-1/2 top-[7.1rem] z-50 w-[min(1040px,calc(100vw-2.5rem))] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-[0_30px_80px_rgba(35,33,32,0.16)]"
+                        className="fixed left-1/2 top-[7.1rem] z-50 w-[min(1040px,calc(100vw-2.5rem))] -translate-x-1/2 overflow-hidden rounded-[2rem] border border-white/10 bg-[linear-gradient(180deg,rgba(66,71,79,0.98),rgba(35,38,44,0.99))] shadow-[0_34px_84px_rgba(18,18,20,0.4)]"
                         onMouseEnter={cancelIndustriesClose}
                         onMouseLeave={scheduleIndustriesClose}
                       >
@@ -269,13 +269,13 @@ function Navbar() {
                                 <NavLink
                                   key={industry.slug}
                                   to={`/industries/${industry.slug}`}
-                                  className="block rounded-[1rem] px-3 py-2.5 transition hover:bg-brand-surface"
+                                  className="block rounded-[1rem] px-3 py-2.5 transition hover:bg-white/8"
                                   onClick={handleCloseMenu}
                                 >
-                                  <p className="text-[0.98rem] font-semibold leading-6 text-brand-ink">
+                                  <p className="text-[0.98rem] font-semibold leading-6 text-white">
                                     {industry.name}
                                   </p>
-                                  <p className="mt-0.5 text-xs leading-5 text-brand-muted">
+                                  <p className="mt-0.5 text-xs leading-5 text-white/64">
                                     {industry.description}
                                   </p>
                                 </NavLink>
@@ -283,7 +283,7 @@ function Navbar() {
                             </div>
                           ))}
                         </div>
-                        <div className="border-t border-brand-border bg-brand-ink px-7 py-4">
+                        <div className="border-t border-white/10 bg-black/18 px-7 py-4">
                           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
                             <p className="text-sm leading-7 text-white/74">
                               Open the full industry index or jump straight into an application-specific page.
@@ -310,7 +310,7 @@ function Navbar() {
           </nav>
           <NavLink
             to="/compare"
-            className="inline-flex items-center gap-2 rounded-full border border-brand-border bg-white px-3.5 py-2 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
+            className="inline-flex items-center gap-2 rounded-full border border-brand-border bg-white px-3.5 py-2 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-ink"
           >
             <FaBalanceScale className="text-sm" />
             <span>Compare</span>
@@ -325,7 +325,7 @@ function Navbar() {
         <div className="flex items-center gap-2 xl:hidden">
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-border bg-white text-brand-ink transition hover:border-brand-green hover:text-brand-green"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-border bg-white text-brand-ink transition hover:border-brand-green hover:bg-brand-surface hover:text-brand-ink"
             aria-expanded={isSearchOpen}
             aria-label="Open product search"
             onClick={() => {
@@ -337,7 +337,7 @@ function Navbar() {
           </button>
           <button
             type="button"
-            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-border bg-white text-brand-ink transition hover:border-brand-green hover:text-brand-green"
+            className="inline-flex h-11 w-11 items-center justify-center rounded-full border border-brand-border bg-white text-brand-ink transition hover:border-brand-green hover:bg-brand-surface hover:text-brand-ink"
             aria-expanded={isMenuOpen}
             aria-label="Toggle navigation menu"
             onClick={() => {
@@ -354,7 +354,7 @@ function Navbar() {
         </div>
       </div>
 
-      <div className="hidden bg-transparent px-4 pb-2 pt-1.5 sm:px-6 lg:px-8 2xl:px-10 xl:block">
+      <div className="hidden bg-white px-4 pb-2 pt-1.5 sm:px-6 lg:px-8 2xl:px-10 xl:block">
         <div className="flex items-center gap-3">
           <div className="min-w-0 flex-1">
             <GlobalProductSearch desktopWide />
@@ -385,13 +385,13 @@ function Navbar() {
       </div>
 
       {isSearchOpen && (
-        <div className="border-t border-brand-border bg-brand-surface px-4 py-3 sm:px-6 lg:px-8 xl:hidden">
-          <GlobalProductSearch mobile onNavigate={handleCloseMenu} />
+        <div className="border-t border-white/8 bg-[linear-gradient(180deg,rgba(63,68,76,0.96),rgba(38,42,49,0.96))] px-4 py-3 sm:px-6 lg:px-8 xl:hidden">
+          <GlobalProductSearch mobile onNavigate={handleCloseMenu} industrial />
         </div>
       )}
 
       {isMenuOpen && (
-        <div className="border-t border-brand-border bg-brand-surface xl:hidden">
+        <div className="border-t border-white/8 bg-[linear-gradient(180deg,rgba(63,68,76,0.99),rgba(30,33,39,0.99))] xl:hidden">
           <nav className="flex flex-col px-4 py-4 sm:px-6 lg:px-8">
             {navigationItems.map((item) =>
               item.label === 'Products' ? (
@@ -402,7 +402,7 @@ function Navbar() {
                       'flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium transition',
                       location.pathname.startsWith('/products') || isMobileProductsOpen
                         ? 'bg-brand-green text-white'
-                        : 'text-brand-muted hover:bg-white hover:text-brand-ink',
+                        : 'text-white/88 hover:bg-white/10 hover:text-white',
                     ].join(' ')}
                     onClick={() => setIsMobileProductsOpen((open) => !open)}
                     aria-expanded={isMobileProductsOpen}
@@ -416,10 +416,10 @@ function Navbar() {
                     />
                   </button>
                   {isMobileProductsOpen ? (
-                    <div className="rounded-[1.5rem] border border-brand-border bg-white p-3">
+                    <div className="rounded-[1.5rem] border border-white/10 bg-white/6 p-3 backdrop-blur">
                       <NavLink
                         to="/products"
-                        className="block rounded-xl bg-brand-surface px-4 py-3 text-sm font-semibold text-brand-ink"
+                        className="block rounded-xl bg-white/8 px-4 py-3 text-sm font-semibold text-white"
                         onClick={handleCloseMenu}
                       >
                         All Products
@@ -429,7 +429,7 @@ function Navbar() {
                           <NavLink
                             key={category.slug}
                             to={`/products/category/${category.slug}`}
-                            className="rounded-xl px-4 py-3 text-sm text-brand-muted transition hover:bg-brand-surface hover:text-brand-ink"
+                            className="rounded-xl px-4 py-3 text-sm text-white/74 transition hover:bg-white/8 hover:text-white"
                             onClick={handleCloseMenu}
                           >
                             {category.name}
@@ -447,7 +447,7 @@ function Navbar() {
                       'flex w-full items-center justify-between rounded-2xl px-4 py-3 text-sm font-medium transition',
                       location.pathname.startsWith('/industries') || isMobileIndustriesOpen
                         ? 'bg-brand-green text-white'
-                        : 'text-brand-muted hover:bg-white hover:text-brand-ink',
+                        : 'text-white/88 hover:bg-white/10 hover:text-white',
                     ].join(' ')}
                     onClick={() => setIsMobileIndustriesOpen((open) => !open)}
                     aria-expanded={isMobileIndustriesOpen}
@@ -461,10 +461,10 @@ function Navbar() {
                     />
                   </button>
                   {isMobileIndustriesOpen ? (
-                    <div className="rounded-[1.5rem] border border-brand-border bg-white p-3">
+                    <div className="rounded-[1.5rem] border border-white/10 bg-white/6 p-3 backdrop-blur">
                       <NavLink
                         to="/industries"
-                        className="block rounded-xl bg-brand-surface px-4 py-3 text-sm font-semibold text-brand-ink"
+                        className="block rounded-xl bg-white/8 px-4 py-3 text-sm font-semibold text-white"
                         onClick={handleCloseMenu}
                       >
                         All Industries
@@ -474,7 +474,7 @@ function Navbar() {
                           <NavLink
                             key={industry.slug}
                             to={`/industries/${industry.slug}`}
-                            className="rounded-xl px-4 py-3 text-sm text-brand-muted transition hover:bg-brand-surface hover:text-brand-ink"
+                            className="rounded-xl px-4 py-3 text-sm text-white/74 transition hover:bg-white/8 hover:text-white"
                             onClick={handleCloseMenu}
                           >
                             {industry.name}
@@ -493,7 +493,7 @@ function Navbar() {
                       'rounded-2xl px-4 py-3 text-sm font-medium transition',
                       isActive
                         ? 'bg-brand-green text-white'
-                        : 'text-brand-muted hover:bg-white hover:text-brand-ink',
+                        : 'text-white/88 hover:bg-white/10 hover:text-white',
                     ].join(' ')
                   }
                   onClick={handleCloseMenu}
@@ -504,7 +504,7 @@ function Navbar() {
             )}
             <NavLink
               to="/compare"
-              className="rounded-2xl border border-brand-border bg-white px-4 py-3 text-sm font-medium text-brand-muted transition hover:border-brand-green hover:text-brand-ink"
+              className="rounded-2xl border border-white/12 bg-white/6 px-4 py-3 text-sm font-medium text-white/88 transition hover:border-brand-green hover:bg-white/10 hover:text-white"
               onClick={handleCloseMenu}
             >
               Compare {comparedCount ? `(${comparedCount})` : ''}
@@ -518,7 +518,7 @@ function Navbar() {
             </NavLink>
             <a
               href={`tel:${productExpertPhone.replace(/[^\d+]/g, '')}`}
-              className="mt-3 rounded-2xl border border-brand-border bg-white px-4 py-3 text-center text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
+              className="mt-3 rounded-2xl border border-white/12 bg-white/6 px-4 py-3 text-center text-sm font-semibold text-white transition hover:border-brand-green hover:bg-white/10"
               onClick={handleCloseMenu}
             >
               Product Expert: {productExpertPhone}

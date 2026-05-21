@@ -2539,6 +2539,84 @@ function buildFluidText(product) {
   const brand = detectFluidBrand(product)
   const family = detectFluidFamily(product)
 
+  const customCnpPumps = {
+    'CNP Vertical Inline Centrifugal Pump': {
+      subcategory: 'Centrifugal Pumps',
+      shortDescription:
+        'Compact vertical inline centrifugal pump designed for pressure boosting, HVAC circulation, water transfer, and industrial piping systems.',
+      technicalSummary:
+        'Compact vertical inline centrifugal pump designed for pressure boosting, HVAC circulation, water transfer, and industrial piping systems. Space-saving design delivers efficient flow performance, stable pressure, and reliable continuous operation.',
+      seoDescription:
+        'CNP Vertical Inline Centrifugal Pump available for pressure boosting, HVAC circulation, and industrial water transfer RFQ review from Vortexus Industrial Excellence.',
+      applications: ['Pressure boosting', 'HVAC circulation', 'Industrial piping systems'],
+      keyFeatures: [
+        'Pump family: Vertical inline centrifugal',
+        'Designed for compact installation footprints',
+        'Supports stable pressure and continuous-duty circulation',
+      ],
+    },
+    'CNP Blue Cast Iron End-Suction Centrifugal Pump': {
+      subcategory: 'Centrifugal Pumps',
+      shortDescription:
+        'Heavy-duty cast iron end-suction centrifugal pump designed for high-flow water transfer, pressure boosting, and industrial circulation systems.',
+      technicalSummary:
+        'Heavy-duty cast iron end-suction centrifugal pump designed for high-flow water transfer, pressure boosting, and industrial circulation systems. Durable construction ensures reliable performance, efficient operation, and long service life in demanding applications.',
+      seoDescription:
+        'CNP Blue Cast Iron End-Suction Centrifugal Pump listed for high-flow transfer, pressure boosting, and industrial circulation RFQ support from Vortexus Industrial Excellence.',
+      applications: ['High-flow water transfer', 'Pressure boosting', 'Industrial circulation systems'],
+      keyFeatures: [
+        'Pump family: End-suction centrifugal',
+        'Cast iron construction for demanding duty',
+        'Built for continuous industrial transfer performance',
+      ],
+    },
+    'CNP Vertical Multistage Centrifugal Pump': {
+      subcategory: 'Centrifugal Pumps',
+      shortDescription:
+        'High-pressure vertical multistage centrifugal pump engineered for efficient water boosting, RO systems, filtration plants, and industrial applications.',
+      technicalSummary:
+        'High-pressure vertical multistage centrifugal pump engineered for efficient water boosting, RO systems, filtration plants, and industrial applications. Compact stainless steel construction delivers stable pressure, energy efficiency, and long operational life.',
+      seoDescription:
+        'CNP Vertical Multistage Centrifugal Pump available for RO systems, filtration plants, and high-pressure boosting RFQ review from Vortexus Industrial Excellence.',
+      applications: ['RO systems', 'Filtration plants', 'High-pressure water boosting'],
+      keyFeatures: [
+        'Pump family: Vertical multistage centrifugal',
+        'Compact stainless steel construction',
+        'Built for stable pressure and energy-efficient operation',
+      ],
+    },
+    'CNP Stainless Steel Horizontal Centrifugal Pump': {
+      subcategory: 'Centrifugal Pumps',
+      shortDescription:
+        'High-performance stainless steel horizontal centrifugal pump designed for clean water transfer, pressure boosting, and industrial fluid handling.',
+      technicalSummary:
+        'High-performance stainless steel horizontal centrifugal pump designed for clean water transfer, pressure boosting, and industrial fluid handling. Corrosion-resistant construction ensures durability, efficient operation, and dependable long-term performance.',
+      seoDescription:
+        'CNP Stainless Steel Horizontal Centrifugal Pump listed for clean water transfer, pressure boosting, and fluid handling RFQ support from Vortexus Industrial Excellence.',
+      applications: ['Clean water transfer', 'Pressure boosting', 'Industrial fluid handling'],
+      keyFeatures: [
+        'Pump family: Horizontal centrifugal',
+        'Corrosion-resistant stainless steel construction',
+        'Designed for dependable long-term process support',
+      ],
+    },
+  }
+
+  const customCnpPump = customCnpPumps[name]
+  if (customCnpPump) {
+    return {
+      subcategory: customCnpPump.subcategory,
+      shortDescription: customCnpPump.shortDescription,
+      technicalSummary: customCnpPump.technicalSummary,
+      seoDescription: customCnpPump.seoDescription,
+      applications: customCnpPump.applications,
+      keyFeatures: customCnpPump.keyFeatures,
+      selectionNotes: buildFluidSelectionNotes('centrifugal-pump'),
+      compatibilityNotes: buildFluidCompatibilityNotes('centrifugal-pump'),
+      rfqFields: buildFluidRfqFields('centrifugal-pump'),
+    }
+  }
+
   let shortDescription = ''
   let technicalSummary = ''
   let seoDescription = ''

@@ -7,7 +7,6 @@ import {
   FaInstagram,
   FaLinkedinIn,
   FaMapMarkerAlt,
-  FaRegCommentDots,
   FaPhoneAlt,
   FaPrint,
   FaWhatsapp,
@@ -35,11 +34,21 @@ const socialIcons = {
 }
 
 const socialIconColors = {
+  facebook: '#ffffff',
+  twitter: '#ffffff',
+  tiktok: '#ffffff',
+  google: '#ffffff',
+  instagram: '#ffffff',
+  linkedin: '#ffffff',
+  whatsapp: '#ffffff',
+}
+
+const socialIconBackgrounds = {
   facebook: 'var(--color-social-facebook)',
   twitter: '#000000',
   tiktok: '#000000',
   google: 'var(--color-social-google)',
-  instagram: 'var(--color-social-instagram)',
+  instagram: 'linear-gradient(135deg, #f58529 0%, #feda77 18%, #dd2a7b 52%, #8134af 78%, #515bd4 100%)',
   linkedin: 'var(--color-social-linkedin)',
   whatsapp: 'var(--color-social-whatsapp)',
 }
@@ -52,7 +61,6 @@ const contactIcons = {
 }
 
 function Footer() {
-  const [isSocialPanelOpen, setIsSocialPanelOpen] = useState(false)
   const [showBackToTop, setShowBackToTop] = useState(false)
   const [activeLocation, setActiveLocation] = useState(null)
 
@@ -87,35 +95,25 @@ function Footer() {
 
   return (
     <footer className="mt-12 bg-brand-ink text-white">
-      <div className="fixed right-[5px] bottom-[5px] z-40 flex flex-col items-end gap-3">
-        <div
-          className={[
-            'overflow-hidden transition-all duration-300',
-            isSocialPanelOpen
-              ? 'max-h-[30rem] translate-y-0 opacity-100'
-              : 'max-h-0 translate-y-4 opacity-0',
-          ].join(' ')}
-        >
-          <div className="flex flex-col items-center gap-4 py-2 pr-1.5 sm:gap-4 sm:pr-2.5">
-            {socialLinks.map((item, index) => {
+      <div className="fixed right-0 top-[60%] z-40 flex -translate-y-1/2 flex-col items-end gap-3 lg:top-1/2">
+        <div className="rounded-l-[1.75rem] border border-slate-200/90 border-r-0 bg-slate-100/94 px-2 py-3 shadow-[0_18px_42px_rgba(35,33,32,0.18)] backdrop-blur-md sm:px-2.5 sm:py-3.5">
+          <div className="flex flex-col items-center gap-3">
+            {socialLinks.map((item) => {
               const Icon = socialIcons[item.icon]
               const iconColor = socialIconColors[item.icon]
+              const iconBackground = socialIconBackgrounds[item.icon]
 
               return (
                 <a
                   key={item.label}
                   href={item.href}
                   aria-label={item.label}
-                  className="flex h-12 w-12 items-center justify-center rounded-full bg-white text-[1.45rem] transition-transform duration-300 hover:scale-110 sm:h-12 sm:w-12 sm:text-[1.65rem]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/70 text-[1.15rem] transition-transform duration-300 hover:scale-110 sm:h-11 sm:w-11 sm:text-[1.25rem]"
                   style={{
                     color: iconColor,
-                    opacity: isSocialPanelOpen ? 1 : 0,
-                    transform: isSocialPanelOpen
-                      ? 'translateY(0px) scale(1)'
-                      : 'translateY(14px) scale(0.92)',
-                    transitionDelay: isSocialPanelOpen ? `${index * 70}ms` : '0ms',
+                    background: iconBackground,
                     boxShadow:
-                      '0 10px 24px rgba(35,33,32,0.14), 0 0 0 1px rgba(255,255,255,0.92)',
+                      '0 10px 24px rgba(35,33,32,0.18), 0 0 0 1px rgba(255,255,255,0.22)',
                   }}
                 >
                   <Icon />
@@ -125,24 +123,11 @@ function Footer() {
           </div>
         </div>
 
-        <button
-          type="button"
-          aria-label={isSocialPanelOpen ? 'Close social links' : 'Open social links'}
-          className="flex h-14 w-14 items-center justify-center rounded-full text-white transition hover:-translate-y-0.5 sm:h-15 sm:w-15 lg:h-16 lg:w-16"
-          style={{
-            backgroundColor: 'var(--color-accent-orange)',
-            boxShadow: '0 16px 36px rgba(255, 90, 10, 0.32)',
-          }}
-          onClick={() => setIsSocialPanelOpen((open) => !open)}
-        >
-          <FaRegCommentDots className="text-[1.55rem] text-white sm:text-[1.7rem] lg:text-[1.8rem]" />
-        </button>
-
         {showBackToTop && (
           <button
             type="button"
             aria-label="Back to top"
-            className="flex h-11 w-11 items-center justify-center rounded-full bg-brand-green text-white shadow-[0_12px_28px_rgba(43,162,82,0.24)] transition hover:bg-brand-green-soft sm:h-12 sm:w-12"
+            className="mr-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-brand-green text-white shadow-[0_12px_28px_rgba(43,162,82,0.24)] transition hover:bg-brand-green-soft sm:h-11 sm:w-11"
             onClick={handleBackToTop}
           >
             <FaArrowUp />
@@ -262,14 +247,18 @@ function Footer() {
             {socialLinks.map((item) => {
               const Icon = socialIcons[item.icon]
               const iconColor = socialIconColors[item.icon]
+              const iconBackground = socialIconBackgrounds[item.icon]
 
               return (
                 <a
                   key={item.label}
                   href={item.href}
                   aria-label={item.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/6 text-lg transition hover:-translate-y-0.5"
-                  style={{ color: iconColor }}
+                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/16 text-lg transition hover:-translate-y-0.5"
+                  style={{
+                    color: iconColor,
+                    background: iconBackground,
+                  }}
                 >
                   <Icon />
                 </a>

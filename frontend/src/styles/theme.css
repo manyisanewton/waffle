@@ -11,9 +11,9 @@
   --color-brand-green-soft: var(--theme-brand-green-soft);
   --color-brand-green-muted: var(--theme-brand-green-muted);
 
-  --font-sans: "Questrial", "Segoe UI", sans-serif;
+  /* --font-sans: "Questrial", "Segoe UI", sans-serif;
   --font-display: "Questrial", "Segoe UI", sans-serif;
-  --font-about-preview: "Questrial", "Manrope", "Segoe UI", sans-serif;
+  --font-about-preview: "Questrial", "Manrope", "Segoe UI", sans-serif; */
 }
 
 :root {

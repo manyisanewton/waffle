@@ -1,6 +1,6 @@
 function BlueAccentHero({ eyebrow = 'Company', title, description }) {
   return (
-    <section className="theme-hero-blue relative left-1/2 mt-1 w-screen -translate-x-1/2 overflow-hidden text-white sm:mt-2 lg:mt-4">
+    <section className="theme-hero-blue relative left-1/2 w-screen -translate-x-1/2 overflow-hidden text-white">
       <div className="theme-hero-blue-overlay absolute inset-0" />
       <div className="theme-hero-blue-mist absolute inset-y-0 left-[-12%] w-[42%]" />
       <div className="theme-hero-blue-mist theme-hero-blue-mist-right absolute inset-y-0 right-[-8%] w-[34%]" />

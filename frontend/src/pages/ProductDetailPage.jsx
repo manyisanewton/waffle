@@ -49,7 +49,9 @@ function ProductDetailPage() {
 
   const productSummary = product.shortDescription || product.summary
   const productTechnicalSummary = product.technicalSummary || product.description
-  const productFeatures = product.keyFeatures || product.specHighlights || []
+  const productFeatures = (product.keyFeatures || product.specHighlights || []).filter(
+    (item) => !/^stock group:/i.test(item),
+  )
   const productSelectionNotes = product.selectionNotes || []
   const productCompatibilityNotes = product.compatibilityNotes || []
   const productRfqFields = product.rfqFields || []
@@ -91,9 +93,6 @@ function ProductDetailPage() {
           <p className="mt-4 text-sm font-semibold uppercase tracking-[0.2em] text-brand-muted">
             {product.subcategory}
           </p>
-          <p className="mt-3 text-xs uppercase tracking-[0.16em] text-brand-muted">
-            {product.itemGroup}
-          </p>
           <p className="mt-6 max-w-3xl text-base leading-8 text-brand-muted">
             {productTechnicalSummary}
           </p>
@@ -131,12 +130,6 @@ function ProductDetailPage() {
             >
               Request for Quotation
             </button>
-            <NavLink
-              to={`/request-quote?product=${encodeURIComponent(product.name)}&category=${encodeURIComponent(product.categorySlug)}`}
-              className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-6 py-3.5 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
-            >
-              Open RFQ Form
-            </NavLink>
             <NavLink
               to={`/products/category/${product.categorySlug}`}
               className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-6 py-3.5 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"

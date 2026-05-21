@@ -94,6 +94,24 @@ export const productCategories = [
     ],
   },
   {
+    slug: 'swimming-pool-systems',
+    name: 'Swimming Pool Systems',
+    icon: '🏊',
+    description:
+      'Pool pumps, filters, cleaning tools, ladders, drains, heat exchangers, and water features for commercial and residential swimming pool applications.',
+    image: '/swimmingpool/swimming pool herobackground.jpeg',
+    subcategories: [
+      'Pool Pumps',
+      'Pool Filters',
+      'Pool Cleaning Tools',
+      'Pool Ladders & Rails',
+      'Pool Water Features',
+      'Pool Heat Exchangers',
+      'Pool Drains & Fittings',
+      'Spa & Wellness Showers',
+    ],
+  },
+  {
     slug: 'wastewater-treatment-equipment',
     name: 'Wastewater Treatment Equipment',
     icon: '🧫',

@@ -124,23 +124,23 @@ function IndustryDetailPage() {
                 alt={product.name}
                 className="h-52 w-full bg-white p-3 object-contain"
               />
-              <div className="space-y-2.5 px-4 py-4">
+              <div className="space-y-2 px-4 py-4">
                 <p className="text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-brand-green">
                   {product.subcategory}
                 </p>
-                <h3 className="font-display text-[1.55rem] leading-tight font-semibold text-brand-ink">
+                <h3 className="font-display text-[1.06rem] leading-snug font-semibold text-brand-ink sm:text-[1.14rem] xl:text-[1.22rem]">
                   {product.name}
                 </h3>
-                <div className="flex flex-wrap gap-2.5">
+                <div className="flex flex-wrap gap-2">
                   <NavLink
                     to={`/products/item/${product.slug}`}
-                    className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-3.5 py-2 text-[0.95rem] font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
+                    className="inline-flex items-center justify-center rounded-full border border-brand-border bg-white px-3 py-2 text-[0.88rem] font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
                   >
                     View Product
                   </NavLink>
                   <NavLink
                     to={`/request-quote?industry=${encodeURIComponent(industry.slug)}&product=${encodeURIComponent(product.name)}&category=${encodeURIComponent(product.categorySlug)}`}
-                    className="inline-flex items-center justify-center rounded-full bg-brand-green px-3.5 py-2 text-[0.95rem] font-semibold text-white transition hover:bg-brand-green-soft"
+                    className="inline-flex items-center justify-center rounded-full bg-brand-green px-3 py-2 text-[0.88rem] font-semibold text-white transition hover:bg-brand-green-soft"
                   >
                     RFQ
                   </NavLink>
