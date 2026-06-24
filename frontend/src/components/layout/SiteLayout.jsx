@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import ScrollPromoAd from '../ads/ScrollPromoAd'
+import WebsiteChatbot from '../chatbot/WebsiteChatbot'
 import Footer from '../navigation/Footer'
 import Navbar from '../navigation/Navbar'
 import SolutionsSubnav from '../navigation/SolutionsSubnav'
@@ -29,6 +30,7 @@ function SiteLayout() {
         </main>
         <Footer />
       </div>
+      <WebsiteChatbot />
     </div>
   )
 }

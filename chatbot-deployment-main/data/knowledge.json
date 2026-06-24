@@ -1,0 +1,119 @@
+{
+  "fallback_answer": "I can help with Vortexus products, water treatment, pumps, chemicals, automation, RFQs, delivery, and contact details. Could you share what product, system, or site problem you want help with?",
+  "synonyms": {
+    "quote": ["quote", "quotation", "rfq", "price", "pricing", "cost", "how much", "buy", "order"],
+    "pump": ["pump", "pumps", "booster", "submersible", "centrifugal", "dosing", "pressure", "flow", "head"],
+    "water_treatment": ["water treatment", "filtration", "filter", "reverse osmosis", "ro", "uf", "uv", "membrane", "tds", "conductivity"],
+    "contact": ["contact", "phone", "call", "email", "whatsapp", "location", "address", "office", "reach"],
+    "delivery": ["delivery", "deliver", "shipping", "kenya", "regional", "mombasa", "nairobi"],
+    "automation": ["automation", "control", "controller", "plc", "panel", "sensor", "probe", "meter", "gauge", "instrumentation", "scada"],
+    "chemical": ["chemical", "chemicals", "coagulant", "flocculant", "chlorine", "disinfectant", "antiscalant", "resin", "media", "ph"]
+  },
+  "entries": [
+    {
+      "id": "company-overview",
+      "title": "Company Overview",
+      "category": "company",
+      "keywords": ["vortexus", "company", "about", "who are you", "what do you do", "industrial", "water", "energy", "automation"],
+      "answer": "Vortexus Industrial Excellence supports water, energy, and automation systems. The company helps clients select, source, and support industrial water-treatment products, pumps, chemicals, instrumentation, controls, and complete system solutions.",
+      "links": [{"label": "About Vortexus", "url": "/about-us"}],
+      "quick_replies": ["Show products", "Request a quote", "Contact Vortexus"]
+    },
+    {
+      "id": "contact",
+      "title": "Contact Details",
+      "category": "contact",
+      "keywords": ["contact", "phone", "call", "email", "whatsapp", "location", "address", "office", "where", "reach"],
+      "answer": "You can contact Vortexus by phone on 0702539456, email info@vortexusindustrial.com, or WhatsApp through https://wa.me/254710869870. Office/service locations listed on the site include Dar Es Salaam Road in Nairobi, Cabanas on Mombasa Road, and Mombasa.",
+      "links": [
+        {"label": "Contact page", "url": "/contact-us"},
+        {"label": "WhatsApp", "url": "https://wa.me/254710869870"}
+      ],
+      "quick_replies": ["Request a quote", "Do you deliver?", "What products do you supply?"]
+    },
+    {
+      "id": "products",
+      "title": "Product Categories",
+      "category": "products",
+      "keywords": ["products", "catalog", "sell", "supply", "items", "equipment", "spares", "components"],
+      "answer": "The product catalog covers filtration systems, reverse osmosis systems, industrial chemicals, disinfection systems, pumps and fluid handling, swimming pool systems, wastewater equipment, effluent treatment plants, sewage treatment plants, desalination, monitoring and instrumentation, automation and control, tanks, spare parts, recycling, reuse, and sludge handling.",
+      "links": [{"label": "Browse products", "url": "/products"}],
+      "quick_replies": ["Pump help", "Water treatment help", "Request a quote"]
+    },
+    {
+      "id": "pumps",
+      "title": "Pumps and Fluid Handling",
+      "category": "products",
+      "keywords": ["pump", "pumps", "booster", "submersible", "centrifugal", "dosing", "pressure", "flow", "head", "fluid"],
+      "answer": "Vortexus supports pump selection and supply for centrifugal pumps, dosing pumps, submersible pumps, booster systems, sludge pumps, valves, pipe fittings, and pump accessories. For accurate sizing, share flow rate, total dynamic head, fluid type, power supply, installation context, and duty cycle.",
+      "links": [{"label": "Pumps category", "url": "/products/category/pumps-fluid-handling"}],
+      "quick_replies": ["Start pump selection", "Request a quote", "Contact Vortexus"]
+    },
+    {
+      "id": "water-treatment",
+      "title": "Water Treatment",
+      "category": "solutions",
+      "keywords": ["water treatment", "filtration", "filter", "reverse osmosis", "ro", "uf", "uv", "membrane", "pretreatment", "tds", "conductivity"],
+      "answer": "For water treatment, the right solution depends on the water problem. RO is used for dissolved salts, fluoride, conductivity, and high-purity needs. UF helps with suspended solids and microorganisms where dissolved salts are not the main issue. UV is for microbiological disinfection after water is clear enough for UV penetration. A water analysis report is the strongest starting point.",
+      "links": [
+        {"label": "Water treatment solutions", "url": "/solutions/commercial-industrial-water-treatment"},
+        {"label": "FAQ", "url": "/faq"}
+      ],
+      "quick_replies": ["Start water treatment help", "Request a quote", "What information should I prepare?"]
+    },
+    {
+      "id": "chemicals",
+      "title": "Industrial Chemicals",
+      "category": "products",
+      "keywords": ["chemical", "chemicals", "coagulant", "flocculant", "chlorine", "disinfectant", "antiscalant", "resin", "media", "ph"],
+      "answer": "The site lists industrial chemicals and media for coagulation, flocculation, disinfection, pH adjustment, corrosion control, scale inhibition, membrane cleaning, ion exchange resin, and treatment media. Chemical selection should match the process step, concentration, dosing purpose, and material compatibility.",
+      "links": [{"label": "Industrial chemicals", "url": "/products/category/water-treatment-chemicals"}],
+      "quick_replies": ["Request a quote", "Water treatment help", "Contact Vortexus"]
+    },
+    {
+      "id": "automation",
+      "title": "Automation and Instrumentation",
+      "category": "products",
+      "keywords": ["automation", "control", "controller", "plc", "panel", "sensor", "probe", "meter", "gauge", "instrumentation", "scada"],
+      "answer": "Vortexus supports automation and instrumentation for treatment and pumping systems, including PLC systems, control panels, sensors, probes, pressure switches, cables, drives, inverters, remote monitoring, pH meters, TDS meters, turbidity meters, flow meters, pressure gauges, and online water analyzers.",
+      "links": [{"label": "Automation and control", "url": "/products/category/automation-control"}],
+      "quick_replies": ["Request a quote", "Contact Vortexus", "What products do you supply?"]
+    },
+    {
+      "id": "solutions",
+      "title": "Solution Families",
+      "category": "solutions",
+      "keywords": ["solutions", "borehole", "domestic", "commercial", "industrial", "solar", "water pumps", "systems"],
+      "answer": "The solution families include borehole solutions, domestic water treatment, commercial and industrial water treatment, chemicals and media, water pumps, and solar solutions. These are organized around real site needs such as water access, purification, pumping, energy resilience, and treatment inputs.",
+      "links": [{"label": "Explore solutions", "url": "/solutions"}],
+      "quick_replies": ["Borehole help", "Water treatment help", "Pump help"]
+    },
+    {
+      "id": "borehole",
+      "title": "Borehole Solutions",
+      "category": "solutions",
+      "keywords": ["borehole", "solarization", "equipping", "rehabilitation", "drop pipe", "pump lowering", "pump lifting", "smart meter"],
+      "answer": "Borehole services include solarization, equipping, rehabilitation, pump installation, pump lifting and lowering, flushing, diagnostics, covers, junction boxes, controllers, UPVC drop pipes, adaptor sets, electrodes, and smart metering support.",
+      "links": [{"label": "Borehole solutions", "url": "/solutions/borehole-solutions"}],
+      "quick_replies": ["Start pump selection", "Request a quote", "Contact Vortexus"]
+    },
+    {
+      "id": "rfq",
+      "title": "RFQ and Quotation Support",
+      "category": "sales",
+      "keywords": ["quote", "quotation", "rfq", "request quote", "price", "pricing", "cost", "order", "buy"],
+      "answer": "For a strong RFQ, share the application, source water type, required flow rate, pressure needs, installation location, power supply, and whether it is a replacement or new system. For treatment products, include water analysis where possible. For pumps, share head, flow, suction conditions, and duty cycle.",
+      "links": [{"label": "Request a quote", "url": "/request-quote"}],
+      "quick_replies": ["Start RFQ guide", "Pump help", "Water treatment help"]
+    },
+    {
+      "id": "delivery",
+      "title": "Delivery and Regional Support",
+      "category": "sales",
+      "keywords": ["delivery", "deliver", "shipping", "kenya", "regional", "mombasa", "nairobi", "support"],
+      "answer": "Vortexus supports Kenya-wide delivery and regional buyers, with timelines depending on item type, urgency, stock position, and destination. For urgent breakdown sourcing, share the product name, size, duty, image, and what failed operationally.",
+      "links": [{"label": "Contact Vortexus", "url": "/contact-us"}],
+      "quick_replies": ["Request a quote", "What products do you supply?", "Contact Vortexus"]
+    }
+  ]
+}

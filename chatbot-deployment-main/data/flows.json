@@ -1,0 +1,42 @@
+{
+  "flows": {
+    "rfq": {
+      "title": "RFQ Guide",
+      "intro": "I will collect the core details needed for a useful quotation.",
+      "steps": [
+        {"id": "need", "question": "What product, spare part, or system do you need?"},
+        {"id": "application", "question": "What is the application or site problem?"},
+        {"id": "location", "question": "Where is the project or delivery location?"},
+        {"id": "urgency", "question": "How urgent is it: breakdown, this week, planning, or just comparing options?"},
+        {"id": "contact", "question": "What phone or email should the team use to follow up?"}
+      ],
+      "completion": "Thanks. Here is the RFQ summary to send to Vortexus:\n\n{summary}\n\nYou can continue through the request quote page or WhatsApp the team directly."
+    },
+    "pump-selection": {
+      "title": "Pump Selection Guide",
+      "intro": "I will ask the main pump-sizing questions so the team can recommend the right direction.",
+      "steps": [
+        {"id": "application", "question": "What is the pump application: borehole, booster, transfer, dosing, wastewater, pool, or another duty?"},
+        {"id": "flow", "question": "What flow rate do you need, or what demand should the pump serve?"},
+        {"id": "head", "question": "What head, pressure, lift height, or distance is involved?"},
+        {"id": "fluid", "question": "What fluid is being pumped, and is it clean water, chemical, sludge, wastewater, or something else?"},
+        {"id": "power", "question": "What power supply is available: single phase, three phase, solar, generator, or unknown?"},
+        {"id": "site", "question": "Where will it be installed, and is it a new system or replacement?"}
+      ],
+      "completion": "Pump selection summary:\n\n{summary}\n\nFor quotation, also share photos, nameplate details, pipe size, and any existing pump model if available."
+    },
+    "water-treatment": {
+      "title": "Water Treatment Guide",
+      "intro": "I will help narrow the treatment direction before the team sizes a system.",
+      "steps": [
+        {"id": "source", "question": "What is the water source: borehole, municipal, river, seawater, wastewater, or industrial process water?"},
+        {"id": "problem", "question": "What problem are you trying to solve: salts/TDS, sediment, color, smell, bacteria, hardness, iron, fluoride, or another issue?"},
+        {"id": "usage", "question": "What will the treated water be used for: drinking, process, boiler, irrigation, pool, lab, or general supply?"},
+        {"id": "flow", "question": "What flow rate or daily volume do you need?"},
+        {"id": "analysis", "question": "Do you have a water analysis report or test results?"},
+        {"id": "location", "question": "Where is the installation location?"}
+      ],
+      "completion": "Water treatment enquiry summary:\n\n{summary}\n\nIf you have a water analysis report, send it with this summary so the team can select RO, UF, UV, filtration, chemicals, or pretreatment correctly."
+    }
+  }
+}
