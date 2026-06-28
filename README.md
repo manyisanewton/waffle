@@ -1,11 +1,21 @@
-# waffle
+# Vortexus Website
 
+React frontend with a Flask chatbot backend for product, catalog, and RFQ support.
 
-https://ws-l5ge7emi85acrpqf.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1
+## Chatbot Deployment Notes
 
-https://ws-l5ge7emi85acrpqf.ap-southeast-1.maas.aliyuncs.com/apps/anthropic
+Keep LLM API keys only in `chatbot-deployment-main/.env` or in cPanel Python App environment variables. Do not put real keys in this README, frontend code, or any committed file.
 
-sk-ws-H.LMIILE.q889.MEYCIQC6JauPXEgvuwsSAo60057bFIJ0tYSESuXYUrcxkWEUuwIhALZ9r7hfY8GXdVy_TFl54t1713XZgtcz8pijfdXKhbou
+Frontend production builds should set:
 
+```text
+VITE_CHATBOT_API_URL=https://your-chatbot-app-domain.example
+```
 
-ws-l5ge7emi85acrpqf.ap-southeast-1.maas.aliyuncs.com
+The chatbot backend cPanel Python App should use:
+
+```text
+Application root: chatbot-deployment-main
+Application startup file: passenger_wsgi.py
+Application entry point: application
+```

@@ -38,7 +38,7 @@
       "keywords": ["products", "catalog", "sell", "supply", "items", "equipment", "spares", "components"],
       "answer": "The product catalog covers filtration systems, reverse osmosis systems, industrial chemicals, disinfection systems, pumps and fluid handling, swimming pool systems, wastewater equipment, effluent treatment plants, sewage treatment plants, desalination, monitoring and instrumentation, automation and control, tanks, spare parts, recycling, reuse, and sludge handling.",
       "links": [{"label": "Browse products", "url": "/products"}],
-      "quick_replies": ["Pump help", "Water treatment help", "Request a quote"]
+      "quick_replies": ["Help me choose a pump", "Help me choose water treatment", "Request a quote"]
     },
     {
       "id": "pumps",
@@ -47,7 +47,7 @@
       "keywords": ["pump", "pumps", "booster", "submersible", "centrifugal", "dosing", "pressure", "flow", "head", "fluid"],
       "answer": "Vortexus supports pump selection and supply for centrifugal pumps, dosing pumps, submersible pumps, booster systems, sludge pumps, valves, pipe fittings, and pump accessories. For accurate sizing, share flow rate, total dynamic head, fluid type, power supply, installation context, and duty cycle.",
       "links": [{"label": "Pumps category", "url": "/products/category/pumps-fluid-handling"}],
-      "quick_replies": ["Start pump selection", "Request a quote", "Contact Vortexus"]
+      "quick_replies": ["Help me choose a pump", "Request a quote", "Contact Vortexus"]
     },
     {
       "id": "water-treatment",
@@ -59,7 +59,7 @@
         {"label": "Water treatment solutions", "url": "/solutions/commercial-industrial-water-treatment"},
         {"label": "FAQ", "url": "/faq"}
       ],
-      "quick_replies": ["Start water treatment help", "Request a quote", "What information should I prepare?"]
+      "quick_replies": ["Help me choose water treatment", "Request a quote", "What information should I prepare?"]
     },
     {
       "id": "chemicals",
@@ -68,7 +68,7 @@
       "keywords": ["chemical", "chemicals", "coagulant", "flocculant", "chlorine", "disinfectant", "antiscalant", "resin", "media", "ph"],
       "answer": "The site lists industrial chemicals and media for coagulation, flocculation, disinfection, pH adjustment, corrosion control, scale inhibition, membrane cleaning, ion exchange resin, and treatment media. Chemical selection should match the process step, concentration, dosing purpose, and material compatibility.",
       "links": [{"label": "Industrial chemicals", "url": "/products/category/water-treatment-chemicals"}],
-      "quick_replies": ["Request a quote", "Water treatment help", "Contact Vortexus"]
+      "quick_replies": ["Request a quote", "Help me choose water treatment", "Contact Vortexus"]
     },
     {
       "id": "automation",
@@ -86,7 +86,7 @@
       "keywords": ["solutions", "borehole", "domestic", "commercial", "industrial", "solar", "water pumps", "systems"],
       "answer": "The solution families include borehole solutions, domestic water treatment, commercial and industrial water treatment, chemicals and media, water pumps, and solar solutions. These are organized around real site needs such as water access, purification, pumping, energy resilience, and treatment inputs.",
       "links": [{"label": "Explore solutions", "url": "/solutions"}],
-      "quick_replies": ["Borehole help", "Water treatment help", "Pump help"]
+      "quick_replies": ["Borehole help", "Help me choose water treatment", "Help me choose a pump"]
     },
     {
       "id": "borehole",
@@ -95,7 +95,7 @@
       "keywords": ["borehole", "solarization", "equipping", "rehabilitation", "drop pipe", "pump lowering", "pump lifting", "smart meter"],
       "answer": "Borehole services include solarization, equipping, rehabilitation, pump installation, pump lifting and lowering, flushing, diagnostics, covers, junction boxes, controllers, UPVC drop pipes, adaptor sets, electrodes, and smart metering support.",
       "links": [{"label": "Borehole solutions", "url": "/solutions/borehole-solutions"}],
-      "quick_replies": ["Start pump selection", "Request a quote", "Contact Vortexus"]
+      "quick_replies": ["Help me choose a pump", "Request a quote", "Contact Vortexus"]
     },
     {
       "id": "rfq",
@@ -104,7 +104,7 @@
       "keywords": ["quote", "quotation", "rfq", "request quote", "price", "pricing", "cost", "order", "buy"],
       "answer": "For a strong RFQ, share the application, source water type, required flow rate, pressure needs, installation location, power supply, and whether it is a replacement or new system. For treatment products, include water analysis where possible. For pumps, share head, flow, suction conditions, and duty cycle.",
       "links": [{"label": "Request a quote", "url": "/request-quote"}],
-      "quick_replies": ["Start RFQ guide", "Pump help", "Water treatment help"]
+      "quick_replies": ["Request a quote", "Help me choose a pump", "Help me choose water treatment"]
     },
     {
       "id": "delivery",

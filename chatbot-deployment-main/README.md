@@ -69,16 +69,53 @@ Optional LLM environment variables:
 ```text
 CHATBOT_LLM_ENABLED=1
 CHATBOT_LLM_API_KEY=your-rotated-provider-key
-CHATBOT_LLM_BASE_URL=https://dashscope.aliyuncs.com/compatible-mode/v1
+CHATBOT_LLM_BASE_URL=https://your-workspace-domain.ap-southeast-1.maas.aliyuncs.com/compatible-mode/v1
 CHATBOT_LLM_MODEL=qwen-plus
 CHATBOT_LLM_TIMEOUT=20
 CHATBOT_LLM_TEMPERATURE=0.2
 ```
 
-Do not store real API keys in this README, frontend code, or Git. Add them only through cPanel's environment variable interface.
+Production safety variables:
+
+```text
+CHATBOT_RATE_LIMIT_ENABLED=1
+CHATBOT_RATE_LIMIT_WINDOW_SECONDS=60
+CHATBOT_RATE_LIMIT_MAX_REQUESTS=20
+CHATBOT_TRUST_PROXY_HEADERS=1
+```
+
+This default allows 20 `/predict` requests per visitor IP per minute. If the site receives heavy legitimate usage, increase `CHATBOT_RATE_LIMIT_MAX_REQUESTS` gradually.
+
+Do not store real API keys in this README, frontend code, or Git. Add them only through cPanel's environment variable interface or in a server-only `.env` file outside public web roots.
 
 After creating the app, install dependencies from cPanel's terminal or Python App interface:
 
 ```bash
 pip install -r requirements.txt
 ```
+
+## Frontend Production API URL
+
+The React frontend must be built with the public chatbot backend URL:
+
+```text
+VITE_CHATBOT_API_URL=https://your-chatbot-app-domain.example
+```
+
+For example, if the cPanel Python App is created at `https://ai.vortexusindustrial.com`, build the frontend with:
+
+```bash
+VITE_CHATBOT_API_URL=https://ai.vortexusindustrial.com npm run build
+```
+
+Only this public backend URL belongs in the frontend. Never add `CHATBOT_LLM_API_KEY` or any provider secret to `frontend/.env`.
+
+## cPanel Checklist
+
+1. Upload `chatbot-deployment-main` outside `public_html` if possible.
+2. Create the Python App with `passenger_wsgi.py` and entry point `application`.
+3. Install `requirements.txt`.
+4. Add the environment variables above in cPanel.
+5. Restart the Python App.
+6. Test `https://your-chatbot-app-domain.example/`.
+7. Build the frontend with `VITE_CHATBOT_API_URL` pointing to that backend URL.

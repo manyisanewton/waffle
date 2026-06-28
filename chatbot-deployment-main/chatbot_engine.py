@@ -380,7 +380,12 @@ def catalog_response(message):
             }
         ],
         "links": links,
-        "quick_replies": ["Request a quote", "Pump help", "Water treatment help", "Contact Vortexus"],
+        "quick_replies": [
+            "Request a quote",
+            "Help me choose a pump",
+            "Help me choose water treatment",
+            "Contact Vortexus",
+        ],
         "confidence": confidence_from_score(best_score, best_score),
         "flow_state": None,
         "catalog_results": {
@@ -421,7 +426,12 @@ def greeting_response():
         ),
         "matches": [],
         "links": [{"label": "Contact Vortexus", "url": "/contact-us"}],
-        "quick_replies": ["Show products", "Pump help", "Water treatment help", "Request a quote"],
+        "quick_replies": [
+            "Show products",
+            "Help me choose a pump",
+            "Help me choose water treatment",
+            "Request a quote",
+        ],
         "confidence": 1,
         "flow_state": None,
     }
@@ -444,8 +454,34 @@ def is_flow_cancel_or_switch(message):
     return any(phrase in normalized_message for phrase in switch_phrases)
 
 
+def is_topic_switch_intent(message):
+    normalized_message = normalize(message)
+    switch_intents = [
+        "i want a quote",
+        "request a quote",
+        "quote",
+        "rfq",
+        "show products",
+        "browse products",
+        "main product categories",
+        "help me choose",
+        "which products",
+        "what products",
+        "do you have",
+        "do you sell",
+        "brand",
+        "category",
+    ]
+    return any(intent in normalized_message for intent in switch_intents)
+
+
 def should_interrupt_flow(message):
-    if is_greeting(message) or is_flow_cancel_or_switch(message) or flow_from_message(message):
+    if (
+        is_greeting(message)
+        or is_flow_cancel_or_switch(message)
+        or is_topic_switch_intent(message)
+        or flow_from_message(message)
+    ):
         return True
 
     tokens = query_tokens(message)
@@ -545,12 +581,70 @@ def continue_flow(message, flow_state):
 
 def flow_from_message(message):
     normalized_message = normalize(message)
-    if any(term in normalized_message for term in ["start rfq", "request quote", "quotation", "quote guide"]):
+    if any(term in normalized_message for term in ["start rfq", "start quote guide", "start quotation guide"]):
         return "rfq"
-    if any(term in normalized_message for term in ["pump help", "pump selection", "start pump"]):
+    if any(term in normalized_message for term in ["start pump", "start pump selection"]):
         return "pump-selection"
-    if any(term in normalized_message for term in ["water treatment help", "start water", "treatment guide"]):
+    if any(term in normalized_message for term in ["start water", "start water treatment", "start treatment guide"]):
         return "water-treatment"
+    return None
+
+
+def entry_by_id(entry_id):
+    return next((entry for entry in KNOWLEDGE["entries"] if entry["id"] == entry_id), None)
+
+
+def response_from_entry(entry):
+    return {
+        "answer": entry["answer"],
+        "matches": [
+            {
+                "id": entry["id"],
+                "title": entry["title"],
+                "category": entry.get("category", "general"),
+                "score": 1,
+                "confidence": 1,
+            }
+        ],
+        "links": entry.get("links", []),
+        "quick_replies": entry.get("quick_replies", []),
+        "confidence": 1,
+        "flow_state": None,
+    }
+
+
+def broad_advisory_response(message):
+    normalized_message = normalize(message)
+    route_map = [
+        (
+            "rfq",
+            ["i want a quote", "request a quote", "what information should i provide", "quote information"],
+        ),
+        (
+            "pumps",
+            ["help me choose the right pump", "help me choose a pump", "choose pump", "pump selection"],
+        ),
+        (
+            "water-treatment",
+            [
+                "help me choose the right water treatment",
+                "help me choose water treatment",
+                "water treatment solution",
+                "choose water treatment",
+            ],
+        ),
+        (
+            "products",
+            ["main product categories", "show me the main product", "browse products", "show products"],
+        ),
+    ]
+
+    for entry_id, phrases in route_map:
+        if any(phrase in normalized_message for phrase in phrases):
+            entry = entry_by_id(entry_id)
+            if entry:
+                return response_from_entry(entry)
+
     return None
 
 
@@ -561,6 +655,10 @@ def build_response(message):
 
     if is_greeting(message):
         return greeting_response()
+
+    advisory_match = broad_advisory_response(message)
+    if advisory_match:
+        return advisory_match
 
     catalog_match = catalog_response(message)
     if catalog_match:
@@ -592,7 +690,11 @@ def build_response(message):
             "answer": KNOWLEDGE["fallback_answer"],
             "matches": [],
             "links": [{"label": "Contact Vortexus", "url": "/contact-us"}],
-            "quick_replies": ["Pump help", "Water treatment help", "Request a quote"],
+            "quick_replies": [
+                "Help me choose a pump",
+                "Help me choose water treatment",
+                "Request a quote",
+            ],
             "confidence": confidence,
             "flow_state": None,
         }
