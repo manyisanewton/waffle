@@ -33,6 +33,8 @@ function injectHead(template, headMarkup) {
   html = html.replace(/<meta\s+property="og:[^"]+"[^>]*>/g, '')
   html = html.replace(/<meta\s+name="twitter:[^"]+"[^>]*>/g, '')
   html = html.replace(/<meta\s+name="robots"[^>]*>/g, '')
+  html = html.replace(/<meta\s+name="google-site-verification"[^>]*>/g, '')
+  html = html.replace(/<meta\s+name="msvalidate\.01"[^>]*>/g, '')
 
   return html.replace('</head>', `${headMarkup}\n</head>`)
 }

@@ -26,28 +26,35 @@ const heroSlides = [
     src: treatmentImage,
     alt: 'Industrial water treatment equipment and product systems',
     fit: 'object-cover object-left sm:object-center',
+    motion: 'zoom',
   },
   {
     src: fieldImage,
     alt: 'Field water infrastructure installation and product deployment',
     fit: 'object-cover object-right sm:object-center',
+    motion: 'slide-right',
   },
   {
     src: thirdHeroImage,
     alt: 'Industrial water-treatment products and product-brand presentation',
     fit: 'object-cover object-right sm:object-center',
+    motion: 'lift',
   },
   {
     src: fourthHeroImage,
     alt: 'Comprehensive industrial product solutions and applications',
     fit: 'object-cover object-center sm:object-center',
+    motion: 'scale-soft',
   },
   {
     src: fifthHeroImage,
     alt: 'Advanced water technology and specialized equipment',
     fit: 'object-cover object-center sm:object-center',
+    motion: 'slice',
   },
 ]
+
+const heroSliceCount = 7
 
 function HomePage() {
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false)
@@ -182,6 +189,108 @@ function HomePage() {
             0% { transform: translate3d(-50%, 0, 0); }
             100% { transform: translate3d(0, 0, 0); }
           }
+
+          .home-hero-slide {
+            opacity: 0;
+            transition:
+              opacity 1100ms ease,
+              transform 1300ms cubic-bezier(0.22, 1, 0.36, 1),
+              filter 1100ms ease;
+            will-change: opacity, transform, filter;
+          }
+
+          .home-hero-slide.is-active {
+            opacity: 1;
+            filter: saturate(1.02) contrast(1.01);
+          }
+
+          .home-hero-slide--zoom {
+            transform: scale(1.045);
+          }
+
+          .home-hero-slide--zoom.is-active {
+            transform: scale(1);
+          }
+
+          .home-hero-slide--slide-right {
+            transform: translate3d(4.5%, 0, 0) scale(1.025);
+          }
+
+          .home-hero-slide--slide-right.is-active {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+
+          .home-hero-slide--lift {
+            transform: translate3d(0, 5%, 0) scale(1.025);
+          }
+
+          .home-hero-slide--lift.is-active {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+
+          .home-hero-slide--scale-soft {
+            transform: scale(0.985);
+          }
+
+          .home-hero-slide--scale-soft.is-active {
+            transform: scale(1);
+          }
+
+          .home-hero-slide--slide-left {
+            transform: translate3d(-4.5%, 0, 0) scale(1.025);
+          }
+
+          .home-hero-slide--slide-left.is-active {
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+
+          .home-hero-slide--slice {
+            transform: scale(1.015);
+          }
+
+          .home-hero-slide--slice.is-active {
+            transform: scale(1);
+          }
+
+          .home-hero-slide-image {
+            transition: opacity 500ms ease;
+          }
+
+          .home-hero-slide--slice .home-hero-slide-image {
+            opacity: 0;
+            transition-delay: 720ms;
+          }
+
+          .home-hero-slide--slice.is-active .home-hero-slide-image {
+            opacity: 1;
+          }
+
+          .home-hero-slice {
+            bottom: 0;
+            opacity: 0;
+            top: 0;
+            transform: translate3d(0, var(--slice-offset), 0) scale(1.025);
+            transition:
+              opacity 620ms ease,
+              transform 880ms cubic-bezier(0.22, 1, 0.36, 1);
+            transition-delay: calc(var(--slice-index) * 82ms);
+          }
+
+          .home-hero-slide--slice.is-active .home-hero-slice {
+            opacity: 1;
+            transform: translate3d(0, 0, 0) scale(1);
+          }
+
+          @media (prefers-reduced-motion: reduce) {
+            .home-hero-slide {
+              transition: opacity 300ms ease;
+              transform: none !important;
+            }
+
+            .home-hero-slice {
+              display: none;
+            }
+          }
         `}
       </style>
       <section className="relative left-1/2 mt-0 w-screen -translate-x-1/2 bg-white">
@@ -191,18 +300,44 @@ function HomePage() {
               const isActive = index === currentHeroSlide
 
               return (
-                <img
+                <div
                   key={slide.src}
-                  src={slide.src}
-                  alt={slide.alt}
+                  role="img"
+                  aria-label={slide.alt}
                   className={[
-                    'absolute inset-0 h-full w-full bg-white transition-all duration-700 ease-out',
-                    slide.fit,
-                    isActive
-                      ? 'translate-x-0 scale-100 opacity-100'
-                      : 'translate-x-12 scale-[1.01] opacity-0',
+                    'home-hero-slide absolute inset-0 h-full w-full bg-white',
+                    `home-hero-slide--${slide.motion}`,
+                    isActive ? 'is-active' : '',
                   ].join(' ')}
-                />
+                >
+                  <img
+                    src={slide.src}
+                    alt=""
+                    aria-hidden="true"
+                    className={[
+                      'home-hero-slide-image absolute inset-0 h-full w-full bg-white',
+                      slide.fit,
+                    ].join(' ')}
+                  />
+                  {slide.motion === 'slice'
+                    ? Array.from({ length: heroSliceCount }, (_, sliceIndex) => (
+                        <span
+                          key={`${slide.src}-slice-${sliceIndex}`}
+                          aria-hidden="true"
+                          className="home-hero-slice absolute bg-cover bg-center"
+                          style={{
+                            left: `${(sliceIndex / heroSliceCount) * 100}%`,
+                            width: `${100 / heroSliceCount}%`,
+                            backgroundImage: `url("${slide.src}")`,
+                            backgroundSize: `${heroSliceCount * 100}% 100%`,
+                            backgroundPosition: `${(sliceIndex / (heroSliceCount - 1)) * 100}% center`,
+                            '--slice-index': sliceIndex,
+                            '--slice-offset': sliceIndex % 2 === 0 ? '-7%' : '7%',
+                          }}
+                        />
+                      ))
+                    : null}
+                </div>
               )
             })}
 

@@ -1,12 +1,335 @@
 export const blogCategories = [
   { slug: 'all', label: 'All Posts' },
   { slug: 'water-treatment', label: 'Water Treatment' },
+  { slug: 'buying-guides', label: 'Buying Guides' },
   { slug: 'solar-boreholes', label: 'Solar & Boreholes' },
   { slug: 'pumps-pressure', label: 'Pumps & Pressure' },
   { slug: 'project-insights', label: 'Project Insights' },
 ]
 
+const guideBlogPosts = [
+  {
+    slug: 'slim-vs-jumbo-filter-housings',
+    title: 'Slim vs Jumbo Filter Housings: Which One Should You Choose?',
+    excerpt:
+      'Filter housing size affects flow, cartridge cost, maintenance frequency, and where the system can be installed. Here is how to choose between slim and jumbo housings.',
+    category: 'buying-guides',
+    categoryLabel: 'Buying Guides',
+    author: 'Vortexus Editorial Team',
+    publishedAt: '2026-07-19',
+    readTime: '6 min read',
+    coverImage: '/Filtration Systems/10 jumbo 34 Blue Filter Housing.png',
+    heroImage: '/Filtration Systems/10 slim 34 Blue Filter Housing with Black Cap.png',
+    featured: true,
+    postKind: 'Buying Guide',
+    tags: ['filter housings', 'slim filter housing', 'jumbo filter housing', 'water filtration'],
+    seoDescription:
+      'Compare slim and jumbo filter housings for domestic, whole-house, and commercial water filtration systems.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content:
+          'Filter housings look simple, but choosing the wrong size can limit flow, increase cartridge changes, or make maintenance difficult. The most common choice is between slim 10 inch housings and jumbo 10 inch housings.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Slim housings usually take 2.5 inch diameter cartridges and work well for lower-flow point-of-use or small domestic systems. Jumbo housings usually take 4.5 inch diameter cartridges and are better when the system needs more flow or longer service life.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'When a slim housing makes sense',
+      },
+      {
+        type: 'list',
+        items: [
+          'Kitchen, under-sink, small office, and light domestic filtration',
+          'Lower daily water demand where compact installation space matters',
+          'Applications using standard 10 inch sediment, carbon, ceramic, or specialty cartridges',
+          'Systems where low cost and easy replacement are more important than high flow',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'When a jumbo housing is better',
+      },
+      {
+        type: 'list',
+        items: [
+          'Whole-house or point-of-entry filtration',
+          'Commercial pre-filtration before RO, UV, softeners, or pumps',
+          'Sites with higher sediment load or higher flow requirement',
+          'Installations where fewer cartridge changes and better dirt-holding capacity matter',
+        ],
+      },
+      {
+        type: 'quote',
+        content:
+          'Choose the housing around flow and maintenance, not only the cartridge height.',
+      },
+      {
+        type: 'cta',
+        title: 'Compare filter housings and cartridges',
+        text:
+          'Browse filtration systems or request help matching housing size, cartridge type, and flow requirement.',
+        buttonLabel: 'View Filtration Systems',
+        buttonHref: '/products/category/filtration-systems',
+      },
+    ],
+  },
+  {
+    slug: 'choose-sediment-filter-borehole-municipal-water',
+    title: 'How to Choose a Sediment Filter for Borehole or Municipal Water',
+    excerpt:
+      'Sediment filters protect pumps, carbon filters, UV systems, RO membranes, and taps from sand, rust, silt, and other suspended particles.',
+    category: 'buying-guides',
+    categoryLabel: 'Buying Guides',
+    author: 'Vortexus Editorial Team',
+    publishedAt: '2026-07-19',
+    readTime: '7 min read',
+    coverImage: '/Filtration Systems/10 5 Micron Slim Spun Sediment Filter.png',
+    heroImage: '/images/products/filtration-systems/sand-media.webp',
+    featured: true,
+    postKind: 'Buying Guide',
+    tags: ['sediment filter', 'borehole water', 'municipal water', '5 micron filter'],
+    seoDescription:
+      'Learn how to choose sediment filters for borehole and municipal water, including micron rating, flow, service life, and pretreatment use.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content:
+          'Sediment filtration is normally the first protection stage in a water treatment system. It removes physical particles such as sand, silt, clay, rust, and pipe scale before those particles reach more sensitive equipment.',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'For borehole water, sediment filters protect downstream treatment from sand and fine suspended matter. For municipal water, they help catch rust and particles from aging pipe networks or storage tanks.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'What micron rating means',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Micron rating describes the approximate particle size a filter is designed to capture. A 5 micron sediment cartridge is commonly used when finer particle removal is needed before carbon filtration, UV disinfection, RO membranes, or domestic use.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Selection checklist',
+      },
+      {
+        type: 'list',
+        items: [
+          'Confirm whether the problem is sand, rust, silt, clay, turbidity, or visible dirt',
+          'Match cartridge height and diameter to the installed housing',
+          'Check flow rate so the filter does not restrict supply',
+          'Replace cartridges before pressure drop becomes severe',
+          'Use stronger pretreatment where water carries heavy sand or high turbidity',
+        ],
+      },
+      {
+        type: 'cta',
+        title: 'Need sediment protection for your water system?',
+        text:
+          'Vortexus supplies sediment cartridges, filter housings, and pretreatment products for domestic, commercial, and industrial water systems.',
+        buttonLabel: 'Browse Sediment Filtration',
+        buttonHref: '/products/category/filtration-systems',
+      },
+    ],
+  },
+  {
+    slug: 'choose-water-meter-home-apartment-commercial',
+    title: 'How to Choose a Water Meter for Homes, Apartments, and Commercial Use',
+    excerpt:
+      'A water meter should match pipe size, flow range, pressure, connection type, and the way consumption will be monitored or billed.',
+    category: 'buying-guides',
+    categoryLabel: 'Buying Guides',
+    author: 'Vortexus Editorial Team',
+    publishedAt: '2026-07-19',
+    readTime: '6 min read',
+    coverImage: '/water meters/25mm KMEI Water Meter – Accurate, Reliable Water Measurement.png',
+    heroImage: '/water meters/50mm Flange-Type Water Meter – Accurate Bulk Water Measurement.png',
+    featured: true,
+    postKind: 'Buying Guide',
+    tags: ['water meter', 'mechanical water meter', 'kmei water meter', 'commercial metering'],
+    seoDescription:
+      'Choose the right mechanical water meter by pipe size, flow rate, pressure, threaded or flanged connection, and usage application.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content:
+          'Water meters are used for consumption monitoring, tenant billing, utility control, agriculture supply, commercial buildings, and community distribution. The right meter is not simply the biggest one available. It should match the normal flow range of the pipe it serves.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Start with pipe size and expected flow',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'Smaller meters such as 15mm and 20mm are commonly used for domestic, apartment, and small commercial applications. Larger meters such as 25mm, 40mm, and 50mm are used where the line carries higher flow for buildings, farms, institutions, or community water supply.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'What to check before buying',
+      },
+      {
+        type: 'list',
+        items: [
+          'Nominal size and connection type: threaded or flanged',
+          'Maximum flow rate and normal operating flow',
+          'Maximum operating pressure',
+          'Mechanical register readability and installation position',
+          'Whether the meter will serve one user, a building, a farm, or a bulk line',
+        ],
+      },
+      {
+        type: 'quote',
+        content:
+          'Good metering starts with correct sizing, not just installing a register on the pipe.',
+      },
+      {
+        type: 'cta',
+        title: 'Compare mechanical water meters',
+        text:
+          'Review domestic, commercial, and bulk water meter options for your pipe size and flow requirement.',
+        buttonLabel: 'View Water Meters',
+        buttonHref: '/products/category/water-meters',
+      },
+    ],
+  },
+  {
+    slug: 'choose-uv-lamp-water-sterilizer',
+    title: 'How to Choose a UV Lamp for a Water Sterilizer',
+    excerpt:
+      'UV lamp replacement depends on wattage, pin type, lamp length, flow rating, and compatibility with the sterilizer chamber.',
+    category: 'buying-guides',
+    categoryLabel: 'Buying Guides',
+    author: 'Vortexus Editorial Team',
+    publishedAt: '2026-07-19',
+    readTime: '6 min read',
+    coverImage: '/sterilizers/UV Lamp 2-Pin 30W for Water Sterilizer.png',
+    heroImage: '/images/products/disinfection-systems/uv-lamp.jpg',
+    featured: false,
+    postKind: 'Buying Guide',
+    tags: ['uv lamp', 'water sterilizer', 'uv disinfection', '2 pin uv lamp'],
+    seoDescription:
+      'Learn how to choose a UV replacement lamp for water sterilizers by wattage, pin type, flow rate, and system compatibility.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content:
+          'A UV sterilizer depends on the lamp producing enough ultraviolet intensity as water passes through the chamber. When the lamp is old, mismatched, or underpowered for the flow rate, disinfection performance can drop even if the lamp still appears to be glowing.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Details to confirm before ordering',
+      },
+      {
+        type: 'list',
+        items: [
+          'Lamp wattage, such as 6W, 16W, 25W, 30W, or 55W',
+          'Pin type and connector format',
+          'Lamp length and chamber compatibility',
+          'System flow rate in gallons per minute or litres per hour',
+          'Whether the quartz sleeve and ballast also need inspection or replacement',
+        ],
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Why filtration before UV matters',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'UV works best when the water is already clear. Sediment, turbidity, and color can shield microorganisms from UV exposure. That is why UV is normally installed after sediment filtration and before final distribution.',
+      },
+      {
+        type: 'cta',
+        title: 'Find UV lamps and sterilizer parts',
+        text:
+          'Browse UV replacement lamps and water sterilizer parts, or ask for compatibility help using a photo of your existing lamp.',
+        buttonLabel: 'View Sterilizers',
+        buttonHref: '/products/category/sterilizers',
+      },
+    ],
+  },
+  {
+    slug: 'choose-right-ro-system-water-quality',
+    title: 'How to Choose the Right RO System for Your Water Quality',
+    excerpt:
+      'Reverse osmosis selection starts with a water analysis report, target water quality, daily volume, pretreatment plan, and membrane protection strategy.',
+    category: 'water-treatment',
+    categoryLabel: 'Water Treatment',
+    author: 'Vortexus Editorial Team',
+    publishedAt: '2026-07-19',
+    readTime: '8 min read',
+    coverImage: '/images/products/reverse-osmosis-systems/ro-skid.webp',
+    heroImage: '/images/assets/img/projects/90cubic RO PLANT.webp',
+    featured: false,
+    postKind: 'Buying Guide',
+    tags: ['reverse osmosis system', 'ro plant', 'ro membrane', 'water analysis'],
+    seoDescription:
+      'Choose the right reverse osmosis system by checking water analysis, flow demand, TDS, pretreatment, membranes, and application requirements.',
+    blocks: [
+      {
+        type: 'paragraph',
+        content:
+          'Reverse osmosis is one of the strongest treatment options for dissolved contaminants, but it should not be selected blindly. The right RO system depends on the source water quality and the water quality required after treatment.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'Start with a water analysis report',
+      },
+      {
+        type: 'paragraph',
+        content:
+          'A water analysis should show TDS, hardness, iron, manganese, turbidity, chlorine, pH, fluoride, and microbiological risk where relevant. These values determine membrane choice, pretreatment, chemical dosing, cleaning needs, and recovery expectations.',
+      },
+      {
+        type: 'heading',
+        level: 2,
+        content: 'RO selection checklist',
+      },
+      {
+        type: 'list',
+        items: [
+          'Daily water volume and peak flow requirement',
+          'Incoming TDS, hardness, iron, turbidity, and chlorine',
+          'Required product-water quality for drinking, process, boiler, lab, or industrial use',
+          'Pretreatment requirements such as sediment filtration, carbon, softening, or antiscalant dosing',
+          'Membrane size, pressure vessel, pump pressure, controls, and cleaning access',
+        ],
+      },
+      {
+        type: 'quote',
+        content:
+          'RO performance is decided before the membrane: pretreatment and sizing protect the whole system.',
+      },
+      {
+        type: 'cta',
+        title: 'Plan an RO system around real water quality',
+        text:
+          'Share a water analysis report, application, and required daily volume so Vortexus can recommend the right RO direction.',
+        buttonLabel: 'View RO Systems',
+        buttonHref: '/products/category/reverse-osmosis-systems',
+      },
+    ],
+  },
+]
+
 export const blogPosts = [
+  ...guideBlogPosts,
   {
     slug: 'reverse-osmosis-for-saline-and-fluoride-water',
     title: 'How Reverse Osmosis Solves Salinity and Fluoride Challenges for Communities and Developments',

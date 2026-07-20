@@ -752,21 +752,22 @@ function buildFiltrationText(product) {
 
 function enrichFiltrationProduct(product) {
   const filtration = buildFiltrationText(product)
+  const preserveCatalogText = product.preserveCatalogText === true
 
   return {
     ...product,
-    subcategory: filtration.subcategory,
-    summary: filtration.shortDescription,
-    description: filtration.technicalSummary,
-    shortDescription: filtration.shortDescription,
-    technicalSummary: filtration.technicalSummary,
-    applications: filtration.applications,
-    specHighlights: filtration.keyFeatures,
-    keyFeatures: filtration.keyFeatures,
-    selectionNotes: filtration.selectionNotes,
-    compatibilityNotes: filtration.compatibilityNotes,
-    rfqFields: filtration.rfqFields,
-    seoDescription: filtration.seoDescription,
+    subcategory: preserveCatalogText ? product.subcategory : filtration.subcategory,
+    summary: preserveCatalogText ? product.summary : filtration.shortDescription,
+    description: preserveCatalogText ? product.description : filtration.technicalSummary,
+    shortDescription: preserveCatalogText ? product.summary : filtration.shortDescription,
+    technicalSummary: preserveCatalogText ? product.description : filtration.technicalSummary,
+    applications: preserveCatalogText ? product.applications : filtration.applications,
+    specHighlights: preserveCatalogText ? product.specHighlights : filtration.keyFeatures,
+    keyFeatures: preserveCatalogText ? product.specHighlights : filtration.keyFeatures,
+    selectionNotes: preserveCatalogText ? product.selectionNotes : filtration.selectionNotes,
+    compatibilityNotes: preserveCatalogText ? product.compatibilityNotes : filtration.compatibilityNotes,
+    rfqFields: preserveCatalogText ? product.rfqFields : filtration.rfqFields,
+    seoDescription: preserveCatalogText ? product.seoDescription || filtration.seoDescription : filtration.seoDescription,
   }
 }
 

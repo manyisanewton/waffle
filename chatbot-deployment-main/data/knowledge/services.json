@@ -1,0 +1,43 @@
+{
+  "synonyms": {
+    "services": ["services", "service", "installation", "support", "maintenance", "system matching", "technical delivery"]
+  },
+  "entries": [
+    {
+      "id": "services-overview",
+      "title": "Services Overview",
+      "category": "services",
+      "keywords": ["services", "what services", "service capability", "installation", "technical support", "water and pumping services"],
+      "answer": "Vortexus services focus on water treatment systems, pump machinery, borehole-related delivery, solar pumping integration, and technical equipment support. The services are grouped around real water-quality, pressure, pumping, and reliability problems.",
+      "links": [{"label": "Services", "url": "/services"}],
+      "quick_replies": ["Water treatment services", "Pump services", "Request a quote"]
+    },
+    {
+      "id": "services-water-treatment-systems",
+      "title": "Water Treatment and System Services",
+      "category": "services",
+      "keywords": ["water treatment services", "reverse osmosis services", "uv disinfection", "water softening", "uf systems", "demineralizer", "chemical dosing"],
+      "answer": "Water treatment services include reverse osmosis systems, UV disinfection, water softening units, RO consumables and equipment, ultrafiltration systems, ion exchange or demineralizer plants, and chemical dosing pumps. These services support domestic, commercial, and industrial water-quality needs.",
+      "links": [{"label": "Services", "url": "/services"}],
+      "quick_replies": ["Help me choose water treatment", "Request a quote", "Show treatment products"]
+    },
+    {
+      "id": "services-pumps-machinery",
+      "title": "Pump and Machinery Services",
+      "category": "services",
+      "keywords": ["pump services", "machinery services", "domestic booster pumps", "multistage pumps", "booster sets", "submersible pumps", "solar water pumps", "drainage pumps", "sewage effluent pumps"],
+      "answer": "Pump and machinery services cover domestic booster pumps, centrifugal multistage pumps, booster sets, submersible pumps, solar water pumps, sewage effluent pumps, and drainage pumps. The focus is pressure control, water movement, borehole abstraction, wastewater handling, and reliable delivery in demanding conditions.",
+      "links": [{"label": "Services", "url": "/services"}],
+      "quick_replies": ["Help me choose a pump", "Request a quote", "Show pump products"]
+    },
+    {
+      "id": "services-strengths",
+      "title": "Service Strengths",
+      "category": "services",
+      "keywords": ["practical system matching", "technical delivery confidence", "responsive support", "service strengths", "maintenance", "operating reliability"],
+      "answer": "Vortexus service strengths include practical system matching, technical delivery confidence, and responsive support. The team aligns solutions with source water, demand, pressure conditions, site realities, installation needs, maintenance, and long-term operating reliability.",
+      "links": [{"label": "Services", "url": "/services"}],
+      "quick_replies": ["Contact Vortexus", "Request a quote", "What information should I prepare?"]
+    }
+  ]
+}

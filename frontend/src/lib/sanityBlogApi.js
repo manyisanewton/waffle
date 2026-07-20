@@ -1,3 +1,5 @@
+import { blogPosts as localBlogPosts } from '../data/blogPosts'
+
 const SANITY_PROJECT_ID = import.meta.env.VITE_SANITY_PROJECT_ID || 'pxbfeggb'
 const SANITY_DATASET = import.meta.env.VITE_SANITY_DATASET || 'production'
 const SANITY_API_VERSION = import.meta.env.VITE_SANITY_API_VERSION || '2025-02-19'
@@ -8,6 +10,28 @@ const DEFAULT_POST_IMAGE = '/images/placeholder-product.webp'
 
 let cachedPosts = null
 let postsPromise = null
+
+function normalizeLocalPost(post) {
+  return {
+    postKind: 'Article',
+    ...post,
+  }
+}
+
+function mergePosts(primaryPosts, secondaryPosts) {
+  const seenSlugs = new Set()
+
+  return [...primaryPosts, ...secondaryPosts]
+    .filter((post) => {
+      if (!post?.slug || seenSlugs.has(post.slug)) {
+        return false
+      }
+
+      seenSlugs.add(post.slug)
+      return true
+    })
+    .sort((left, right) => new Date(right.publishedAt) - new Date(left.publishedAt))
+}
 
 const SANITY_POST_PROJECTION = `{
   title,
@@ -54,13 +78,6 @@ const SANITY_POST_PROJECTION = `{
     }
   }
 }`
-
-function formatCategoryLabel(slug) {
-  return slug
-    .split('-')
-    .map((part) => part.charAt(0).toUpperCase() + part.slice(1))
-    .join(' ')
-}
 
 function normalizeWhitespace(value) {
   return String(value || '')
@@ -235,11 +252,11 @@ async function fetchSanityPosts() {
 }
 
 export function getFallbackBlogPosts() {
-  return []
+  return localBlogPosts.map(normalizeLocalPost)
 }
 
 export function getFallbackBlogPostBySlug(slug) {
-  return null
+  return getFallbackBlogPosts().find((post) => post.slug === slug) || null
 }
 
 export function getBlogCategories(posts) {
@@ -297,11 +314,11 @@ export async function loadBlogPosts() {
   if (!postsPromise) {
     postsPromise = fetchSanityPosts()
       .then((posts) => {
-        cachedPosts = posts
+        cachedPosts = mergePosts(posts, getFallbackBlogPosts())
         return cachedPosts
       })
       .catch(() => {
-        cachedPosts = []
+        cachedPosts = getFallbackBlogPosts()
         return cachedPosts
       })
   }

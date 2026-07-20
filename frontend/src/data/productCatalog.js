@@ -12,6 +12,9 @@ export const productCategories = [
       'Sand Filters',
       'Activated Carbon Filters',
       'Cartridge Filters',
+      'Spun (Polypropylene) sediment removal filter',
+      'Housing single element',
+      'Granular Activated Carbon taste, odor & chemical removal filetr',
       'Bag Filters',
       'Disc Filters',
       'Microfiltration',
@@ -72,6 +75,17 @@ export const productCategories = [
       'Pool Accessories',
       'Ozone Generators',
       'Electrochlorination Systems',
+    ],
+  },
+  {
+    slug: 'sterilizers',
+    name: 'Sterilizers',
+    icon: '💡',
+    description:
+      'UV lamps and sterilizer replacement parts for chemical-free water disinfection in domestic and light commercial purification systems.',
+    image: '/sterilizers/UV Lamp 2-Pin 30W for Water Sterilizer.png',
+    subcategories: [
+      '2 pin',
     ],
   },
   {
@@ -186,6 +200,17 @@ export const productCategories = [
       'Pressure Gauges',
       'Online Water Analyzers',
       'SCADA Monitoring Systems',
+    ],
+  },
+  {
+    slug: 'water-meters',
+    name: 'Water Meters',
+    icon: '💧',
+    description:
+      'Mechanical water meters for domestic, commercial, institutional, agricultural, and community water-consumption monitoring.',
+    image: '/water meters/25mm KMEI Water Meter – Accurate, Reliable Water Measurement.png',
+    subcategories: [
+      'Mechanical Water Meter',
     ],
   },
   {

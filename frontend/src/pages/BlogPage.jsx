@@ -1,10 +1,30 @@
 import { useEffect, useMemo, useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import {
+  FaArrowRight,
+  FaBookOpen,
+  FaCalendarAlt,
+  FaFolderOpen,
+  FaIndustry,
+  FaPlay,
+  FaTag,
+  FaTint,
+  FaTools,
+} from 'react-icons/fa'
 import Seo from '../components/seo/Seo'
-import FullBleedHero from '../components/sections/FullBleedHero'
-import { loadBlogPosts } from '../lib/sanityBlogApi'
+import { getFallbackBlogPosts, loadBlogPosts } from '../lib/sanityBlogApi'
 
 const POSTS_PER_PAGE = 6
+const heroImage = '/images/water-treament.webp'
+
+const categoryFilters = [
+  { slug: 'all', label: 'All Articles', icon: FaBookOpen },
+  { slug: 'buying-guides', label: 'Buying Guides', icon: FaFolderOpen },
+  { slug: 'project-insights', label: 'Field Updates', icon: FaTools },
+  { slug: 'water-treatment', label: 'Water Treatment', icon: FaTint },
+  { slug: 'industry-insights', label: 'Industry Insights', icon: FaIndustry },
+  { slug: 'product-guides', label: 'Product Guides', icon: FaTag },
+]
 
 function formatDate(dateString) {
   return new Intl.DateTimeFormat('en-GB', {
@@ -18,16 +38,29 @@ function getVideoBlock(post) {
   return post.blocks.find((block) => block.type === 'video') || null
 }
 
+function getPostKind(post) {
+  return post.postKind || post.categoryLabel || 'Article'
+}
+
+function categoryMatchesPost(categorySlug, post) {
+  if (categorySlug === 'all') return true
+  if (categorySlug === post.category) return true
+  if (categorySlug === 'product-guides') return getPostKind(post).toLowerCase().includes('guide')
+  if (categorySlug === 'industry-insights') {
+    return post.tags?.some((tag) => /industry|commercial|institution|community/i.test(tag))
+  }
+  return false
+}
+
 function BlogPage() {
-  const [posts, setPosts] = useState([])
-  const [isLoading, setIsLoading] = useState(true)
+  const [posts, setPosts] = useState(() => getFallbackBlogPosts())
+  const [isLoading, setIsLoading] = useState(false)
+  const [activeCategory, setActiveCategory] = useState('all')
   const [currentHighlightIndex, setCurrentHighlightIndex] = useState(0)
   const [currentPage, setCurrentPage] = useState(1)
 
   useEffect(() => {
     let isCancelled = false
-
-    setIsLoading(true)
 
     loadBlogPosts()
       .then((livePosts) => {
@@ -40,7 +73,7 @@ function BlogPage() {
       })
       .catch(() => {
         if (!isCancelled) {
-          setPosts([])
+          setPosts(getFallbackBlogPosts())
           setIsLoading(false)
         }
       })
@@ -57,17 +90,23 @@ function BlogPage() {
 
   const activeHighlight = highlightPosts[currentHighlightIndex] || highlightPosts[0] || null
 
+  const filteredPosts = useMemo(
+    () => posts.filter((post) => categoryMatchesPost(activeCategory, post)),
+    [activeCategory, posts],
+  )
+
   const videoPosts = useMemo(
     () => posts.filter((post) => getVideoBlock(post)).slice(0, 3),
     [posts],
   )
 
-  const totalPages = Math.max(1, Math.ceil(posts.length / POSTS_PER_PAGE))
+  const totalPages = Math.max(1, Math.ceil(filteredPosts.length / POSTS_PER_PAGE))
+  const visiblePage = Math.min(currentPage, totalPages)
 
   const paginatedPosts = useMemo(() => {
-    const startIndex = (currentPage - 1) * POSTS_PER_PAGE
-    return posts.slice(startIndex, startIndex + POSTS_PER_PAGE)
-  }, [currentPage, posts])
+    const startIndex = (visiblePage - 1) * POSTS_PER_PAGE
+    return filteredPosts.slice(startIndex, startIndex + POSTS_PER_PAGE)
+  }, [filteredPosts, visiblePage])
 
   useEffect(() => {
     if (!highlightPosts.length) {
@@ -76,236 +115,280 @@ function BlogPage() {
 
     const interval = window.setInterval(() => {
       setCurrentHighlightIndex((current) => (current + 1) % highlightPosts.length)
-    }, 6500)
+    }, 7000)
 
     return () => window.clearInterval(interval)
   }, [highlightPosts.length])
 
-  useEffect(() => {
-    if (currentPage > totalPages) {
-      setCurrentPage(totalPages)
-    }
-  }, [currentPage, totalPages])
-
   return (
-    <div className="space-y-16 text-brand-ink lg:space-y-24">
+    <div className="space-y-10 text-brand-ink lg:space-y-12">
       <Seo
         title="Blog"
-        description="Live product updates, technical articles, and field posts published from the Vortexus Sanity editorial channel."
+        description="Vortexus buying guides, technical articles, field updates, and product education for water treatment, pumps, filtration, RO, meters, and sterilizers."
       />
 
-      <FullBleedHero
-        eyebrow="Vortexus Blog"
-        title="Live articles, field updates, and product publishing."
-        description="This page pulls published blog content directly from the Vortexus editorial channel for product communication, buyer education, and technical updates."
-        imageSrc={activeHighlight?.heroImage || '/images/placeholder-product.webp'}
-        imageAlt={activeHighlight?.title || 'Vortexus blog'}
-        overlayClassName="theme-hero-dark-strong"
-      >
-        {activeHighlight ? (
-          <div className="flex flex-wrap gap-3">
-            <NavLink
-              to={`/blog/${activeHighlight.slug}`}
-              className="inline-flex items-center justify-center rounded-full bg-brand-green px-6 py-3.5 text-sm font-semibold text-white transition hover:bg-brand-green-soft"
-            >
-              Read Highlight
-            </NavLink>
+      <section className="overflow-hidden rounded-[1.25rem] border border-brand-border bg-white shadow-[0_24px_70px_rgba(35,33,32,0.08)]">
+        <div className="grid min-h-[430px] lg:grid-cols-[0.52fr_0.48fr]">
+          <div className="relative overflow-hidden px-7 py-10 sm:px-10 lg:px-12 lg:py-16">
+            <div className="absolute inset-y-0 right-[-18%] hidden w-[55%] rounded-l-[50%] bg-brand-surface lg:block" />
+            <div className="relative max-w-xl">
+              <p className="text-xs font-bold uppercase tracking-[0.32em] text-[var(--color-accent-blue)]">
+                Vortexus Blog
+              </p>
+              <h1 className="mt-5 font-display text-4xl font-semibold leading-tight text-brand-ink sm:text-5xl lg:text-6xl">
+                Practical water solutions and expert insights.
+              </h1>
+              <p className="mt-6 max-w-md text-base leading-8 text-brand-muted">
+                Guides, field updates, and water-system advice for industries,
+                businesses, and communities.
+              </p>
+              <a
+                href="#latest-articles"
+                className="mt-7 inline-flex items-center gap-3 rounded-full bg-[var(--color-accent-blue)] px-6 py-3 text-sm font-bold text-white shadow-[0_18px_38px_rgba(33,73,216,0.22)] transition hover:bg-[var(--color-accent-blue-hover)]"
+              >
+                Explore Articles
+                <FaArrowRight />
+              </a>
+            </div>
           </div>
-        ) : null}
-      </FullBleedHero>
+
+          <div className="relative min-h-[300px] overflow-hidden">
+            <img
+              src={heroImage}
+              alt="Clean water flowing over stones"
+              className="absolute inset-0 h-full w-full object-cover"
+            />
+          </div>
+        </div>
+      </section>
 
       {activeHighlight ? (
-        <section className="grid gap-6 lg:grid-cols-[1.08fr_0.92fr] lg:items-start">
-          <article className="space-y-5 rounded-[2rem] border border-brand-border bg-white px-6 py-6 shadow-[0_20px_56px_rgba(35,33,32,0.06)] sm:px-8 sm:py-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
-              Highlight Post
-            </p>
-            <h2 className="font-display text-3xl font-semibold text-brand-ink sm:text-4xl">
-              {activeHighlight.title}
-            </h2>
-            <p className="text-base leading-8 text-brand-muted">
-              {activeHighlight.excerpt}
-            </p>
-            <div className="flex flex-wrap items-center gap-4 text-sm text-brand-muted">
-              <span>{formatDate(activeHighlight.publishedAt)}</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-border" />
-              <span>{activeHighlight.readTime}</span>
-              <span className="h-1.5 w-1.5 rounded-full bg-brand-border" />
-              <span>{activeHighlight.postKind}</span>
-            </div>
-            <div className="flex flex-wrap gap-3">
+        <section className="-mt-2 rounded-[1.25rem] border border-brand-border bg-white shadow-[0_24px_70px_rgba(35,33,32,0.08)] lg:mx-10">
+          <div className="grid overflow-hidden rounded-[1.25rem] lg:grid-cols-[0.7fr_0.3fr]">
+            <article className="px-7 py-8 sm:px-10">
+              <p className="text-xs font-bold uppercase tracking-[0.32em] text-[var(--color-accent-blue)]">
+                Featured Post
+              </p>
+              <h2 className="mt-5 max-w-2xl font-display text-3xl font-semibold leading-tight text-brand-ink">
+                {activeHighlight.title}
+              </h2>
+              <p className="mt-4 max-w-xl text-sm leading-7 text-brand-muted">
+                {activeHighlight.excerpt}
+              </p>
+
+              <div className="mt-6 flex flex-wrap items-center gap-4 text-xs font-semibold text-brand-muted">
+                <span className="inline-flex items-center gap-2">
+                  <FaCalendarAlt className="text-[var(--color-accent-blue)]" />
+                  {formatDate(activeHighlight.publishedAt)}
+                </span>
+                <span>{activeHighlight.readTime}</span>
+                <span>{getPostKind(activeHighlight)}</span>
+              </div>
+
               <NavLink
                 to={`/blog/${activeHighlight.slug}`}
-                className="inline-flex items-center justify-center rounded-full bg-brand-green px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-green-soft"
+                className="mt-7 inline-flex items-center gap-3 rounded-full bg-[var(--color-accent-blue)] px-6 py-3 text-sm font-bold text-white transition hover:bg-[var(--color-accent-blue-hover)]"
               >
-                Open Article
+                Read Article
+                <FaArrowRight />
+              </NavLink>
+
+              {highlightPosts.length > 1 ? (
+                <div className="mt-8 flex flex-wrap gap-4">
+                  {highlightPosts.map((post, index) => (
+                    <button
+                      key={post.slug}
+                      type="button"
+                      onClick={() => setCurrentHighlightIndex(index)}
+                      className={[
+                        'min-w-20 rounded-[1rem] border px-5 py-3 text-center text-xs font-bold transition',
+                        currentHighlightIndex === index
+                          ? 'border-[var(--color-accent-blue)] bg-white text-[var(--color-accent-blue)] shadow-[0_14px_34px_rgba(33,73,216,0.14)]'
+                          : 'border-brand-border bg-white text-brand-muted hover:border-[var(--color-accent-blue)] hover:text-[var(--color-accent-blue)]',
+                      ].join(' ')}
+                    >
+                      <span className="block text-sm">{String(index + 1).padStart(2, '0')}</span>
+                      <span className="mt-1 block uppercase tracking-[0.18em]">Story {index + 1}</span>
+                    </button>
+                  ))}
+                </div>
+              ) : null}
+            </article>
+
+            <NavLink to={`/blog/${activeHighlight.slug}`} className="min-h-[320px] bg-brand-surface">
+              <img
+                src={activeHighlight.coverImage}
+                alt={activeHighlight.title}
+                className="h-full w-full object-contain p-6"
+              />
+            </NavLink>
+          </div>
+        </section>
+      ) : null}
+
+      <section className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+        {categoryFilters.map((category) => {
+          const Icon = category.icon
+          const isActive = activeCategory === category.slug
+
+          return (
+            <button
+              key={category.slug}
+              type="button"
+              onClick={() => {
+                setActiveCategory(category.slug)
+                setCurrentPage(1)
+              }}
+              className={[
+                'rounded-[1.15rem] border px-5 py-6 text-center shadow-[0_16px_38px_rgba(35,33,32,0.05)] transition hover:-translate-y-0.5',
+                isActive
+                  ? 'border-[var(--color-accent-blue)] bg-white text-[var(--color-accent-blue)]'
+                  : 'border-brand-border bg-white text-brand-ink hover:border-[var(--color-accent-blue)] hover:text-[var(--color-accent-blue)]',
+              ].join(' ')}
+            >
+              <Icon className="mx-auto text-2xl" />
+              <span className="mt-4 block text-sm font-bold">{category.label}</span>
+            </button>
+          )
+        })}
+      </section>
+
+      {videoPosts.length ? (
+        <section className="rounded-[1.25rem] border border-brand-border bg-white p-7 shadow-[0_20px_56px_rgba(35,33,32,0.06)] sm:p-8">
+          <div className="grid gap-6 lg:grid-cols-[0.24fr_0.76fr] lg:items-center">
+            <div>
+              <p className="text-xs font-bold uppercase tracking-[0.32em] text-[var(--color-accent-blue)]">
+                Video Posts
+              </p>
+              <h2 className="mt-5 font-display text-3xl font-semibold leading-tight text-brand-ink">
+                From our editorial video channel.
+              </h2>
+              <NavLink
+                to="/blog"
+                className="mt-6 inline-flex items-center gap-3 rounded-full bg-[var(--color-accent-blue)] px-5 py-3 text-sm font-bold text-white transition hover:bg-[var(--color-accent-blue-hover)]"
+              >
+                Watch All Videos
+                <FaArrowRight />
               </NavLink>
             </div>
 
-            {highlightPosts.length > 1 ? (
-              <div className="flex flex-wrap gap-3 pt-2">
-                {highlightPosts.map((post, index) => (
-                  <button
+            <div className="grid gap-5 md:grid-cols-3">
+              {videoPosts.map((post) => {
+                const videoBlock = getVideoBlock(post)
+
+                return (
+                  <NavLink
                     key={post.slug}
-                    type="button"
-                    onClick={() => setCurrentHighlightIndex(index)}
-                    className={[
-                      'rounded-full px-4 py-2 text-left text-xs font-semibold uppercase tracking-[0.24em] transition',
-                      currentHighlightIndex === index
-                        ? 'bg-brand-green text-white shadow-[0_14px_34px_rgba(43,162,82,0.22)]'
-                        : 'border border-brand-border bg-white text-brand-muted hover:border-brand-green hover:text-brand-green',
-                    ].join(' ')}
+                    to={`/blog/${post.slug}`}
+                    className="overflow-hidden rounded-[0.95rem] border border-brand-border bg-white transition hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(35,33,32,0.08)]"
                   >
-                    Story {index + 1}
-                  </button>
-                ))}
-              </div>
-            ) : null}
-          </article>
-
-          <NavLink
-            to={`/blog/${activeHighlight.slug}`}
-            className="overflow-hidden rounded-[2rem] border border-brand-border bg-white shadow-[0_20px_56px_rgba(35,33,32,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_26px_62px_rgba(35,33,32,0.09)]"
-          >
-            <img
-              src={activeHighlight.coverImage}
-              alt={activeHighlight.title}
-              className="h-72 w-full object-cover sm:h-96"
-            />
-          </NavLink>
-        </section>
-      ) : null}
-
-      {videoPosts.length ? (
-        <section className="space-y-8">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
-              Video Posts
-            </p>
-            <h2 className="mt-3 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
-              Posts with video from the editorial channel.
-            </h2>
-          </div>
-
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-            {videoPosts.map((post) => {
-              const videoBlock = getVideoBlock(post)
-
-              return (
-                <article
-                  key={post.slug}
-                  className="overflow-hidden rounded-[1.85rem] border border-brand-border bg-white shadow-[0_20px_52px_rgba(35,33,32,0.06)]"
-                >
-                  <div className="relative overflow-hidden bg-brand-ink">
-                    {videoBlock?.poster ? (
+                    <div className="relative h-40 overflow-hidden bg-brand-ink">
                       <img
-                        src={videoBlock.poster}
+                        src={videoBlock?.poster || post.coverImage}
                         alt={post.title}
-                        className="h-64 w-full object-cover opacity-92"
+                        className="h-full w-full object-cover"
                       />
-                    ) : (
-                      <div className="h-64 w-full bg-brand-ink" />
-                    )}
-                    <div className="absolute inset-0 bg-gradient-to-t from-brand-ink/82 via-brand-ink/24 to-transparent" />
-                    <div className="absolute inset-x-0 bottom-0 p-5">
-                      <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-green-muted">
-                        {post.postKind}
-                      </p>
-                      <h3 className="mt-3 font-display text-2xl font-semibold text-white">
+                      <span className="absolute inset-0 bg-brand-ink/18" />
+                      <span className="absolute left-1/2 top-1/2 inline-flex h-12 w-12 -translate-x-1/2 -translate-y-1/2 items-center justify-center rounded-full bg-brand-ink/82 text-white">
+                        <FaPlay className="ml-1" />
+                      </span>
+                    </div>
+                    <div className="space-y-2 px-4 py-4">
+                      <h3 className="font-display text-lg font-semibold leading-snug text-brand-ink">
                         {post.title}
                       </h3>
+                      <p className="text-xs font-semibold text-brand-muted">
+                        {post.readTime} • {getPostKind(post)}
+                      </p>
                     </div>
-                  </div>
-                  <div className="space-y-4 px-5 py-5">
-                    <p className="text-sm leading-7 text-brand-muted">{post.excerpt}</p>
-                    <div className="flex flex-wrap items-center gap-3 text-sm text-brand-muted">
-                      <span>{formatDate(post.publishedAt)}</span>
-                      <span className="h-1.5 w-1.5 rounded-full bg-brand-border" />
-                      <span>{post.readTime}</span>
-                    </div>
-                    <NavLink
-                      to={`/blog/${post.slug}`}
-                      className="inline-flex items-center justify-center rounded-full border border-brand-border px-5 py-3 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green"
-                    >
-                      Open Post
-                    </NavLink>
-                  </div>
-                </article>
-              )
-            })}
+                  </NavLink>
+                )
+              })}
+            </div>
           </div>
         </section>
       ) : null}
 
-      <section className="space-y-8">
-        <div className="flex flex-col gap-3 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-3xl">
-            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
-              Latest Posts
+      <section id="latest-articles" className="rounded-[1.25rem] border border-brand-border bg-white p-7 shadow-[0_20px_56px_rgba(35,33,32,0.06)] sm:p-8">
+        <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-[0.32em] text-[var(--color-accent-blue)]">
+              Latest Articles
             </p>
-            <h2 className="mt-3 font-display text-4xl font-semibold text-brand-ink sm:text-5xl">
-              Published articles from Sanity.
+            <h2 className="mt-4 max-w-lg font-display text-3xl font-semibold leading-tight text-brand-ink">
+              Latest guides and technical articles.
             </h2>
           </div>
 
-          <div className="rounded-full border border-brand-border bg-white px-5 py-3 text-sm font-medium text-brand-muted shadow-[0_12px_30px_rgba(35,33,32,0.04)]">
-            {posts.length} posts
-          </div>
+          <button
+            type="button"
+            onClick={() => {
+              setActiveCategory('all')
+              setCurrentPage(1)
+            }}
+            className="inline-flex items-center gap-3 text-sm font-bold text-[var(--color-accent-blue)] transition hover:text-[var(--color-accent-blue-hover)]"
+          >
+            View all articles
+            <FaArrowRight />
+          </button>
         </div>
 
-        <section className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+        <div className="mt-7 grid gap-6 md:grid-cols-2 xl:grid-cols-3">
           {paginatedPosts.map((post) => (
             <article
               key={post.slug}
-              className="overflow-hidden rounded-[1.8rem] border border-brand-border bg-white shadow-[0_20px_52px_rgba(35,33,32,0.06)] transition hover:-translate-y-0.5 hover:shadow-[0_26px_62px_rgba(35,33,32,0.09)]"
+              className="overflow-hidden rounded-[1rem] border border-brand-border bg-white transition hover:-translate-y-0.5 hover:shadow-[0_18px_42px_rgba(35,33,32,0.08)]"
             >
               <img
                 src={post.coverImage}
                 alt={post.title}
-                className="h-60 w-full object-cover"
+                className="h-56 w-full bg-brand-surface object-cover"
               />
               <div className="space-y-4 px-5 py-5">
-                <div className="flex flex-wrap items-center gap-3 text-xs font-semibold uppercase tracking-[0.24em] text-brand-green">
-                  <span>{post.postKind}</span>
+                <div className="flex flex-wrap items-center gap-3 text-[0.68rem] font-bold uppercase tracking-[0.18em] text-[var(--color-accent-blue)]">
+                  <span>{getPostKind(post)}</span>
                   <span className="h-1.5 w-1.5 rounded-full bg-brand-border" />
                   <span>{post.readTime}</span>
                 </div>
-                <h3 className="font-display text-2xl font-semibold text-brand-ink">
+                <h3 className="font-display text-xl font-semibold leading-snug text-brand-ink">
                   {post.title}
                 </h3>
-                <p className="text-sm leading-7 text-brand-muted">{post.excerpt}</p>
+                <p className="line-clamp-3 text-sm leading-7 text-brand-muted">
+                  {post.excerpt}
+                </p>
                 <p className="text-sm font-medium text-brand-muted">
                   {formatDate(post.publishedAt)}
                 </p>
                 <NavLink
                   to={`/blog/${post.slug}`}
-                  className="inline-flex items-center justify-center rounded-full bg-brand-green px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-green-soft"
+                  className="inline-flex items-center gap-3 text-sm font-bold text-[var(--color-accent-blue)] transition hover:text-[var(--color-accent-blue-hover)]"
                 >
                   Read More
+                  <FaArrowRight />
                 </NavLink>
               </div>
             </article>
           ))}
-        </section>
+        </div>
 
         {!isLoading && paginatedPosts.length === 0 ? (
-          <section className="rounded-[2rem] border border-dashed border-brand-border bg-white px-6 py-10 text-center sm:px-8">
-            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-brand-green">
+          <section className="mt-8 rounded-[1.25rem] border border-dashed border-brand-border bg-brand-surface px-6 py-10 text-center sm:px-8">
+            <p className="text-sm font-semibold uppercase tracking-[0.34em] text-[var(--color-accent-blue)]">
               No Posts Found
             </p>
             <h2 className="mt-4 font-display text-3xl font-semibold text-brand-ink">
-              No published Sanity posts are available yet.
+              No published posts are available in this filter yet.
             </h2>
           </section>
         ) : null}
 
         {totalPages > 1 ? (
-          <div className="flex flex-wrap items-center justify-center gap-3">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3">
             <button
               type="button"
               onClick={() => setCurrentPage((page) => Math.max(1, page - 1))}
-              disabled={currentPage === 1}
-              className="rounded-full border border-brand-border bg-white px-5 py-3 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green disabled:cursor-not-allowed disabled:opacity-45"
+              disabled={visiblePage === 1}
+              className="rounded-full border border-brand-border bg-white px-5 py-3 text-sm font-semibold text-brand-ink transition hover:border-[var(--color-accent-blue)] hover:text-[var(--color-accent-blue)] disabled:cursor-not-allowed disabled:opacity-45"
             >
               Previous
             </button>
@@ -317,9 +400,9 @@ function BlogPage() {
                 onClick={() => setCurrentPage(page)}
                 className={[
                   'h-11 min-w-11 rounded-full px-4 text-sm font-semibold transition',
-                  currentPage === page
-                    ? 'bg-brand-green text-white shadow-[0_12px_30px_rgba(43,162,82,0.22)]'
-                    : 'border border-brand-border bg-white text-brand-ink hover:border-brand-green hover:text-brand-green',
+                  visiblePage === page
+                    ? 'bg-[var(--color-accent-blue)] text-white shadow-[0_12px_30px_rgba(33,73,216,0.22)]'
+                    : 'border border-brand-border bg-white text-brand-ink hover:border-[var(--color-accent-blue)] hover:text-[var(--color-accent-blue)]',
                 ].join(' ')}
               >
                 {page}
@@ -329,8 +412,8 @@ function BlogPage() {
             <button
               type="button"
               onClick={() => setCurrentPage((page) => Math.min(totalPages, page + 1))}
-              disabled={currentPage === totalPages}
-              className="rounded-full border border-brand-border bg-white px-5 py-3 text-sm font-semibold text-brand-ink transition hover:border-brand-green hover:text-brand-green disabled:cursor-not-allowed disabled:opacity-45"
+              disabled={visiblePage === totalPages}
+              className="rounded-full border border-brand-border bg-white px-5 py-3 text-sm font-semibold text-brand-ink transition hover:border-[var(--color-accent-blue)] hover:text-[var(--color-accent-blue)] disabled:cursor-not-allowed disabled:opacity-45"
             >
               Next
             </button>

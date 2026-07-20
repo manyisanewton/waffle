@@ -1,10 +1,12 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useState } from 'react'
 import { Navigate, NavLink, useParams } from 'react-router-dom'
 import Pagination from '../components/catalog/Pagination'
 import CompareButton from '../components/catalog/CompareButton'
 import LeadCaptureModal from '../components/leads/LeadCaptureModal'
 import FullBleedHero from '../components/sections/FullBleedHero'
+import FaqJsonLd from '../components/seo/FaqJsonLd'
 import Seo from '../components/seo/Seo'
+import { getCategoryBuyingGuide } from '../data/categoryBuyingGuides'
 import { getCategoryBySlug } from '../data/productCatalog'
 import { filterProductsByCategory, getCatalog } from '../lib/catalogApi'
 
@@ -15,36 +17,29 @@ function ProductCategoryPage() {
   const category = getCategoryBySlug(categorySlug)
   const catalogProducts = getCatalog()
   const isSwimmingPoolCategory = categorySlug === 'swimming-pool-systems'
+  const buyingGuide = getCategoryBuyingGuide(category)
+  const resolvedCategorySlug = category ? category.slug : ''
   const [activeSubcategory, setActiveSubcategory] = useState('all')
   const [query, setQuery] = useState('')
   const [currentPage, setCurrentPage] = useState(1)
   const [rfqProduct, setRfqProduct] = useState(null)
 
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [activeSubcategory, query])
+  const categoryProducts = resolvedCategorySlug
+    ? filterProductsByCategory(catalogProducts, resolvedCategorySlug)
+    : []
+  const normalizedQuery = query.trim().toLowerCase()
+  const visibleProducts = categoryProducts.filter((product) => {
+    const matchesSubcategory =
+      activeSubcategory === 'all' || product.subcategory === activeSubcategory
 
-  const categoryProducts = useMemo(
-    () => (category ? filterProductsByCategory(catalogProducts, category.slug) : []),
-    [catalogProducts, category],
-  )
+    const matchesQuery =
+      normalizedQuery.length === 0 ||
+      product.name.toLowerCase().includes(normalizedQuery) ||
+      product.summary.toLowerCase().includes(normalizedQuery) ||
+      (product.itemGroup || '').toLowerCase().includes(normalizedQuery)
 
-  const visibleProducts = useMemo(() => {
-    const normalizedQuery = query.trim().toLowerCase()
-
-    return categoryProducts.filter((product) => {
-      const matchesSubcategory =
-        activeSubcategory === 'all' || product.subcategory === activeSubcategory
-
-      const matchesQuery =
-        normalizedQuery.length === 0 ||
-        product.name.toLowerCase().includes(normalizedQuery) ||
-        product.summary.toLowerCase().includes(normalizedQuery) ||
-        (product.itemGroup || '').toLowerCase().includes(normalizedQuery)
-
-      return matchesSubcategory && matchesQuery
-    })
-  }, [activeSubcategory, categoryProducts, query])
+    return matchesSubcategory && matchesQuery
+  })
 
   const totalPages = Math.max(1, Math.ceil(visibleProducts.length / PAGE_SIZE))
   const paginatedProducts = visibleProducts.slice(
@@ -59,6 +54,7 @@ function ProductCategoryPage() {
   return (
     <div className="space-y-16 text-brand-ink lg:space-y-24">
       <Seo title={category.name} description={category.description} />
+      <FaqJsonLd items={buyingGuide?.faqs || []} />
       <FullBleedHero
         eyebrow="Product Category"
         title={category.name}
@@ -91,7 +87,10 @@ function ProductCategoryPage() {
             <input
               type="search"
               value={query}
-              onChange={(event) => setQuery(event.target.value)}
+              onChange={(event) => {
+                setQuery(event.target.value)
+                setCurrentPage(1)
+              }}
               placeholder={`Search ${category.name.toLowerCase()}...`}
               className="h-12 w-full rounded-[1rem] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition placeholder:text-brand-muted/60 focus:border-brand-green"
             />
@@ -100,7 +99,10 @@ function ProductCategoryPage() {
             <span className="mb-2 block text-sm font-medium text-brand-ink">Subcategory</span>
             <select
               value={activeSubcategory}
-              onChange={(event) => setActiveSubcategory(event.target.value)}
+              onChange={(event) => {
+                setActiveSubcategory(event.target.value)
+                setCurrentPage(1)
+              }}
               className="h-12 w-full rounded-[1rem] border border-brand-border bg-white px-4 text-sm text-brand-ink outline-none transition focus:border-brand-green"
             >
               <option value="all">All Subcategories</option>
@@ -209,6 +211,86 @@ function ProductCategoryPage() {
           </div>
         </section>
       )}
+
+      {buyingGuide ? (
+        <section className="space-y-7">
+          <div className="max-w-4xl space-y-4">
+            <p className="text-xs font-semibold uppercase tracking-[0.32em] text-brand-green">
+              Buying guide
+            </p>
+            <h2 className="font-display text-3xl font-semibold text-brand-ink sm:text-4xl">
+              How to choose {category.name.toLowerCase()}
+            </h2>
+            <p className="text-base leading-8 text-brand-muted">
+              {buyingGuide.intro}
+            </p>
+          </div>
+
+          <div className="grid gap-6 lg:grid-cols-[1.1fr_0.9fr]">
+            <article className="rounded-[1.5rem] border border-brand-border bg-white p-6 shadow-[0_18px_46px_rgba(35,33,32,0.05)]">
+              <h3 className="font-display text-2xl font-semibold text-brand-ink">
+                Selection checklist
+              </h3>
+              <ul className="mt-5 space-y-4">
+                {buyingGuide.checkpoints.map((checkpoint) => (
+                  <li key={checkpoint} className="flex gap-3 text-sm leading-7 text-brand-muted">
+                    <span className="mt-2 h-2 w-2 shrink-0 rounded-full bg-brand-green" />
+                    <span>{checkpoint}</span>
+                  </li>
+                ))}
+              </ul>
+            </article>
+
+            <article className="rounded-[1.5rem] border border-brand-border bg-white p-6 shadow-[0_18px_46px_rgba(35,33,32,0.05)]">
+              <h3 className="font-display text-2xl font-semibold text-brand-ink">
+                Common applications
+              </h3>
+              <div className="mt-5 flex flex-wrap gap-3">
+                {buyingGuide.applications.map((application) => (
+                  <span
+                    key={application}
+                    className="rounded-full border border-brand-border bg-brand-canvas px-4 py-2 text-sm font-semibold text-brand-ink"
+                  >
+                    {application}
+                  </span>
+                ))}
+              </div>
+              <button
+                type="button"
+                onClick={() =>
+                  setRfqProduct({
+                    name: `${category.name} selection support`,
+                    subcategory: category.name,
+                  })}
+                className="mt-6 inline-flex items-center justify-center rounded-full bg-brand-green px-5 py-3 text-sm font-semibold text-white transition hover:bg-brand-green-soft"
+              >
+                Ask for selection help
+              </button>
+            </article>
+          </div>
+
+          <div className="grid gap-4 lg:grid-cols-2">
+            {buyingGuide.faqs.map((item) => (
+              <details
+                key={item.question}
+                className="group rounded-[1.25rem] border border-brand-border bg-white px-5 py-4 shadow-[0_14px_34px_rgba(35,33,32,0.04)]"
+              >
+                <summary className="cursor-pointer list-none font-semibold text-brand-ink">
+                  <span className="inline-flex w-full items-center justify-between gap-4">
+                    {item.question}
+                    <span className="text-xl text-brand-green transition group-open:rotate-45">
+                      +
+                    </span>
+                  </span>
+                </summary>
+                <p className="mt-3 text-sm leading-7 text-brand-muted">
+                  {item.answer}
+                </p>
+              </details>
+            ))}
+          </div>
+        </section>
+      ) : null}
 
       <LeadCaptureModal
         isOpen={Boolean(rfqProduct)}

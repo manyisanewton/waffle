@@ -569,9 +569,14 @@ function WebsiteChatbot() {
             ))}
             {isSending ? (
               <div className="flex justify-start">
-                <p className="rounded-lg border border-brand-border bg-white px-3 py-2 text-sm text-brand-muted shadow-sm">
-                  Checking the website knowledge base...
-                </p>
+                <div
+                  className="flex items-center gap-2 rounded-lg border border-brand-border bg-white px-3 py-2 shadow-sm"
+                  aria-label="Vortexus Assistant is preparing a response"
+                >
+                  <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--color-accent-blue-deep)] [animation-delay:-0.2s]" />
+                  <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--color-accent-blue)] [animation-delay:-0.1s]" />
+                  <span className="h-2 w-2 animate-bounce rounded-full bg-[var(--color-accent-blue-highlight)]" />
+                </div>
               </div>
             ) : null}
             <div ref={messagesEndRef} />

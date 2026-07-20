@@ -18,7 +18,26 @@ def load_json(filename):
         return json.load(file)
 
 
-KNOWLEDGE = load_json("knowledge.json")
+def load_knowledge():
+    knowledge = load_json("knowledge.json")
+    knowledge.setdefault("synonyms", {})
+    knowledge.setdefault("entries", [])
+
+    knowledge_dir = BASE_DIR / "data" / "knowledge"
+    if not knowledge_dir.exists():
+        return knowledge
+
+    for path in sorted(knowledge_dir.glob("*.json")):
+        with path.open("r", encoding="utf-8") as file:
+            pack = json.load(file)
+
+        knowledge["synonyms"].update(pack.get("synonyms", {}))
+        knowledge["entries"].extend(pack.get("entries", []))
+
+    return knowledge
+
+
+KNOWLEDGE = load_knowledge()
 FLOW_DEFINITIONS = load_json("flows.json")["flows"]
 CATALOG = load_json("catalog.json")
 STOPWORDS = {

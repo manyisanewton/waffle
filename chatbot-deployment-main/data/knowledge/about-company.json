@@ -1,0 +1,40 @@
+{
+  "entries": [
+    {
+      "id": "about-industrial-distributor",
+      "title": "About Vortexus Industrial Distribution",
+      "category": "about",
+      "keywords": ["about vortexus", "company profile", "industrial distributor", "industrial products", "who is vortexus", "company mission"],
+      "answer": "Vortexus Industrial is a distributor of industrial products, spare parts, accessories, solar products, valves, pumps, and related product lines used in industrial operations. The company focuses on quality products from established manufacturers and supports clients across Kenya, Uganda, and Tanzania.",
+      "links": [{"label": "About Vortexus", "url": "/about-us"}],
+      "quick_replies": ["Show products", "What services do you offer?", "Request a quote"]
+    },
+    {
+      "id": "about-vision",
+      "title": "Vortexus Vision",
+      "category": "about",
+      "keywords": ["vision", "mission", "trusted marketplace", "quality meets efficiency", "procurement support"],
+      "answer": "The company vision is to be a leading distributor of industrial solutions and a trusted marketplace where quality meets efficiency. Vortexus aims to simplify procurement, improve access to reliable industrial products, and support clients with logistics and after-sales coordination.",
+      "links": [{"label": "About Vortexus", "url": "/about-us"}],
+      "quick_replies": ["Procurement challenges", "Why choose Vortexus", "Contact Vortexus"]
+    },
+    {
+      "id": "procurement-challenges",
+      "title": "Procurement Challenges Vortexus Addresses",
+      "category": "about",
+      "keywords": ["procurement challenges", "sourcing problems", "supplier transparency", "unreliable quality", "logistics bottlenecks", "slow sourcing"],
+      "answer": "Vortexus addresses common procurement problems such as lack of a trusted central source for industrial products, unreliable product quality, slow manual sourcing, logistics bottlenecks, customs coordination challenges, and poor transparency around suppliers and pricing.",
+      "links": [{"label": "About Vortexus", "url": "/about-us"}],
+      "quick_replies": ["Why choose Vortexus", "What products do you supply?", "Request a quote"]
+    },
+    {
+      "id": "why-choose-vortexus",
+      "title": "Why Clients Choose Vortexus",
+      "category": "about",
+      "keywords": ["why choose vortexus", "pre vetted vendors", "transparent pricing", "procurement support", "logistics support", "after sales"],
+      "answer": "Clients choose Vortexus for pre-vetted vendors, a broad aggregated industrial catalog, clearer quotation support, end-to-end procurement assistance, delivery coordination, import support, and after-sales follow-up. The aim is to reduce sourcing delays and make industrial buying easier to compare and execute.",
+      "links": [{"label": "About Vortexus", "url": "/about-us"}],
+      "quick_replies": ["Show products", "Contact Vortexus", "Request a quote"]
+    }
+  ]
+}

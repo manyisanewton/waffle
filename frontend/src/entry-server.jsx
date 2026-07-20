@@ -3,6 +3,7 @@ import { StaticRouter } from 'react-router'
 import App from './App'
 import { SeoProvider } from './components/seo/SeoProvider'
 import { AuthProvider } from './context/AuthContext'
+import { webmasterVerification } from './data/site/webmaster'
 
 function escapeHtml(value = '') {
   return String(value)
@@ -59,6 +60,12 @@ export function render(url) {
       : '',
     '<meta name="twitter:card" content="summary_large_image" />',
     '<meta name="robots" content="index,follow" />',
+    webmasterVerification.google
+      ? `<meta name="google-site-verification" content="${escapeHtml(webmasterVerification.google)}" />`
+      : '',
+    webmasterVerification.bing
+      ? `<meta name="msvalidate.01" content="${escapeHtml(webmasterVerification.bing)}" />`
+      : '',
   ]
     .filter(Boolean)
     .join('\n')

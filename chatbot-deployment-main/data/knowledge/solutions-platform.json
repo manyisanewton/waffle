@@ -1,0 +1,31 @@
+{
+  "entries": [
+    {
+      "id": "solutions-platform-overview",
+      "title": "Solutions Platform Overview",
+      "category": "solutions",
+      "keywords": ["solutions platform", "water pumping treatment energy", "integrated capability", "solution families", "water energy automation"],
+      "answer": "The Vortexus solutions platform organizes water, pumping, treatment, and energy systems into practical solution families. It connects borehole performance, pump systems, domestic treatment, industrial purification, chemicals, media, and solar-powered water infrastructure.",
+      "links": [{"label": "Solutions", "url": "/solutions"}],
+      "quick_replies": ["Borehole solutions", "Water treatment solutions", "Pump solutions"]
+    },
+    {
+      "id": "solutions-water-access-delivery",
+      "title": "Water Access and Delivery Solutions",
+      "category": "solutions",
+      "keywords": ["water access", "water delivery", "boreholes", "solar water movement", "pumps", "daily operational reliability"],
+      "answer": "Water access and delivery solutions include boreholes, water pumps, and solar-driven water movement systems. These are aimed at operational reliability where water supply, abstraction, transfer, or pressure stability matters.",
+      "links": [{"label": "Solutions", "url": "/solutions"}],
+      "quick_replies": ["Borehole help", "Help me choose a pump", "Request a quote"]
+    },
+    {
+      "id": "solutions-treatment-purification",
+      "title": "Treatment and Purification Solutions",
+      "category": "solutions",
+      "keywords": ["treatment purification", "domestic water treatment", "commercial industrial treatment", "chemicals media", "water quality", "output needs"],
+      "answer": "Treatment and purification solutions include domestic water treatment, commercial and industrial water treatment, and chemicals and media. The correct approach depends on water quality, output use, flow, contamination problem, and whether the user needs pretreatment, polishing, disinfection, or desalination.",
+      "links": [{"label": "Solutions", "url": "/solutions"}],
+      "quick_replies": ["Help me choose water treatment", "Show chemicals", "Request a quote"]
+    }
+  ]
+}

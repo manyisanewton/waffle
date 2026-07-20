@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { company } from '../../data/site/company'
+import { webmasterVerification } from '../../data/site/webmaster'
 import { useSeoContext } from './SeoProvider'
 
 const SITE_NAME = 'Vortexus'
@@ -75,6 +76,8 @@ function Seo({
     document.title = fullTitle
     upsertMeta('name', 'description', description)
     upsertMeta('name', 'robots', 'index,follow')
+    upsertMeta('name', 'google-site-verification', webmasterVerification.google)
+    upsertMeta('name', 'msvalidate.01', webmasterVerification.bing)
     upsertMeta('property', 'og:title', fullTitle)
     upsertMeta('property', 'og:description', description)
     upsertMeta('property', 'og:type', type)

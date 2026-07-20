@@ -1,0 +1,31 @@
+{
+  "entries": [
+    {
+      "id": "contact-form-fields",
+      "title": "Contact Form Information",
+      "category": "contact",
+      "keywords": ["contact form", "contact us form", "send message", "enquiry form", "what details to provide"],
+      "answer": "The contact form collects first name, last name, email, phone number, company name, position, and message. For faster routing, users should describe the product, site problem, urgency, and how they prefer to be contacted.",
+      "links": [{"label": "Contact Vortexus", "url": "/contact-us"}],
+      "quick_replies": ["Request a quote", "Contact details", "What information should I prepare?"]
+    },
+    {
+      "id": "chatbot-rfq-fields",
+      "title": "Chatbot RFQ Information",
+      "category": "sales",
+      "keywords": ["chatbot rfq", "quote details", "rfq fields", "what information for quote", "submit quote in chat"],
+      "answer": "For chatbot RFQs, the assistant collects the product or system needed, application or site problem, quantity or capacity, location, urgency, name, phone, email, and company. Product, name, and phone are required so the Vortexus team can follow up.",
+      "links": [{"label": "Request a quote", "url": "/request-quote"}],
+      "quick_replies": ["Request a quote", "Help me choose a pump", "Help me choose water treatment"]
+    },
+    {
+      "id": "operations-locations",
+      "title": "Operations and Locations",
+      "category": "contact",
+      "keywords": ["operations", "locations", "offices", "where are you", "nairobi", "mombasa", "dar es salaam road", "cabanas"],
+      "answer": "The website presents Vortexus operations and service presence through listed office or service locations, including Nairobi areas such as Dar Es Salaam Road and Cabanas on Mombasa Road, plus Mombasa support. Customers can use the contact page for direct enquiries.",
+      "links": [{"label": "Contact Vortexus", "url": "/contact-us"}],
+      "quick_replies": ["Call Vortexus", "Request a quote", "Do you deliver?"]
+    }
+  ]
+}
