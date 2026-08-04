@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import {
-  FaArrowUp,
   FaFacebookF,
   FaGoogle,
   FaInstagram,
@@ -60,81 +59,11 @@ const contactIcons = {
   fax: FaPrint,
 }
 
-function Footer() {
-  const [showBackToTop, setShowBackToTop] = useState(false)
+function Footer({ flush = false }) {
   const [activeLocation, setActiveLocation] = useState(null)
 
-  useEffect(() => {
-    const updateBackToTopVisibility = () => {
-      const pageHeight = document.documentElement.scrollHeight
-      const viewportHeight = window.innerHeight
-      const scrollableHeight = pageHeight - viewportHeight
-      const currentScroll = window.scrollY || window.pageYOffset || 0
-
-      if (scrollableHeight <= 24) {
-        setShowBackToTop(false)
-        return
-      }
-
-      setShowBackToTop(currentScroll >= scrollableHeight * 0.75)
-    }
-
-    updateBackToTopVisibility()
-    window.addEventListener('scroll', updateBackToTopVisibility, { passive: true })
-    window.addEventListener('resize', updateBackToTopVisibility)
-
-    return () => {
-      window.removeEventListener('scroll', updateBackToTopVisibility)
-      window.removeEventListener('resize', updateBackToTopVisibility)
-    }
-  }, [])
-
-  const handleBackToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
-
   return (
-    <footer className="mt-12 bg-brand-ink text-white">
-      <div className="fixed right-0 top-[60%] z-40 flex -translate-y-1/2 flex-col items-end gap-3 lg:top-1/2">
-        <div className="rounded-l-[1.75rem] border border-slate-200/90 border-r-0 bg-slate-100/94 px-2 py-3 shadow-[0_18px_42px_rgba(35,33,32,0.18)] backdrop-blur-md sm:px-2.5 sm:py-3.5">
-          <div className="flex flex-col items-center gap-3">
-            {socialLinks.map((item) => {
-              const Icon = socialIcons[item.icon]
-              const iconColor = socialIconColors[item.icon]
-              const iconBackground = socialIconBackgrounds[item.icon]
-
-              return (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  aria-label={item.label}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-white/70 text-[1.15rem] transition-transform duration-300 hover:scale-110 sm:h-11 sm:w-11 sm:text-[1.25rem]"
-                  style={{
-                    color: iconColor,
-                    background: iconBackground,
-                    boxShadow:
-                      '0 10px 24px rgba(35,33,32,0.18), 0 0 0 1px rgba(255,255,255,0.22)',
-                  }}
-                >
-                  <Icon />
-                </a>
-              )
-            })}
-          </div>
-        </div>
-
-        {showBackToTop && (
-          <button
-            type="button"
-            aria-label="Back to top"
-            className="mr-1.5 flex h-10 w-10 items-center justify-center rounded-full bg-brand-green text-white shadow-[0_12px_28px_rgba(43,162,82,0.24)] transition hover:bg-brand-green-soft sm:h-11 sm:w-11"
-            onClick={handleBackToTop}
-          >
-            <FaArrowUp />
-          </button>
-        )}
-      </div>
-
+    <footer className={`${flush ? 'mt-0' : 'mt-12'} bg-brand-ink text-white`}>
       <div className="border-b border-white/10">
         <div className="mx-auto grid max-w-7xl gap-10 px-4 py-12 sm:px-6 lg:grid-cols-[1.05fr_0.95fr] lg:px-8 lg:py-14">
           <div>

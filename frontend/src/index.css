@@ -13,7 +13,7 @@
 html {
   font-size: 17px;
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 @media (max-width: 640px) {
@@ -28,7 +28,7 @@ body {
   min-height: 100vh;
   background: inherit;
   font-family: var(--font-sans);
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 a {
@@ -36,8 +36,82 @@ a {
   text-decoration: none;
 }
 
+.blog-article-body a {
+  color: var(--color-accent-blue) !important;
+  font-weight: 650;
+  text-decoration: underline;
+  text-decoration-color: color-mix(in srgb, var(--color-accent-blue) 45%, transparent);
+  text-underline-offset: 0.22em;
+}
+
+.blog-article-body a:hover {
+  color: var(--color-accent-blue-hover) !important;
+  text-decoration-color: currentColor;
+}
+
+.blog-article-body {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.blog-article-body img,
+.blog-article-body video,
+.blog-article-body iframe,
+.blog-article-body figure {
+  max-width: 100%;
+}
+
+.blog-article-body img,
+.blog-article-body video {
+  height: auto;
+}
+
 button {
   font: inherit;
+}
+
+.chatbot-launcher-attention {
+  animation: chatbot-launcher-attention 4.5s ease-in-out 2s infinite;
+  transform-origin: 50% 80%;
+}
+
+@keyframes chatbot-launcher-attention {
+  0%,
+  62%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+  66% {
+    transform: translate(-5px, -2px) rotate(-12deg) scale(1.08);
+  }
+  70% {
+    transform: translate(5px, 0) rotate(12deg) scale(1.08);
+  }
+  74% {
+    transform: translate(-5px, -3px) rotate(-10deg) scale(1.08);
+  }
+  78% {
+    transform: translate(5px, 0) rotate(10deg) scale(1.08);
+  }
+  82% {
+    transform: translate(-3px, -2px) rotate(-7deg) scale(1.05);
+  }
+  86% {
+    transform: translate(3px, 0) rotate(7deg) scale(1.05);
+  }
+  90% {
+    transform: translate(0, -4px) rotate(0deg) scale(1.03);
+  }
+  94% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .chatbot-launcher-attention {
+    animation: none;
+  }
 }
 
 .material-symbols-outlined {
@@ -72,7 +146,7 @@ button {
 
 #root {
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 .scroll-reveal {

@@ -49,6 +49,8 @@ def complete_answer(message, response_context):
     model = os.environ.get("CHATBOT_LLM_MODEL", DEFAULT_MODEL)
     timeout = float(os.environ.get("CHATBOT_LLM_TIMEOUT", "20"))
     temperature = float(os.environ.get("CHATBOT_LLM_TEMPERATURE", "0.2"))
+    enable_thinking = os.environ.get("CHATBOT_LLM_ENABLE_THINKING", "0") == "1"
+    max_tokens = int(os.environ.get("CHATBOT_LLM_MAX_TOKENS", "300"))
 
     url = f"{base_url.rstrip('/')}/chat/completions"
     body = {
@@ -58,6 +60,8 @@ def complete_answer(message, response_context):
             {"role": "user", "content": build_user_prompt(message, response_context)},
         ],
         "temperature": temperature,
+        "enable_thinking": enable_thinking,
+        "max_tokens": max_tokens,
     }
 
     request = urllib.request.Request(

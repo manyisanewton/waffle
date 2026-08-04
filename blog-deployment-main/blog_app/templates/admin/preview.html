@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <title>Preview: {{ post.title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='admin/preview.css') }}" />
+  </head>
+  <body>
+    <div class="preview-banner">Protected draft preview · {{ post.status|title }}</div>
+    <main>
+      <header class="article-header">
+        <p>{{ post.category.name if post.category else 'Vortexus Guide' }}</p>
+        <h1>{{ post.title }}</h1>
+        <div class="excerpt">{{ post.excerpt }}</div>
+      </header>
+      <article>
+        {% for block in post.content %}
+          {% if block.type == 'paragraph' %}<p>{{ block.html|safe }}</p>
+          {% elif block.type == 'heading' %}{% if block.level == 3 %}<h3>{{ block.text }}</h3>{% else %}<h2>{{ block.text }}</h2>{% endif %}
+          {% elif block.type == 'list' %}{% if block.style == 'numbered' %}<ol>{% else %}<ul>{% endif %}{% for item in block['items'] %}<li>{{ item|safe }}</li>{% endfor %}{% if block.style == 'numbered' %}</ol>{% else %}</ul>{% endif %}
+          {% elif block.type == 'quote' %}<blockquote>{{ block.text }}{% if block.attribution %}<cite>— {{ block.attribution }}</cite>{% endif %}</blockquote>
+          {% elif block.type == 'image' and media_map.get(block.media_id) %}{% set image = media_map.get(block.media_id) %}<figure><img src="{{ url_for('public_api.media_file', filename=image.variants.hero.path) }}" alt="{{ block.alt or image.alt_text }}" />{% if block.caption or image.caption %}<figcaption>{{ block.caption or image.caption }}</figcaption>{% endif %}</figure>
+          {% elif block.type == 'table' %}<div class="table-wrap"><table>{% for row in block.rows %}{% set header_row = loop.first and block.has_header %}<tr>{% for cell in row %}{% if header_row %}<th>{{ cell|safe }}</th>{% else %}<td>{{ cell|safe }}</td>{% endif %}{% endfor %}</tr>{% endfor %}</table></div>
+          {% elif block.type == 'video' %}<div class="video"><a href="{{ block.url }}" target="_blank" rel="noopener">View embedded video</a>{% if block.caption %}<p>{{ block.caption }}</p>{% endif %}</div>
+          {% elif block.type == 'cta' %}<section class="cta"><h2>{{ block.title }}</h2><p>{{ block.text }}</p>{% if block.button_url %}<a href="{{ block.button_url }}">{{ block.button_label or 'Learn more' }}</a>{% endif %}</section>
+          {% elif block.type == 'divider' %}<hr />{% endif %}
+        {% endfor %}
+      </article>
+    </main>
+  </body>
+</html>

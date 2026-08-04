@@ -40,6 +40,9 @@ function upsertLink(rel, href) {
 }
 
 function buildCanonicalUrl(pathname = '/') {
+  if (/^https?:\/\//i.test(pathname)) {
+    return pathname
+  }
   const normalizedPath = pathname.startsWith('/') ? pathname : `/${pathname}`
 
   return new URL(normalizedPath, company.siteUrl).toString()
@@ -51,9 +54,16 @@ function Seo({
   canonicalPath = '',
   imagePath = company.logo,
   type = 'website',
+  includeSiteName = true,
+  robots = 'index,follow',
+  structuredData = [],
 }) {
   const seoContext = useSeoContext()
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : SITE_NAME
+  const fullTitle = title
+    ? includeSiteName
+      ? `${title} | ${SITE_NAME}`
+      : title
+    : SITE_NAME
   const routePath = canonicalPath || seoContext?.routePath || '/'
   const canonicalUrl = buildCanonicalUrl(routePath)
   const imageUrl = imagePath ? new URL(imagePath, company.siteUrl).toString() : ''
@@ -65,6 +75,8 @@ function Seo({
       canonicalUrl,
       imageUrl,
       type,
+      robots,
+      structuredData,
     })
   }
 
@@ -75,7 +87,7 @@ function Seo({
 
     document.title = fullTitle
     upsertMeta('name', 'description', description)
-    upsertMeta('name', 'robots', 'index,follow')
+    upsertMeta('name', 'robots', robots)
     upsertMeta('name', 'google-site-verification', webmasterVerification.google)
     upsertMeta('name', 'msvalidate.01', webmasterVerification.bing)
     upsertMeta('property', 'og:title', fullTitle)
@@ -88,7 +100,16 @@ function Seo({
     upsertMeta('name', 'twitter:card', 'summary_large_image')
     upsertMeta('name', 'twitter:image', imageUrl)
     upsertLink('canonical', canonicalUrl)
-  }, [canonicalUrl, description, fullTitle, imageUrl, type])
+    document.querySelectorAll('script[data-vortexus-structured-data]').forEach((node) => node.remove())
+    const schemas = Array.isArray(structuredData) ? structuredData : [structuredData]
+    schemas.filter(Boolean).forEach((schema) => {
+      const script = document.createElement('script')
+      script.type = 'application/ld+json'
+      script.dataset.vortexusStructuredData = 'true'
+      script.textContent = JSON.stringify(schema).replace(/</g, '\\u003c')
+      document.head.appendChild(script)
+    })
+  }, [canonicalUrl, description, fullTitle, imageUrl, robots, structuredData, type])
 
   return null
 }

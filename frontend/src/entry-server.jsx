@@ -59,7 +59,10 @@ export function render(url) {
       ? `<meta name="twitter:image" content="${escapeHtml(seo.imageUrl)}" />`
       : '',
     '<meta name="twitter:card" content="summary_large_image" />',
-    '<meta name="robots" content="index,follow" />',
+    `<meta name="robots" content="${escapeHtml(seo.robots || 'index,follow')}" />`,
+    ...(Array.isArray(seo.structuredData) ? seo.structuredData : [seo.structuredData])
+      .filter(Boolean)
+      .map((schema) => `<script type="application/ld+json">${JSON.stringify(schema).replaceAll('<', '\\u003c')}</script>`),
     webmasterVerification.google
       ? `<meta name="google-site-verification" content="${escapeHtml(webmasterVerification.google)}" />`
       : '',

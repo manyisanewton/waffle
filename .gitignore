@@ -6,3 +6,7 @@ __pycache__/
 venv/
 .venv/
 chatbot-deployment-main/venv/
+chatbot-deployment-main/*apiKey*.csv
+blog-deployment-main/instance/
+blog-deployment-main/venv/
+blog-deployment-main/.pytest_cache/

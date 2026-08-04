@@ -175,8 +175,9 @@ function HomePage() {
   return (
     <div className="space-y-16 pb-8 lg:space-y-22">
       <Seo
-        title="Industrial Water Treatment Products"
-        description={`${company.name} is building a product-focused catalog for water treatment equipment, RO systems, chemicals, pumps, instrumentation, automation, tanks, and industrial water process applications.`}
+        title="Water Treatment, swimming Pool & Solar Equipment Supplier Kenya"
+        includeSiteName={false}
+        description="Vortexus supplies water treatment, swimming pool & solar equipment in Kenya. RO systems, pumps, filtration, chemicals & solar solutions. Get a quote."
       />
       <style>
         {`

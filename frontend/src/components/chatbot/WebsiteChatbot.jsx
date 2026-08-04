@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import { IoChatbubbleEllipsesOutline, IoClose, IoPaperPlaneOutline } from 'react-icons/io5'
+import { IoCallOutline, IoClose, IoPaperPlaneOutline } from 'react-icons/io5'
 import { company } from '../../data/site/company'
 import { askChatbot } from '../../lib/chatbotApi'
 import { submitWeb3Form } from '../../lib/web3forms'
@@ -166,6 +166,10 @@ function WebsiteChatbot() {
   const [isSending, setIsSending] = useState(false)
   const [activeFlow, setActiveFlow] = useState(null)
   const [rfqFlow, setRfqFlow] = useState(null)
+  const [isCallbackOpen, setIsCallbackOpen] = useState(false)
+  const [callbackPhone, setCallbackPhone] = useState('')
+  const [callbackStatus, setCallbackStatus] = useState('idle')
+  const [callbackMessage, setCallbackMessage] = useState('')
   const messagesEndRef = useRef(null)
 
   useEffect(() => {
@@ -232,6 +236,42 @@ function WebsiteChatbot() {
   function handleSubmit(event) {
     event.preventDefault()
     sendMessage(draft)
+  }
+
+  async function handleCallbackSubmit(event) {
+    event.preventDefault()
+    const phone = callbackPhone.trim()
+    const digitCount = phone.replace(/\D/g, '').length
+
+    if (digitCount < 7 || digitCount > 15) {
+      setCallbackStatus('error')
+      setCallbackMessage('Enter a valid phone number, including the country code when applicable.')
+      return
+    }
+
+    setCallbackStatus('sending')
+    setCallbackMessage('')
+    try {
+      await submitWeb3Form({
+        subject: `Chatbot callback request: ${phone}`,
+        fromName: 'Vortexus Chatbot Callback',
+        replyTo: 'info@vortexusindustrial.com',
+        fields: {
+          inquiry_type: 'Call me request',
+          phone,
+          landing_page: window.location.href,
+          requested_at: new Date().toISOString(),
+          message: `A website visitor requested a callback on ${phone}.`,
+        },
+      })
+      setCallbackStatus('success')
+      setCallbackMessage('Request received. The Vortexus team will call you back.')
+      setCallbackPhone('')
+      setIsCallbackOpen(false)
+    } catch (error) {
+      setCallbackStatus('error')
+      setCallbackMessage(error.message || 'The callback request could not be sent. Please try again.')
+    }
   }
 
   function startRfqFlow(userLabel = 'Request Quote', initialProductInterest = '') {
@@ -480,6 +520,58 @@ function WebsiteChatbot() {
                   }`}
                 >
                   <FormattedMessage text={message.text} onRequestQuote={startRfqFlow} />
+                  {message.role === 'bot' && index === 0 ? (
+                    <div className="mt-3 border-t border-brand-border pt-3">
+                      {!isCallbackOpen ? (
+                        <button
+                          type="button"
+                          onClick={() => {
+                            setIsCallbackOpen(true)
+                            setCallbackStatus('idle')
+                            setCallbackMessage('')
+                          }}
+                          className="inline-flex items-center gap-2 rounded-md bg-[var(--color-accent-blue)] px-3 py-2 text-xs font-semibold text-white transition hover:bg-[var(--color-accent-blue-hover)]"
+                        >
+                          <IoCallOutline className="text-base" aria-hidden="true" />
+                          Call me
+                        </button>
+                      ) : (
+                        <form onSubmit={handleCallbackSubmit} className="space-y-2" aria-label="Request a callback">
+                          <label htmlFor="chatbot-callback-phone" className="block text-xs font-semibold text-brand-ink">
+                            Your phone number
+                          </label>
+                          <div className="flex gap-2">
+                            <input
+                              id="chatbot-callback-phone"
+                              type="tel"
+                              inputMode="tel"
+                              autoComplete="tel"
+                              value={callbackPhone}
+                              onChange={(event) => setCallbackPhone(event.target.value)}
+                              placeholder="e.g. 0712 345 678"
+                              required
+                              className="min-w-0 flex-1 rounded-md border border-brand-border px-2.5 py-2 text-xs text-brand-ink outline-none focus:border-[var(--color-accent-blue)]"
+                            />
+                            <button
+                              type="submit"
+                              disabled={callbackStatus === 'sending' || !callbackPhone.trim()}
+                              className="rounded-md bg-[var(--color-accent-blue)] px-3 py-2 text-xs font-semibold text-white disabled:bg-slate-300"
+                            >
+                              {callbackStatus === 'sending' ? 'Sending…' : 'Send'}
+                            </button>
+                          </div>
+                          <button type="button" onClick={() => setIsCallbackOpen(false)} className="text-xs text-slate-500 underline underline-offset-2">
+                            Cancel
+                          </button>
+                        </form>
+                      )}
+                      {callbackMessage ? (
+                        <p className={`mt-2 text-xs font-medium ${callbackStatus === 'success' ? 'text-emerald-700' : 'text-red-700'}`} role="status">
+                          {callbackMessage}
+                        </p>
+                      ) : null}
+                    </div>
+                  ) : null}
                   {message.links?.length ? (
                     <div className="mt-3 flex flex-wrap gap-2">
                       {message.links.map((link) => (
@@ -621,18 +713,42 @@ function WebsiteChatbot() {
         </section>
       ) : null}
 
-      <button
-        type="button"
-        aria-label={isOpen ? 'Close Vortexus chatbot' : 'Open Vortexus chatbot'}
-        onClick={() => setIsOpen((current) => !current)}
-        className="ml-auto grid size-14 place-items-center rounded-lg bg-[var(--color-accent-blue)] text-white shadow-xl shadow-slate-950/25 transition hover:bg-[var(--color-accent-blue-hover)] focus:outline-none focus:ring-4 focus:ring-[color-mix(in_srgb,var(--color-accent-blue)_24%,transparent)]"
-      >
-        {isOpen ? (
-          <IoClose aria-hidden="true" className="text-2xl" />
-        ) : (
-          <IoChatbubbleEllipsesOutline aria-hidden="true" className="text-2xl" />
-        )}
-      </button>
+      <div className="flex items-center justify-end gap-3">
+        {!isOpen ? (
+          <button
+            type="button"
+            onClick={() => setIsOpen(true)}
+            className="rounded-full border border-blue-100 bg-white px-4 py-2 text-sm font-semibold text-[var(--color-accent-blue-deep)] shadow-lg shadow-slate-950/15 transition hover:-translate-y-0.5 hover:border-[var(--color-accent-blue)] hover:bg-blue-50 focus:outline-none focus:ring-4 focus:ring-[color-mix(in_srgb,var(--color-accent-blue)_20%,transparent)]"
+          >
+            Hi! Ask me anything
+            <span aria-hidden="true" className="ml-1">
+              →
+            </span>
+          </button>
+        ) : null}
+
+        <button
+          type="button"
+          aria-label={isOpen ? 'Close Vortexus chatbot' : 'Open Vortexus chatbot'}
+          onClick={() => setIsOpen((current) => !current)}
+          className={`grid shrink-0 place-items-center overflow-hidden rounded-xl text-white shadow-xl shadow-slate-950/25 transition focus:outline-none focus:ring-4 focus:ring-[color-mix(in_srgb,var(--color-accent-blue)_24%,transparent)] ${
+            isOpen
+              ? 'size-14 bg-[var(--color-accent-blue)] hover:bg-[var(--color-accent-blue-hover)]'
+              : 'chatbot-launcher-attention size-20 bg-white ring-1 ring-slate-200 hover:scale-105'
+          }`}
+        >
+          {isOpen ? (
+            <IoClose aria-hidden="true" className="text-2xl" />
+          ) : (
+            <img
+              src="/chatbot%20logo/Chatbotlogo.jpeg"
+              alt=""
+              aria-hidden="true"
+              className="size-full object-cover"
+            />
+          )}
+        </button>
+      </div>
     </div>
   )
 }

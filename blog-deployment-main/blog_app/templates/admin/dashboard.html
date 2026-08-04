@@ -1,0 +1,69 @@
+{% extends "admin/base.html" %}
+{% block title %}Articles | Vortexus Blog Studio{% endblock %}
+{% block page_name %}dashboard{% endblock %}
+{% block body %}
+  <header class="admin-header">
+    <a class="brand" href="{{ url_for('admin_pages.dashboard') }}">
+      <img class="brand-logo" src="{{ url_for('static', filename='admin/vortexus-logo.png') }}" alt="Vortexus" />
+    </a>
+    <nav>
+      <span class="signed-in">{{ current_user.name }}</span>
+      <button class="button ghost" id="logout-button" type="button">Sign out</button>
+    </nav>
+  </header>
+  <main class="admin-main">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow blue">Editorial dashboard</p>
+        <h1>Articles</h1>
+        <p class="muted">Create, review, preview and publish Vortexus guidance.</p>
+      </div>
+      <a class="button primary" href="{{ url_for('admin_pages.new_post') }}">Create article</a>
+    </section>
+
+    <section class="stats-grid" aria-label="Article status summary">
+      {% for status in ['draft', 'scheduled', 'published', 'archived'] %}
+        <article class="stat-card">
+          <span>{{ status|title }}</span>
+          <strong>{{ status_counts.get(status, 0) }}</strong>
+        </article>
+      {% endfor %}
+    </section>
+
+    <section class="panel">
+      <div class="panel-heading">
+        <div>
+          <h2>Editorial library</h2>
+          <p class="muted">The newest changes appear first.</p>
+        </div>
+        <label class="compact-search">
+          <span class="sr-only">Filter articles</span>
+          <input id="article-filter" type="search" placeholder="Search articles" />
+        </label>
+      </div>
+      <div class="table-wrap">
+        <table class="article-table">
+          <thead>
+            <tr><th>Article</th><th>Status</th><th>Updated</th><th>Actions</th></tr>
+          </thead>
+          <tbody id="article-table-body">
+            {% for post in posts %}
+              <tr data-title="{{ post.title|lower }}">
+                <td><strong>{{ post.title }}</strong><small>/{{ post.slug }}</small></td>
+                <td><span class="status {{ post.status }}">{{ post.status|title }}</span></td>
+                <td>{{ post.updated_at.strftime('%d %b %Y, %H:%M') }}</td>
+                <td class="actions">
+                  <a href="{{ url_for('admin_pages.edit_post', post_id=post.id) }}">Edit</a>
+                  <a href="{{ url_for('admin_pages.preview_post', post_id=post.id) }}" target="_blank">Preview</a>
+                  {% if post.status != 'archived' %}<button type="button" data-archive-post="{{ post.id }}">Archive</button>{% endif %}
+                </td>
+              </tr>
+            {% else %}
+              <tr><td colspan="4" class="empty-state">No articles yet. Create the first draft.</td></tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+{% endblock %}

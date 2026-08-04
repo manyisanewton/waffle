@@ -1,0 +1,101 @@
+{% extends "admin/base.html" %}
+{% block title %}{{ post.title if post else 'New article' }} | Vortexus Blog Studio{% endblock %}
+{% block page_name %}editor{% endblock %}
+{% block body %}
+  <header class="admin-header editor-header">
+    <a class="brand" href="{{ url_for('admin_pages.dashboard') }}">
+      <img class="brand-logo" src="{{ url_for('static', filename='admin/vortexus-logo.png') }}" alt="Vortexus" />
+    </a>
+    <div class="save-state"><span id="save-indicator"></span><span id="save-message">Not saved yet</span></div>
+    <nav>
+      <button class="button ghost" id="preview-button" type="button" {% if not post %}disabled{% endif %}>Preview</button>
+      <button class="button secondary" id="save-draft-button" type="button">Save draft</button>
+      <button class="button primary" id="publish-button" type="button">Publish</button>
+    </nav>
+  </header>
+
+  <main class="editor-shell">
+    <section class="editor-canvas">
+      <div class="editor-intro">
+        <div><span class="editor-intro-mark"></span><div><strong>Article workspace</strong><small>Write clearly, structure for readers, then optimize for search.</small></div></div>
+        <span class="editor-shortcut">Autosave enabled</span>
+      </div>
+      <label class="title-field">
+        <span class="sr-only">Article title</span>
+        <textarea id="post-title" rows="1" placeholder="Enter an article title">{{ post.title if post else '' }}</textarea>
+      </label>
+      <label>
+        <span>Article introduction</span>
+        <textarea id="post-excerpt" rows="3" maxlength="1000" placeholder="Summarize the article and give readers a reason to continue.">{{ post.excerpt if post else '' }}</textarea>
+      </label>
+
+      <div class="content-heading">
+        <div><h2>Article content</h2><p class="muted">Build the article one clear section at a time.</p></div>
+      </div>
+      <div id="blocks-container" class="blocks-container"></div>
+      <div class="block-picker" aria-label="Add content block">
+        {% for type, label in [('paragraph','Paragraph'),('heading','Heading'),('image','Image'),('list','List'),('quote','Quote'),('table','Table'),('video','Video'),('cta','Call to action'),('divider','Divider')] %}
+          <button type="button" data-add-block="{{ type }}">+ {{ label }}</button>
+        {% endfor %}
+      </div>
+    </section>
+
+    <aside class="editor-sidebar">
+      <details open>
+        <summary>Publishing</summary>
+        <div class="sidebar-fields">
+          <label><span>Status</span><select id="post-status">
+            {% for value in ['draft','scheduled','published','archived'] %}<option value="{{ value }}" {% if post and post.status == value %}selected{% endif %}>{{ value|title }}</option>{% endfor %}
+          </select></label>
+          <label><span>Category</span><select id="post-category"><option value="">No category</option>
+            {% for category in categories %}<option value="{{ category.id }}" {% if post and post.category_id == category.id %}selected{% endif %}>{{ category.name }}</option>{% endfor %}
+          </select></label>
+          <label><span>Tags</span><input id="post-tags" value="{{ post.tags|map(attribute='name')|join(', ') if post else '' }}" placeholder="water treatment, solar pumps" /><small>Separate tags with commas.</small></label>
+          <label><span>URL slug</span><input id="post-slug" value="{{ post.slug if post else '' }}" placeholder="generated-from-title" /></label>
+          <label><span>Schedule date</span><input id="post-scheduled-at" type="datetime-local" value="{{ post.scheduled_at.strftime('%Y-%m-%dT%H:%M') if post and post.scheduled_at else '' }}" /></label>
+          <label class="checkbox"><input id="post-featured" type="checkbox" {% if post and post.is_featured %}checked{% endif %} /> <span>Featured article</span></label>
+          <div class="featured-image-control">
+            <span>Featured image</span>
+            <div id="featured-image-preview" class="image-block-preview"><span>No featured image selected.</span></div>
+            <button class="button secondary" id="choose-featured-image" type="button">Choose featured image</button>
+          </div>
+        </div>
+      </details>
+
+      <details open>
+        <summary>Search appearance</summary>
+        <div class="sidebar-fields">
+          <label><span>SEO title</span><input id="post-seo-title" maxlength="180" value="{{ post.seo_title if post else '' }}" /><small><span id="seo-title-count">0</span> characters</small></label>
+          <label><span>Meta description</span><textarea id="post-meta-description" maxlength="320" rows="4">{{ post.meta_description if post else '' }}</textarea><small><span id="meta-description-count">0</span> characters</small></label>
+          <label><span>Focus search phrase</span><input id="post-focus-keyword" maxlength="180" value="{{ post.focus_keyword if post else '' }}" /></label>
+          <label><span>Canonical URL</span><input id="post-canonical-url" type="url" value="{{ post.canonical_url if post else '' }}" /></label>
+          <label class="checkbox"><input id="post-robots-index" type="checkbox" {% if not post or post.robots_index %}checked{% endif %} /> <span>Allow search indexing</span></label>
+          <div class="search-preview">
+            <small>Search preview</small>
+            <strong id="search-preview-title">Article title</strong>
+            <span>vortexusindustrial.com › blog › <b id="search-preview-slug">article</b></span>
+            <p id="search-preview-description">Your meta description preview appears here.</p>
+          </div>
+        </div>
+      </details>
+
+      <details {% if post %}open{% endif %}>
+        <summary>Revision history</summary>
+        <div id="revision-list" class="revision-list"><p class="muted">Save the article to begin revision tracking.</p></div>
+      </details>
+    </aside>
+  </main>
+
+  <dialog id="media-dialog" class="media-dialog">
+    <div class="dialog-heading"><div><h2>Media library</h2><p class="muted">Upload an optimized image or select an existing one.</p></div><button type="button" data-close-media aria-label="Close">×</button></div>
+    <form id="media-upload-form" class="media-upload-form">
+      <label><span>Image</span><input name="file" type="file" accept="image/jpeg,image/png,image/webp" required /></label>
+      <label><span>Alternative text</span><input name="alt_text" maxlength="255" required placeholder="Describe what the image shows" /></label>
+      <label><span>Caption (optional)</span><input name="caption" maxlength="2000" /></label>
+      <button class="button primary" type="submit">Upload image</button>
+    </form>
+    <div id="media-grid" class="media-grid"></div>
+  </dialog>
+
+  <script id="editor-post-data" type="application/json">{{ post.to_dict(include_content=True)|tojson if post else 'null' }}</script>
+{% endblock %}
