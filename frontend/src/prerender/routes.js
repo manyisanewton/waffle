@@ -15,6 +15,7 @@ export function getPublicPrerenderRoutes() {
     '/',
     '/about-us',
     '/products',
+    '/privacy-policy',
     '/compare',
     '/industries',
     '/faq',

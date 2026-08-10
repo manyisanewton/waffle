@@ -1,4 +1,4 @@
-const API_BASE_URL = (import.meta.env.VITE_BLOG_API_URL || 'http://127.0.0.1:5050').replace(/\/$/, '')
+const API_BASE_URL = (import.meta.env.VITE_BLOG_API_URL || 'https://blog.vortexusindustrial.com').replace(/\/$/, '')
 const DEFAULT_AUTHOR = 'Vortexus Editorial Team'
 const DEFAULT_POST_IMAGE = '/images/water-treament.webp'
 

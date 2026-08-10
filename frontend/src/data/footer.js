@@ -83,6 +83,7 @@ export const officeLocations = [
 ]
 
 export const footerMetaLinks = [
+  { label: 'Privacy Policy', to: '/privacy-policy' },
   { label: 'Products', to: '/products' },
   { label: 'Industries', to: '/industries' },
   { label: 'FAQ', to: '/faq' },

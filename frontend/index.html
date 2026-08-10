@@ -43,6 +43,22 @@
       fbq('track', 'PageView');
     </script>
     <!-- End Meta Pixel Code -->
+    <!-- Metricool Analytics -->
+    <script>
+      function loadMetricoolScript(callback) {
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = 'https://tracker.metricool.com/resources/be.js';
+        script.onreadystatechange = callback;
+        script.onload = callback;
+        head.appendChild(script);
+      }
+      loadMetricoolScript(function () {
+        beTracker.t({ hash: '6f6e931e46d03b95573aeee97c26933b' });
+      });
+    </script>
+    <!-- End Metricool Analytics -->
   </head>
   <body>
     <noscript>

@@ -22,6 +22,7 @@ import ProjectsPage from './pages/ProjectsPage'
 import ProductCategoryPage from './pages/ProductCategoryPage'
 import ProductDetailPage from './pages/ProductDetailPage'
 import ProductsPage from './pages/ProductsPage'
+import PrivacyPolicyPage from './pages/PrivacyPolicyPage'
 import RequestQuotePage from './pages/RequestQuotePage'
 import ServicesPage from './pages/ServicesPage'
 import SolutionDetailPage from './pages/SolutionDetailPage'
@@ -48,6 +49,7 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="about-us" element={<AboutPage />} />
           <Route path="products" element={<ProductsPage />} />
+          <Route path="privacy-policy" element={<PrivacyPolicyPage />} />
           <Route path="brands/:brandSlug" element={<BrandDetailPage />} />
           <Route path="products/category/:categorySlug" element={<ProductCategoryPage />} />
           <Route path="products/item/:productSlug" element={<ProductDetailPage />} />

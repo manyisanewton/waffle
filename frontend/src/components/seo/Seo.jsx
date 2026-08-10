@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { company } from '../../data/site/company'
+import { localBusinessSchema } from '../../data/site/localBusinessSchema'
 import { webmasterVerification } from '../../data/site/webmaster'
 import { useSeoContext } from './SeoProvider'
 
@@ -67,6 +68,8 @@ function Seo({
   const routePath = canonicalPath || seoContext?.routePath || '/'
   const canonicalUrl = buildCanonicalUrl(routePath)
   const imageUrl = imagePath ? new URL(imagePath, company.siteUrl).toString() : ''
+  const routeSchemas = Array.isArray(structuredData) ? structuredData : [structuredData]
+  const schemas = [localBusinessSchema, ...routeSchemas].filter(Boolean)
 
   if (seoContext?.setSeo) {
     seoContext.setSeo({
@@ -76,7 +79,7 @@ function Seo({
       imageUrl,
       type,
       robots,
-      structuredData,
+      structuredData: schemas,
     })
   }
 
@@ -101,7 +104,6 @@ function Seo({
     upsertMeta('name', 'twitter:image', imageUrl)
     upsertLink('canonical', canonicalUrl)
     document.querySelectorAll('script[data-vortexus-structured-data]').forEach((node) => node.remove())
-    const schemas = Array.isArray(structuredData) ? structuredData : [structuredData]
     schemas.filter(Boolean).forEach((schema) => {
       const script = document.createElement('script')
       script.type = 'application/ld+json'
@@ -109,7 +111,7 @@ function Seo({
       script.textContent = JSON.stringify(schema).replace(/</g, '\\u003c')
       document.head.appendChild(script)
     })
-  }, [canonicalUrl, description, fullTitle, imageUrl, robots, structuredData, type])
+  }, [canonicalUrl, description, fullTitle, imageUrl, robots, schemas, type])
 
   return null
 }
