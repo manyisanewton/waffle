@@ -15,8 +15,9 @@ function formatDate(dateString) {
 }
 
 function BlogPage() {
-  const [posts, setPosts] = useState(() => getFallbackBlogPosts())
-  const [isLoading, setIsLoading] = useState(true)
+  const initialPosts = useMemo(() => getFallbackBlogPosts(), [])
+  const [posts, setPosts] = useState(initialPosts)
+  const [isLoading, setIsLoading] = useState(initialPosts.length === 0)
   const [activeCategory, setActiveCategory] = useState('all')
   const [currentPage, setCurrentPage] = useState(1)
 

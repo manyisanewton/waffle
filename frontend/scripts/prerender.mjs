@@ -9,6 +9,27 @@ const distDir = path.join(frontendRoot, 'dist')
 const serverBundlePath = path.join(distDir, 'server', 'entry-server.js')
 const serverBundle = await import(pathToFileURL(serverBundlePath).href)
 const { render } = serverBundle
+const blogApiUrl = (process.env.VITE_BLOG_API_URL || 'https://blog.vortexusindustrial.com').replace(/\/$/, '')
+
+async function fetchJson(url) {
+  const response = await fetch(url, { headers: { Accept: 'application/json' } })
+  if (!response.ok) throw new Error(`Blog API returned ${response.status} for ${url}`)
+  return response.json()
+}
+
+let blogPosts = []
+const detailedPosts = new Map()
+
+try {
+  const payload = await fetchJson(`${blogApiUrl}/api/posts?per_page=50`)
+  blogPosts = payload.posts || []
+  await Promise.all(blogPosts.map(async (post) => {
+    const detail = await fetchJson(`${blogApiUrl}/api/posts/${encodeURIComponent(post.slug)}`)
+    detailedPosts.set(post.slug, detail.post)
+  }))
+} catch (error) {
+  console.warn(`Blog prerendering skipped: ${error.message}`)
+}
 
 function withoutQuery(route) {
   return route.split('?')[0]
@@ -40,11 +61,21 @@ function injectHead(template, headMarkup) {
 }
 
 const baseTemplate = await readFile(path.join(distDir, 'index.html'), 'utf8')
-const routes = [...new Set(getPublicPrerenderRoutes())]
+const blogRoutes = blogPosts.map((post) => `/blog/${post.slug}`)
+const routes = [...new Set([...getPublicPrerenderRoutes(), ...blogRoutes])]
 
 for (const route of routes) {
-  const { appHtml, head } = render(route)
-  const htmlWithHead = injectHead(baseTemplate, head)
+  const slug = route.startsWith('/blog/') ? route.slice('/blog/'.length) : ''
+  const blogData = route === '/blog'
+    ? { posts: blogPosts }
+    : slug
+      ? { posts: blogPosts, post: detailedPosts.get(slug) || null }
+      : null
+  const { appHtml, head } = render(route, blogData)
+  const preloadJson = blogData
+    ? `<script>window.__VORTEXUS_BLOG_DATA__=${JSON.stringify(blogData).replaceAll('<', '\\u003c')}</script>`
+    : ''
+  const htmlWithHead = injectHead(baseTemplate, `${head}\n${preloadJson}`)
   const finalHtml = htmlWithHead.replace('<div id="root"></div>', `<div id="root">${appHtml}</div>`)
   const outputPath = getOutputPath(route)
 

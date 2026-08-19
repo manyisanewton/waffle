@@ -7,7 +7,7 @@ import { industriesCatalog, productCategories } from '../../data/productCatalog'
 import { navigationItems } from '../../data/navigation'
 import { company } from '../../data/site/company'
 
-const productExpertPhone = '0794582560'
+const productExpertPhone = '0702539456'
 const hiddenProductDropdownSlugs = new Set([
   'wastewater-treatment-equipment',
   'industrial-etp',

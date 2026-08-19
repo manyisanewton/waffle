@@ -4,6 +4,13 @@ const DEFAULT_POST_IMAGE = '/images/water-treament.webp'
 
 let cachedPosts = null
 let postsPromise = null
+let prerenderPosts = []
+let prerenderPost = null
+
+function browserPrerenderData() {
+  if (typeof window === 'undefined') return null
+  return window.__VORTEXUS_BLOG_DATA__ || null
+}
 
 function absoluteMediaUrl(value) {
   if (!value) return ''
@@ -93,11 +100,21 @@ async function request(path) {
   return response.json()
 }
 
+export function setPrerenderBlogData({ posts = [], post = null } = {}) {
+  prerenderPosts = posts.map((item) => normalizeApiPost(item))
+  prerenderPost = post ? normalizeApiPost(post, true) : null
+}
+
 export function getFallbackBlogPosts() {
-  return []
+  const browserPosts = browserPrerenderData()?.posts || []
+  if (browserPosts.length) return browserPosts.map((item) => normalizeApiPost(item))
+  return prerenderPosts
 }
 
 export function getFallbackBlogPostBySlug(slug) {
+  const browserPost = browserPrerenderData()?.post
+  if (browserPost?.slug === slug) return normalizeApiPost(browserPost, true)
+  if (prerenderPost?.slug === slug) return prerenderPost
   return getFallbackBlogPosts().find((post) => post.slug === slug) || null
 }
 

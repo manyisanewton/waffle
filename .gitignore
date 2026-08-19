@@ -10,3 +10,6 @@ chatbot-deployment-main/*apiKey*.csv
 blog-deployment-main/instance/
 blog-deployment-main/venv/
 blog-deployment-main/.pytest_cache/
+
+# Generated deployment archives must not be committed to GitHub.
+*.zip

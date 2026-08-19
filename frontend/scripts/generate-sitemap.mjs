@@ -8,6 +8,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const distDir = path.resolve(__dirname, '../dist')
 const siteUrl = company.siteUrl.replace(/\/$/, '')
 const lastmod = new Date().toISOString().slice(0, 10)
+const blogApiUrl = (process.env.VITE_BLOG_API_URL || 'https://blog.vortexusindustrial.com').replace(/\/$/, '')
 
 function escapeXml(value) {
   return String(value)
@@ -30,7 +31,17 @@ function routeMeta(route) {
   return { changefreq: 'monthly', priority: '0.6' }
 }
 
-const routes = [...new Set(getPublicPrerenderRoutes())].sort((a, b) => {
+let blogPosts = []
+try {
+  const response = await fetch(`${blogApiUrl}/api/posts?per_page=50`, { headers: { Accept: 'application/json' } })
+  if (!response.ok) throw new Error(`HTTP ${response.status}`)
+  blogPosts = (await response.json()).posts || []
+} catch (error) {
+  console.warn(`Blog sitemap entries skipped: ${error.message}`)
+}
+
+const blogRoutes = blogPosts.map((post) => `/blog/${post.slug}`)
+const routes = [...new Set([...getPublicPrerenderRoutes(), ...blogRoutes])].sort((a, b) => {
   if (a === '/') return -1
   if (b === '/') return 1
   return a.localeCompare(b)
@@ -70,5 +81,12 @@ const robots = [
 mkdirSync(distDir, { recursive: true })
 writeFileSync(path.join(distDir, 'sitemap.xml'), sitemap)
 writeFileSync(path.join(distDir, 'robots.txt'), robots)
+
+try {
+  const response = await fetch(`${blogApiUrl}/rss.xml`)
+  if (response.ok) writeFileSync(path.join(distDir, 'rss.xml'), await response.text())
+} catch (error) {
+  console.warn(`Blog RSS generation skipped: ${error.message}`)
+}
 
 console.log(`Generated sitemap.xml with ${routes.length} URLs`)

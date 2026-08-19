@@ -4,6 +4,7 @@ import App from './App'
 import { SeoProvider } from './components/seo/SeoProvider'
 import { AuthProvider } from './context/AuthContext'
 import { webmasterVerification } from './data/site/webmaster'
+import { setPrerenderBlogData } from './lib/blogApi'
 
 function escapeHtml(value = '') {
   return String(value)
@@ -14,8 +15,9 @@ function escapeHtml(value = '') {
     .replaceAll("'", '&#39;')
 }
 
-export function render(url) {
+export function render(url, blogData = null) {
   const seo = {}
+  setPrerenderBlogData(blogData || {})
 
   const appHtml = renderToString(
     <SeoProvider

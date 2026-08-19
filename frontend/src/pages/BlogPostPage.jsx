@@ -3,7 +3,7 @@ import { Navigate, NavLink, useParams } from 'react-router-dom'
 import { FaArrowRight, FaCalendarAlt, FaClock, FaUser } from 'react-icons/fa'
 import BlogContentRenderer from '../components/blog/BlogContentRenderer'
 import Seo from '../components/seo/Seo'
-import { loadBlogPostBySlug, resolveBlogRedirect } from '../lib/blogApi'
+import { getFallbackBlogPostBySlug, loadBlogPostBySlug, resolveBlogRedirect } from '../lib/blogApi'
 import { company } from '../data/site/company'
 
 function formatDate(value) {
@@ -16,8 +16,9 @@ function headingId(value) {
 
 function BlogPostPage() {
   const { slug } = useParams()
-  const [post, setPost] = useState(null)
-  const [loadedSlug, setLoadedSlug] = useState(null)
+  const initialPost = useMemo(() => getFallbackBlogPostBySlug(slug), [slug])
+  const [post, setPost] = useState(initialPost)
+  const [loadedSlug, setLoadedSlug] = useState(initialPost ? slug : null)
   const [selectedImage, setSelectedImage] = useState(null)
 
   useEffect(() => {

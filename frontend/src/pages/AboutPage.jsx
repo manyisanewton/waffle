@@ -54,9 +54,9 @@ function AboutPage() {
       />
 
       <BlueAccentHero
-        eyebrow="About Vortexus Industrial"
-        title="About Us"
-        description="Industrial products, pumps, valves, spares, solar products, and procurement support built around speed, quality, and reliability."
+        eyebrow="Industrial Supply Partner"
+        title="Built to Keep Industry Moving"
+        description="Reliable sourcing, technical product selection, and delivery support for operations across East Africa."
       />
 
       <section className="grid gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start">
