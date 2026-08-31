@@ -56,6 +56,15 @@ const heroSlides = [
 
 const heroSliceCount = 7
 
+const websiteSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'WebSite',
+  '@id': `${company.siteUrl}/#website`,
+  url: `${company.siteUrl}/`,
+  name: 'Vortexus Industrial Excellence',
+  alternateName: 'Vortexus',
+}
+
 function HomePage() {
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false)
   const [currentHeroSlide, setCurrentHeroSlide] = useState(0)
@@ -178,6 +187,7 @@ function HomePage() {
         title="Water Treatment, swimming Pool & Solar Equipment Supplier Kenya"
         includeSiteName={false}
         description="Vortexus supplies water treatment, swimming pool & solar equipment in Kenya. RO systems, pumps, filtration, chemicals & solar solutions. Get a quote."
+        structuredData={websiteSchema}
       />
       <style>
         {`

@@ -101,7 +101,7 @@ function Navbar() {
         >
           <img
             src={company.logo}
-            alt={`${company.name} logo`}
+            alt={company.name}
             className="h-10 w-auto object-contain sm:h-12"
           />
         </NavLink>

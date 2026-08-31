@@ -4,7 +4,7 @@ import { localBusinessSchema } from '../../data/site/localBusinessSchema'
 import { webmasterVerification } from '../../data/site/webmaster'
 import { useSeoContext } from './SeoProvider'
 
-const SITE_NAME = 'Vortexus'
+const SITE_NAME = 'Vortexus Industrial Excellence'
 const DEFAULT_DESCRIPTION =
   'Vortexus Industrial Excellence supplies industrial water-treatment products, pumps, filtration systems, chemicals, instrumentation, tanks, and RFQ-ready equipment from world-leading brands.'
 
@@ -77,6 +77,7 @@ function Seo({
       description,
       canonicalUrl,
       imageUrl,
+      siteName: SITE_NAME,
       type,
       robots,
       structuredData: schemas,
@@ -98,6 +99,7 @@ function Seo({
     upsertMeta('property', 'og:type', type)
     upsertMeta('property', 'og:url', canonicalUrl)
     upsertMeta('property', 'og:image', imageUrl)
+    upsertMeta('property', 'og:site_name', SITE_NAME)
     upsertMeta('name', 'twitter:title', fullTitle)
     upsertMeta('name', 'twitter:description', description)
     upsertMeta('name', 'twitter:card', 'summary_large_image')

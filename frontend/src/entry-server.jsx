@@ -53,6 +53,9 @@ export function render(url, blogData = null) {
     seo.imageUrl
       ? `<meta property="og:image" content="${escapeHtml(seo.imageUrl)}" />`
       : '',
+    seo.siteName
+      ? `<meta property="og:site_name" content="${escapeHtml(seo.siteName)}" />`
+      : '',
     seo.title ? `<meta name="twitter:title" content="${escapeHtml(seo.title)}" />` : '',
     seo.description
       ? `<meta name="twitter:description" content="${escapeHtml(seo.description)}" />`
